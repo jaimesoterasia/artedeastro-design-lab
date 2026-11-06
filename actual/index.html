@@ -1,0 +1,1310 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>artedeastro · Tarot de Thoth, astrología y arte en Barcelona</title>
+<meta name="description" content="Soy Eva. Carta natal, coaching astral y tarot de Thoth, online y en Barcelona. Tarot en vivo para eventos. El tarot no adivina, orienta.">
+<meta name="theme-color" content="#F6F1EA">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:url" content="https://artedeastro.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="artedeastro · Tarot de Thoth, astrología y arte">
+<meta property="og:description" content="El tarot no adivina, orienta. La astrología no predice, revela ciclos.">
+<meta property="og:image" content="https://artedeastro.com/img/eva-cuadros.jpg">
+<meta property="og:locale" content="es_ES">
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap">
+<style>
+/* Layout: una estrella de cuatro puntas como sistema de navegación; cada línea de negocio vive en su color de marca (rosa, coral, violeta) sobre hueso y tinta. Mundo visual único y claro, por decisión de marca. */
+:root{
+  --hueso:#F6F1EA; --papel:#FCF9F5; --arena:#ECE4DA; --linea:#DDD3C7;
+  --tinta:#141014; --tinta-2:#4A423D; --tinta-3:#665D56; --claro:#CFC6BD;
+  --rosa:#E36FB2; --coral:#EE6B4D; --violeta:#8A5CF0; --violeta-txt:#5B36C2; --blanco:#FFFFFF;
+  --display:'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --body:'DM Sans', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+  --ease:cubic-bezier(.2,.7,.1,1);
+  --gut-l:max(16px, env(safe-area-inset-left, 0px));
+  --gut-r:max(16px, env(safe-area-inset-right, 0px));
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--hueso);color:var(--tinta);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--hueso)}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.02;margin:0;text-wrap:balance;letter-spacing:-0.01em}
+p{margin:0}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--violeta-txt);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1320px;margin-inline:auto;padding-left:max(var(--gut-l),32px);padding-right:max(var(--gut-r),32px)}
+@media (max-width:640px){.wrap{padding-left:var(--gut-l);padding-right:var(--gut-r)}}
+.eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:600}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;border:1.5px solid var(--tinta);background:transparent;font-weight:600;font-size:15px;text-decoration:none;cursor:pointer;transition:transform .35s var(--ease),background .3s,color .3s}
+.btn:hover{transform:translateY(-2px)}
+.btn--ink{background:var(--tinta);color:var(--hueso)}
+.btn--rosa{background:var(--rosa);border-color:var(--rosa);color:var(--tinta)}
+.btn--coral{background:var(--coral);border-color:var(--coral);color:var(--tinta)}
+.btn--light{border-color:var(--hueso);color:var(--hueso)}
+.btn svg{width:14px;height:14px;transition:transform .35s var(--ease)}
+.btn:hover svg{transform:translateX(4px)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ===== Header ===== */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--hueso) 86%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s,transform .4s var(--ease)}
+.top.is-scrolled{border-bottom-color:var(--linea)}
+.top.is-hidden{transform:translateY(-100%)}
+.top__in{display:flex;align-items:center;justify-content:space-between;gap:16px;height:72px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand svg{width:30px;height:30px;transition:transform .8s var(--ease)}
+.brand:hover svg{transform:rotate(90deg)}
+.brand span{font-family:var(--display);font-size:28px;font-weight:500;line-height:1}
+.nav{display:flex;align-items:center;gap:28px;font-size:14px}
+.nav a{text-decoration:none;position:relative;padding:6px 0}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .4s var(--ease)}
+.nav a:hover::after{transform:scaleX(1);transform-origin:left}
+.nav .btn{min-height:44px;padding:0 20px}
+.nav .btn::after{display:none}
+.menu-btn{display:none;min-height:44px;min-width:44px;border-radius:999px;border:1.5px solid var(--tinta);background:transparent;font-weight:600;font-size:14px;padding:0 18px;cursor:pointer}
+.progress{position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:linear-gradient(90deg,var(--rosa),var(--coral),var(--violeta));transform:scaleX(0);transform-origin:left}
+@media (max-width:900px){
+  .menu-btn{display:inline-flex;align-items:center}
+  .nav{position:fixed;top:calc(72px + env(safe-area-inset-top,0px));left:0;right:0;flex-direction:column;align-items:flex-start;gap:4px;padding:20px var(--gut-r) 28px var(--gut-l);background:var(--hueso);border-bottom:1px solid var(--linea);font-size:22px;font-family:var(--display)}
+  .nav[hidden]{display:none}
+  .nav a{padding:10px 0}
+  .nav .btn{margin-top:12px;font-family:var(--body);font-size:15px}
+}
+@media (min-width:901px){.nav[hidden]{display:flex!important}}
+
+/* ===== Hero ===== */
+.hero{position:relative;overflow:hidden;padding-block:40px 64px}
+.sky{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero__grid{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:48px;align-items:center}
+@media (max-width:960px){.hero__grid{grid-template-columns:minmax(0,1fr)}}
+.hero__copy{display:flex;flex-direction:column;gap:26px}
+.hero__copy .eyebrow{color:var(--violeta-txt)}
+.hero h1{font-size:clamp(54px,8.2vw,124px);line-height:.95}
+.hero h1 .w{display:inline-block;animation:rise 1s var(--ease) both}
+.hero h1 em{font-style:italic;color:var(--tinta)}
+.hero h1 .w:nth-child(2){animation-delay:.06s}.hero h1 .w:nth-child(3){animation-delay:.12s}.hero h1 .w:nth-child(4){animation-delay:.18s}.hero h1 .w:nth-child(5){animation-delay:.24s}
+@keyframes rise{from{transform:translateY(.35em)}to{transform:none}}
+.hero__sub{font-family:var(--display);font-style:italic;font-size:clamp(24px,2.6vw,36px);line-height:1.2;color:var(--tinta-2)}
+.hero__lead{max-width:52ch;color:var(--tinta-2)}
+.hero__ctas{display:flex;flex-wrap:wrap;gap:12px}
+.hero__meta{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:13px;color:var(--tinta-3)}
+.hero__meta span{display:inline-flex;align-items:center;gap:8px}
+.hero__meta i{width:7px;height:7px;border-radius:50%;display:inline-block}
+
+.stage{position:relative;width:100%;max-width:560px;aspect-ratio:1/1;margin-inline:auto}
+.stage__disc{position:absolute;inset:13%;border-radius:50%;background:var(--rosa);transition:background .6s var(--ease),transform .6s var(--ease)}
+.stage__ring{position:absolute;inset:4%;border-radius:50%;border:1px dashed color-mix(in srgb,var(--tinta) 30%,transparent);animation:spin 90s linear infinite}
+.stage__star{position:absolute;inset:22%;transition:transform .5s var(--ease);cursor:pointer;background:none;border:0;padding:0}
+.stage__star svg{width:100%;height:100%;overflow:visible}
+.stage__star .spin{transform-origin:100px 100px;animation:spin 140s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.door{position:absolute;display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 20px;border-radius:999px;border:1.5px solid var(--tinta);background:var(--papel);font-weight:600;font-size:14px;text-decoration:none;cursor:pointer;transition:background .35s,color .35s,transform .35s var(--ease)}
+.door:hover,.door.is-on{transform:scale(1.06)}
+.door--n{top:0;left:50%;translate:-50% 0}
+.door--e{right:0;top:50%;translate:0 -50%}
+.door--s{bottom:0;left:50%;translate:-50% 0}
+.door--w{left:0;top:50%;translate:0 -50%}
+.door small{font-weight:500;color:var(--tinta-3);font-size:12px}
+.stage__caption{margin-top:22px;text-align:center;min-height:3.2em;color:var(--tinta-2);max-width:40ch;margin-inline:auto}
+
+/* ===== Marquee ===== */
+.marquee{background:var(--tinta);color:var(--hueso);overflow:hidden;padding-block:18px;border-block:1px solid var(--tinta)}
+.marquee__track{display:flex;gap:48px;width:max-content;animation:marq 38s linear infinite;font-family:var(--display);font-size:clamp(28px,3.4vw,44px);font-style:italic;white-space:nowrap}
+.marquee__track span{display:inline-flex;align-items:center;gap:48px}
+.marquee__track svg{width:22px;height:22px}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* ===== Cielo de hoy ===== */
+.cielo{background:var(--tinta);color:var(--hueso);padding-block:72px 80px}
+.cielo__grid{display:grid;grid-template-columns:auto minmax(0,1fr);gap:56px;align-items:center}
+@media (max-width:860px){.cielo__grid{grid-template-columns:minmax(0,1fr);gap:36px}}
+.moon{width:min(220px,50vw);aspect-ratio:1/1;position:relative}
+.moon canvas{width:100%;height:100%;display:block;border-radius:50%;box-shadow:0 0 70px rgba(246,241,234,.14)}
+.cielo .eyebrow{color:var(--coral)}
+.cielo h2{font-size:clamp(40px,5vw,72px);margin-top:12px}
+.cielo__msg{margin-top:16px;color:var(--claro);max-width:60ch;font-size:18px}
+.facts{margin-top:32px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid #3A3238}
+@media (max-width:860px){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.fact{padding:18px 18px 0 0;display:flex;flex-direction:column;gap:4px}
+.fact dt{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--claro)}
+.fact dd{margin:0;font-family:var(--display);font-size:28px;line-height:1.15;font-variant-numeric:tabular-nums}
+.cielo__note{margin-top:20px;font-size:13px;color:#A89E96}
+
+/* ===== Section heads ===== */
+.sec{padding-block:120px}
+.sec__head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:24px;margin-bottom:56px}
+.sec__head > div{max-width:760px;display:flex;flex-direction:column;gap:16px}
+.sec__head h2{font-size:clamp(46px,6vw,88px)}
+.sec__head p{color:var(--tinta-2);max-width:56ch}
+.reveal{transition:transform 1s var(--ease)}
+.reveal.pre{transform:translateY(28px)}
+
+/* ===== Lecturas ===== */
+#lecturas .eyebrow{color:var(--violeta-txt)}
+.services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.svc__list{margin:0;padding:0 0 0 18px;display:flex;flex-direction:column;gap:6px;color:var(--tinta-2);font-size:15px;line-height:1.45}
+.svc__list li::marker{color:var(--rosa)}
+.svc--wide{grid-column:1/-1;min-height:0}
+@media (max-width:980px){.services{grid-template-columns:minmax(0,1fr)}}
+.svc{position:relative;overflow:hidden;border-radius:28px;background:var(--papel);border:1px solid var(--linea);padding:36px;display:flex;flex-direction:column;gap:18px;min-height:460px;transition:transform .5s var(--ease),box-shadow .5s;transform-style:preserve-3d}
+.svc::before{content:"";position:absolute;inset:auto -20% -60% -20%;height:120%;background:var(--rosa);border-radius:50%;transform:translateY(40%);transition:transform .7s var(--ease);z-index:0}
+.svc:hover::before{transform:translateY(0)}
+.svc > *{position:relative;z-index:1}
+.svc__num{font-family:var(--display);font-size:15px;color:var(--tinta-3);font-style:italic}
+.svc h3{font-size:48px}
+.svc p{color:var(--tinta-2)}
+.svc:hover p{color:var(--tinta)}
+.svc__meta{margin-top:auto;display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap;font-variant-numeric:tabular-nums}
+.svc__price{font-family:var(--display);font-size:34px;line-height:1}
+.svc__price small{display:block;font-family:var(--body);font-size:13px;color:var(--tinta-3)}
+.svc__glyph{position:absolute;right:28px;top:28px;width:54px;height:54px;transition:transform 1s var(--ease)}
+.svc:hover .svc__glyph{transform:rotate(45deg) scale(1.1)}
+.modes{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px 28px;color:var(--tinta-2);font-size:15px}
+.modes span{display:inline-flex;gap:10px;align-items:center}
+
+/* ===== Eventos ===== */
+.eventos{background:var(--coral);color:var(--tinta)}
+.eventos .sec__head p{color:var(--tinta)}
+.who{display:inline-flex;padding:5px;border-radius:999px;background:color-mix(in srgb,var(--tinta) 10%,transparent);gap:4px;flex-wrap:wrap}
+.who button{min-height:44px;padding:0 22px;border-radius:999px;border:0;background:transparent;font-weight:600;cursor:pointer;transition:background .3s,color .3s}
+.who button[aria-pressed="true"]{background:var(--tinta);color:var(--hueso)}
+.ev-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start}
+@media (max-width:980px){.ev-grid{grid-template-columns:minmax(0,1fr)}}
+.uses{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.uses span{padding:8px 16px;border-radius:999px;border:1.5px solid var(--tinta);font-size:14px;font-weight:600;transition:background .3s,color .3s}
+.uses span.hot{background:var(--tinta);color:var(--hueso)}
+.formats{display:flex;flex-direction:column;gap:12px;margin-top:36px}
+.fmt{display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:20px;align-items:center;padding:20px 22px;border-radius:20px;border:1.5px solid var(--tinta);background:transparent;text-align:left;cursor:pointer;transition:background .35s,color .35s,transform .35s var(--ease)}
+.fmt:hover{transform:translateX(6px)}
+.fmt[aria-pressed="true"]{background:var(--tinta);color:var(--hueso)}
+.fmt__t{font-family:var(--display);font-size:44px;line-height:1}
+.fmt__d strong{display:block;font-size:17px}
+.fmt__d span{font-size:14px;opacity:.85}
+.fmt__p{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+@media (max-width:520px){.fmt{grid-template-columns:minmax(0,1fr)}.fmt__t{font-size:36px}}
+.quote{background:var(--hueso);border-radius:28px;padding:36px;display:flex;flex-direction:column;gap:22px}
+.steps{display:flex;gap:8px}
+.steps i{flex:1;height:4px;border-radius:4px;background:var(--linea);overflow:hidden;position:relative}
+.steps i::after{content:"";position:absolute;inset:0;background:var(--coral);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.steps i.on::after{transform:scaleX(1)}
+.quote h3{font-size:38px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:14px;color:var(--tinta-2)}
+.field input,.field select,.field textarea{min-height:50px;padding:12px 16px;border-radius:14px;border:1.5px solid var(--linea);background:var(--papel);font-size:16px;transition:border-color .25s}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--tinta);outline:none}
+.row2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+@media (max-width:520px){.row2{grid-template-columns:minmax(0,1fr)}}
+.q-actions{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.err{color:#A3261A;font-size:14px;min-height:1.2em}
+.proof{margin-top:56px;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr);gap:16px}
+@media (max-width:860px){.proof{grid-template-columns:minmax(0,1fr)}}
+.ph{border:1.5px dashed color-mix(in srgb,var(--tinta) 55%,transparent);border-radius:24px;min-height:260px;display:flex;flex-direction:column;justify-content:end;padding:22px;gap:6px}
+.ph strong{font-family:var(--display);font-size:30px;font-weight:500;line-height:1.1}
+.ph span{font-size:14px}
+
+/* ===== Eva ===== */
+.eva__grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:72px;align-items:center}
+@media (max-width:960px){.eva__grid{grid-template-columns:minmax(0,1fr);gap:40px}}
+.eva__photo{position:relative;border-radius:280px 280px 28px 28px;overflow:hidden;aspect-ratio:4/5;max-width:100%}
+.eva__photo img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 1.4s var(--ease)}
+.eva__photo:hover img{transform:scale(1.02)}
+.eva__badge{position:absolute;left:18px;bottom:18px;background:var(--hueso);border-radius:999px;padding:10px 16px;font-size:13px;font-weight:600;display:flex;gap:8px;align-items:center}
+.eva .eyebrow{color:var(--violeta-txt)}
+.eva h2{font-size:clamp(44px,5.4vw,80px);margin-top:16px}
+.eva__intro{margin-top:22px;color:var(--tinta-2);max-width:56ch}
+.tabs{margin-top:36px;display:flex;flex-wrap:wrap;gap:8px}
+.tabs button{min-height:46px;padding:0 20px;border-radius:999px;border:1.5px solid var(--tinta);background:transparent;font-weight:600;cursor:pointer;transition:background .3s,color .3s}
+.tabs button[aria-selected="true"]{background:var(--tinta);color:var(--hueso)}
+.tabpanel{margin-top:22px;padding:28px;border-radius:24px;background:var(--papel);border:1px solid var(--linea);min-height:150px;display:flex;gap:20px;align-items:flex-start}
+.tabpanel svg{flex:0 0 40px;width:40px;height:40px}
+.tabpanel p{font-family:var(--display);font-size:26px;line-height:1.3}
+
+/* ===== Carta ===== */
+.carta{background:var(--tinta);color:var(--hueso)}
+.carta .sec__head p{color:var(--claro)}
+.carta .eyebrow{color:var(--coral)}
+.deck-area{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center}
+@media (max-width:960px){.deck-area{grid-template-columns:minmax(0,1fr)}}
+.deck{position:relative;height:440px;display:flex;justify-content:center;align-items:center;perspective:1400px}
+.card{position:absolute;width:240px;height:380px;border-radius:20px;transform-style:preserve-3d;transition:transform .9s var(--ease);cursor:pointer;border:0;padding:0;background:none}
+.card__f,.card__b{position:absolute;inset:0;border-radius:20px;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
+.card__b{background:var(--violeta);border:2px solid var(--hueso);display:flex;align-items:center;justify-content:center}
+.card__b svg{width:62%;height:62%}
+.card__f{background:var(--hueso);color:var(--tinta);transform:rotateY(180deg);display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:24px 20px;text-align:center;border:2px solid var(--hueso)}
+.card__f .num{font-family:var(--display);font-size:22px;letter-spacing:.1em}
+.card__f svg{width:120px;height:120px}
+.card__f .name{font-family:var(--display);font-size:32px;line-height:1}
+.card.is-flipped{z-index:5}
+.reading{display:flex;flex-direction:column;gap:20px}
+.reading h3{font-size:clamp(40px,4.6vw,64px)}
+.reading__msg{font-family:var(--display);font-size:clamp(24px,2.4vw,32px);line-height:1.3;color:var(--hueso)}
+.reading__hint{color:var(--claro)}
+.capture{display:flex;flex-wrap:wrap;gap:10px}
+.capture input{flex:1 1 240px;min-width:0;min-height:52px;padding:0 20px;border-radius:999px;border:1.5px solid var(--claro);background:transparent;color:var(--hueso);font-size:16px}
+.capture input::placeholder{color:#A89E96}
+.ok{color:var(--hueso);font-size:17px}
+
+/* ===== Tienda ===== */
+#tienda .eyebrow{color:var(--violeta-txt)}
+.drop{display:flex;flex-wrap:wrap;gap:16px 40px;align-items:center;justify-content:space-between;padding:26px 30px;border-radius:24px;background:var(--violeta);color:var(--blanco);margin-bottom:28px}
+.drop strong{font-family:var(--display);font-weight:500;font-size:clamp(28px,3vw,40px);line-height:1.1}
+.clock{display:flex;gap:18px;font-variant-numeric:tabular-nums}
+.clock div{display:flex;flex-direction:column;align-items:center}
+.clock b{font-family:var(--display);font-size:46px;line-height:1;font-weight:500}
+.clock span{font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.filters button{min-height:44px;padding:0 18px;border-radius:999px;border:1.5px solid var(--tinta);background:transparent;font-weight:600;font-size:14px;cursor:pointer;transition:background .3s,color .3s}
+.filters button[aria-pressed="true"]{background:var(--tinta);color:var(--hueso)}
+.products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+@media (max-width:980px){.products{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.products{grid-template-columns:minmax(0,1fr)}}
+.prod{display:flex;flex-direction:column;gap:14px}
+.prod[hidden]{display:none}
+.prod__art{position:relative;aspect-ratio:4/5;border-radius:24px;overflow:hidden;display:flex;align-items:center;justify-content:center;max-width:100%}
+.prod__art svg{width:46%;height:46%;transition:transform 1.2s var(--ease)}
+.prod:hover .prod__art svg{transform:rotate(45deg) scale(1.08)}
+.chip{position:absolute;left:14px;top:14px;background:var(--hueso);color:var(--tinta);border-radius:999px;padding:6px 12px;font-size:12px;font-weight:600}
+.prod__row{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.prod h3{font-size:28px}
+.prod__p{font-variant-numeric:tabular-nums;font-weight:600}
+.prod__sub{font-size:14px;color:var(--tinta-3)}
+
+/* ===== Diario ===== */
+.posts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+@media (max-width:900px){.posts{grid-template-columns:minmax(0,1fr)}}
+.post{display:flex;flex-direction:column;gap:12px;padding:30px;border-radius:24px;border:1px solid var(--linea);text-decoration:none;transition:background .4s,transform .4s var(--ease)}
+.post:hover{background:var(--papel);transform:translateY(-4px)}
+.post .eyebrow{color:var(--violeta-txt)}
+.post h3{font-size:32px;line-height:1.1}
+.post span:last-child{margin-top:auto;font-size:14px;color:var(--tinta-3)}
+
+/* ===== Flyers y colaboraciones ===== */
+.flyers{margin-top:64px;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:20px;align-items:stretch}
+@media (max-width:860px){.flyers{grid-template-columns:minmax(0,1fr)}}
+.flyer{position:relative;margin:0;border-radius:24px;overflow:hidden;background:var(--tinta);max-width:100%;height:clamp(300px,38vw,500px)}
+.flyer img{display:block;width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.flyer:hover img{transform:scale(1.04)}
+.flyer figcaption{position:absolute;left:14px;bottom:14px;background:var(--hueso);color:var(--tinta);border-radius:999px;padding:7px 14px;font-size:13px;font-weight:600}
+.partners{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;font-size:14px}
+.partners span{padding:7px 14px;border-radius:999px;background:color-mix(in srgb,var(--tinta) 10%,transparent);font-weight:600}
+.collab{margin-top:20px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:28px;align-items:center;padding:32px;border-radius:28px;background:var(--tinta);color:var(--hueso);position:relative;overflow:hidden}
+@media (max-width:760px){.collab{grid-template-columns:minmax(0,1fr)}}
+.collab__mark{display:flex;align-items:center;gap:14px;font-family:var(--display);font-size:30px;line-height:1;white-space:nowrap}
+.collab__mark svg{width:26px;height:26px}
+.collab h3{font-size:clamp(28px,3vw,40px)}
+.collab p{color:var(--claro);margin-top:8px;max-width:58ch}
+.collab .eyebrow{color:var(--coral)}
+
+/* ===== Reseñas ===== */
+.reviews{overflow:hidden;padding-block:8px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.reviews__track{display:flex;gap:20px;width:max-content;animation:marq 70s linear infinite}
+.reviews:hover .reviews__track,.reviews:focus-within .reviews__track{animation-play-state:paused}
+.rev{width:min(380px,82vw);flex:0 0 auto;padding:30px;border-radius:24px;background:var(--papel);border:1px solid var(--linea);display:flex;flex-direction:column;gap:16px}
+.rev__stars{display:flex;gap:4px}
+.rev__stars svg{width:16px;height:16px}
+.rev blockquote{margin:0;font-family:var(--display);font-size:24px;line-height:1.3}
+.rev footer{margin-top:auto;display:flex;align-items:center;gap:12px;font-size:14px;color:var(--tinta-2)}
+.rev__av{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;color:var(--tinta);flex:0 0 auto}
+.rev__note{margin-top:18px;font-size:13px;color:var(--tinta-3)}
+
+/* ===== Magia contenida ===== */
+.stage__halo{position:absolute;inset:13%;border-radius:50%;pointer-events:none}
+.stage__halo::before,.stage__halo::after{content:"";position:absolute;inset:0;border-radius:50%;border:1.5px solid var(--rosa);animation:halo 4.5s var(--ease) infinite}
+.stage__halo::after{animation-delay:2.25s}
+@keyframes halo{0%{transform:scale(1);opacity:.55}100%{transform:scale(1.32);opacity:0}}
+.spark{position:absolute;width:14px;height:14px;pointer-events:none;animation:float 7s ease-in-out infinite}
+.spark svg{width:100%;height:100%;animation:twinkle 3.2s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@keyframes twinkle{0%,100%{transform:scale(.6) rotate(0);opacity:.5}50%{transform:scale(1) rotate(45deg);opacity:1}}
+.hw{display:inline-block;transition:transform .9s var(--ease)}
+.split-pre .hw{transform:translateY(.45em)}
+.card__b svg{animation:breathe 5s ease-in-out infinite}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.eva__photo img{will-change:transform}
+.btn{will-change:transform}
+
+/* ===== Obra: la pared de Eva ===== */
+.obra{background:var(--arena);overflow:hidden}
+.obra .eyebrow{color:var(--violeta-txt)}
+.obra__bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;margin-bottom:28px}
+.obra__nav{display:flex;gap:8px}
+.obra__nav button{width:52px;height:52px;border-radius:50%;border:1.5px solid var(--tinta);background:transparent;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:background .3s,color .3s}
+.obra__nav button:hover{background:var(--tinta);color:var(--hueso)}
+.obra__nav svg{width:16px;height:16px}
+.obra__nav button:first-child svg{transform:rotate(180deg)}
+.obra__prog{flex:1 1 200px;max-width:320px;height:2px;background:color-mix(in srgb,var(--tinta) 18%,transparent);position:relative;overflow:hidden;border-radius:2px}
+.obra__prog i{position:absolute;inset:0;background:var(--tinta);transform-origin:left;transform:scaleX(.25)}
+.wall{display:flex;gap:clamp(28px,4vw,64px);overflow-x:auto;scroll-snap-type:x mandatory;padding:36px max(var(--gut-r),32px) 48px max(var(--gut-l),32px);scrollbar-width:none;cursor:grab;align-items:center}
+.wall::-webkit-scrollbar{display:none}
+.wall.drag{cursor:grabbing;scroll-snap-type:none}
+.piece{flex:0 0 auto;scroll-snap-align:center;display:flex;flex-direction:column;gap:16px;margin:0}
+.piece__frame{display:block;padding:clamp(14px,1.6vw,22px);background:var(--papel);border:1px solid var(--linea);box-shadow:0 2px 0 rgba(20,16,20,.06),0 24px 40px -18px rgba(20,16,20,.35);transform:rotate(var(--r,0deg));transition:transform .7s var(--ease),box-shadow .7s var(--ease);cursor:zoom-in;border-radius:2px}
+.piece__frame:hover,.piece__frame:focus-visible{transform:rotate(0) translateY(-8px);box-shadow:0 2px 0 rgba(20,16,20,.06),0 40px 60px -20px rgba(20,16,20,.4)}
+.piece__frame img{display:block;height:clamp(300px,46vw,560px);width:auto;max-width:min(78vw,900px);object-fit:cover;pointer-events:none;user-select:none}
+.piece figcaption{display:flex;justify-content:space-between;gap:16px;align-items:baseline;font-size:14px;color:var(--tinta-2)}
+.piece figcaption b{font-family:var(--display);font-size:24px;font-weight:500;color:var(--tinta)}
+.piece figcaption i{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:8px}
+.obra__note{margin-top:4px;display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between}
+.obra__note p{color:var(--tinta-2);max-width:60ch}
+.lb{border:0;padding:0;background:transparent;max-width:100vw;max-height:100vh;width:100vw;height:100vh;color:var(--hueso)}
+.lb::backdrop{background:rgba(20,16,20,.92)}
+.lb__in{position:relative;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:max(24px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(24px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.lb img{max-width:min(92vw,1200px);max-height:78vh;object-fit:contain;box-shadow:0 30px 80px rgba(0,0,0,.5);animation:lbIn .6s var(--ease)}
+@keyframes lbIn{from{transform:scale(.96)}to{transform:none}}
+.lb__cap{font-family:var(--display);font-size:24px;text-align:center}
+.lb__btn{position:absolute;top:50%;translate:0 -50%;width:52px;height:52px;border-radius:50%;border:1.5px solid var(--hueso);background:transparent;color:var(--hueso);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.lb__btn svg{width:16px;height:16px}
+.lb__prev{left:max(16px,env(safe-area-inset-left,0px))}.lb__prev svg{transform:rotate(180deg)}
+.lb__next{right:max(16px,env(safe-area-inset-right,0px))}
+.lb__close{position:absolute;top:max(16px,env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px));width:48px;height:48px;border-radius:50%;border:1.5px solid var(--hueso);background:transparent;color:var(--hueso);font-size:22px;cursor:pointer}
+@media (max-width:640px){.lb__btn{top:auto;bottom:max(20px,env(safe-area-inset-bottom,0px));translate:none}}
+
+/* ===== Joyería en el velo ===== */
+.soon{font-size:10px;letter-spacing:.12em;text-transform:uppercase;background:var(--violeta);color:#fff;border-radius:999px;padding:2px 7px;vertical-align:4px;margin-left:4px;font-family:var(--body)}
+.velo{position:relative;background:#1B1424;color:var(--hueso);padding-block:128px;overflow:hidden}
+.velo__dust{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.velo__in{position:relative}
+.velo__head{max-width:760px;display:flex;flex-direction:column;gap:18px}
+.velo__head .eyebrow{color:#C9B4FF}
+.velo__head h2{font-size:clamp(52px,7vw,112px);font-style:italic;font-weight:400}
+.velo__head p{color:var(--claro);max-width:58ch;font-size:18px}
+.veils{margin-top:64px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+@media (max-width:760px){.veils{grid-template-columns:minmax(0,1fr)}}
+.veil{position:relative;aspect-ratio:3/4;max-width:100%;border-radius:200px 200px 24px 24px;border:1px solid rgba(201,180,255,.35);background:radial-gradient(circle at 50% 38%,#3A2A5A 0%,#1F1730 70%);overflow:hidden;cursor:pointer;color:var(--hueso);display:flex;align-items:center;justify-content:center;padding:0}
+.veil svg{width:56%;filter:blur(16px);opacity:.75;transition:filter 1.2s var(--ease),opacity 1.2s,transform 1.4s var(--ease)}
+.veil:hover svg,.veil:focus-visible svg,.veil.peek svg{filter:blur(7px);opacity:.95;transform:scale(1.05)}
+.veil::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,.04) 0 2px,transparent 2px 7px);pointer-events:none;animation:sheen 9s linear infinite}
+@keyframes sheen{to{background-position:200px 0}}
+.veil__num{position:absolute;top:28px;left:50%;translate:-50% 0;font-family:var(--display);font-size:28px;letter-spacing:.1em}
+.veil__tag{position:absolute;bottom:22px;left:50%;translate:-50% 0;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#C9B4FF;white-space:nowrap}
+.veil__hint{margin-top:18px;font-family:var(--display);font-style:italic;font-size:24px;color:var(--hueso);min-height:1.4em}
+.velo__grid{margin-top:72px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start}
+@media (max-width:900px){.velo__grid{grid-template-columns:minmax(0,1fr)}}
+.phases{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-left:1px solid rgba(201,180,255,.35)}
+.phases li{position:relative;padding:0 0 32px 28px;display:flex;flex-direction:column;gap:4px}
+.phases li::before{content:"";position:absolute;left:-7px;top:6px;width:13px;height:13px;border-radius:50%;border:1.5px solid #C9B4FF;background:#1B1424}
+.phases li.on::before{background:var(--rosa);border-color:var(--rosa);box-shadow:0 0 0 6px rgba(227,111,178,.2);animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 12px rgba(227,111,178,0)}}
+.phases b{font-family:var(--display);font-size:30px;font-weight:500}
+.phases span{color:var(--claro);font-size:15px}
+.wl{background:var(--hueso);color:var(--tinta);border-radius:28px;padding:34px;display:flex;flex-direction:column;gap:16px}
+.wl h3{font-size:40px}
+.perks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:15px;color:var(--tinta-2)}
+.perks li{display:flex;gap:10px;align-items:center}
+.perks li::before{content:"";width:10px;height:10px;flex:0 0 auto;background:var(--violeta);clip-path:polygon(50% 0,58% 42%,100% 50%,58% 58%,50% 100%,42% 58%,0 50%,42% 42%)}
+.wl .btn{align-self:flex-start}
+.wl__ok{font-family:var(--display);font-size:24px;line-height:1.3}
+
+/* ===== Footer ===== */
+.foot{background:var(--tinta);color:var(--hueso);padding-block:96px 40px;overflow:hidden}
+.foot__grid{display:grid;grid-template-columns:minmax(0,2fr) repeat(2,minmax(0,1fr));gap:40px}
+@media (max-width:860px){.foot__grid{grid-template-columns:minmax(0,1fr)}}
+.foot h2{font-size:clamp(40px,5vw,64px)}
+.foot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;color:var(--claro)}
+.foot a{text-decoration:none}
+.foot a:hover{color:var(--hueso)}
+.foot__word{margin-top:72px;font-family:var(--display);font-size:clamp(72px,17vw,260px);line-height:.8;letter-spacing:-.03em;white-space:nowrap;color:var(--hueso);transition:transform .2s linear}
+.foot__legal{margin-top:36px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:13px;color:#A89E96;border-top:1px solid #3A3238;padding-top:20px}
+
+/* ===== Drawer ===== */
+.scrim{position:fixed;inset:0;background:rgba(20,16,20,.45);z-index:80;opacity:0;transition:opacity .4s}
+.scrim.on{opacity:1}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(560px,100%);background:var(--hueso);z-index:90;transform:translateX(100%);transition:transform .55s var(--ease);display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);padding-right:env(safe-area-inset-right,0px)}
+.drawer.on{transform:none}
+.drawer__head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:22px 28px;border-bottom:1px solid var(--linea)}
+.drawer__head h2{font-size:34px}
+.x{min-width:44px;min-height:44px;border-radius:50%;border:1.5px solid var(--tinta);background:transparent;cursor:pointer;font-size:20px;line-height:1}
+.drawer__body{flex:1;overflow:auto;padding:24px 28px 32px;display:flex;flex-direction:column;gap:26px}
+.drawer__bar{height:3px;background:var(--linea);position:relative}
+.drawer__bar i{position:absolute;inset:0;background:var(--rosa);transform-origin:left;transform:scaleX(.2);transition:transform .5s var(--ease)}
+.opt-title{font-weight:600;font-size:15px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{min-height:48px;padding:10px 18px;border-radius:16px;border:1.5px solid var(--tinta);background:transparent;cursor:pointer;text-align:left;font-size:15px;transition:background .25s,color .25s}
+.opt[aria-pressed="true"]{background:var(--tinta);color:var(--hueso)}
+.opt small{display:block;font-size:12px;opacity:.8}
+.opt--day{min-width:76px;text-align:center}
+.summary{background:var(--tinta);color:var(--hueso);border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:8px}
+.summary dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 16px;font-size:15px}
+.summary dt{color:var(--claro)}
+.summary dd{margin:0}
+.done{display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+.done h3{font-size:44px}
+
+/* ===== Cursor ===== */
+.cursor{position:fixed;left:0;top:0;width:36px;height:36px;border:1.5px solid var(--tinta);border-radius:50%;pointer-events:none;z-index:200;translate:-50% -50%;transition:width .3s var(--ease),height .3s var(--ease),background .3s,border-color .3s;display:none;mix-blend-mode:multiply}
+.cursor.big{width:72px;height:72px;background:color-mix(in srgb,var(--rosa) 35%,transparent);border-color:transparent}
+@media (pointer:fine){.cursor{display:block}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .reveal.pre{transform:none}
+  .cursor{display:none!important}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs><linearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F4734F"/><stop offset=".5" stop-color="#E5579E"/><stop offset="1" stop-color="#A65CF2"/></linearGradient></defs>
+  <symbol id="logo" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="url(#logoGrad)"/><path d="M50 12 C53 40 60 47 88 50 C60 53 53 60 50 88 C47 60 40 53 12 50 C40 47 47 40 50 12Z" fill="#141014"/><circle cx="35" cy="35" r="3.4" fill="#141014"/><circle cx="65" cy="35" r="3.4" fill="#141014"/><circle cx="35" cy="65" r="3.4" fill="#141014"/><circle cx="65" cy="65" r="3.4" fill="#141014"/></symbol>
+  <symbol id="star" viewBox="0 0 200 200"><path d="M100 0 Q108 92 200 100 Q108 108 100 200 Q92 108 0 100 Q92 92 100 0Z"/></symbol>
+  <symbol id="arrow" viewBox="0 0 16 16"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<header class="top" id="top">
+  <div class="wrap top__in">
+    <a class="brand" href="#inicio" aria-label="artedeastro, inicio">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><use href="#logo"/></svg>
+      <span>artedeastro</span>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menú</button>
+    <nav class="nav" id="nav" aria-label="Principal" hidden>
+      <a href="#lecturas">Lecturas</a>
+      <a href="#eventos">Eventos</a>
+      <a href="#joyeria">Joyería <sup class="soon">pronto</sup></a>
+      <a href="#eva">Sobre Eva</a>
+      <a href="#obra">Obra</a>
+      <button class="btn btn--ink" data-book="coach" data-cursor>Reservar</button>
+    </nav>
+  </div>
+  <span class="progress" id="progress"></span>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <canvas class="sky" id="sky" aria-hidden="true"></canvas>
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <p class="eyebrow">Tarot de Thoth · Astrología · Arte</p>
+      <h1><span class="w">El</span> <span class="w">tarot</span> <span class="w">no</span> <span class="w">adivina,</span> <span class="w"><em>orienta.</em></span></h1>
+      <p class="hero__sub">La astrología no predice, revela ciclos.</p>
+      <p class="hero__lead">Soy Eva. Uso el tarot, la astrología, la pintura y la música para ayudarte a entender el momento que vives. Lecturas online y presenciales, eventos para particulares y empresas, y muy pronto, joyería hecha a mano.</p>
+      <div class="hero__ctas">
+        <button class="btn btn--rosa" data-book="coach" data-cursor>Reservar una lectura <svg aria-hidden="true"><use href="#arrow"/></svg></button>
+        <a class="btn btn--coral" href="#eventos" data-cursor>Contratar para un evento <svg aria-hidden="true"><use href="#arrow"/></svg></a>
+      </div>
+      <div class="hero__meta">
+        <span><i style="background:var(--rosa)"></i>Online, estés donde estés</span>
+        <span><i style="background:var(--coral)"></i>Presencial en Barcelona</span>
+        <span><i style="background:var(--violeta)"></i>Joyería: muy pronto</span>
+      </div>
+    </div>
+    <div>
+      <div class="stage" id="stage">
+        <div class="stage__ring"></div>
+        <div class="stage__halo" aria-hidden="true"></div>
+        <div class="stage__disc" id="disc"></div>
+        <span class="spark" style="left:8%;top:18%;animation-delay:-1s" aria-hidden="true"><svg viewBox="0 0 200 200"><use href="#star" fill="#8A5CF0"/></svg></span>
+        <span class="spark" style="right:10%;top:12%;width:10px;height:10px;animation-delay:-3s" aria-hidden="true"><svg viewBox="0 0 200 200" style="animation-delay:-1.2s"><use href="#star" fill="#EE6B4D"/></svg></span>
+        <span class="spark" style="right:4%;bottom:24%;animation-delay:-5s" aria-hidden="true"><svg viewBox="0 0 200 200" style="animation-delay:-2s"><use href="#star" fill="#141014"/></svg></span>
+        <span class="spark" style="left:14%;bottom:10%;width:10px;height:10px;animation-delay:-2s" aria-hidden="true"><svg viewBox="0 0 200 200" style="animation-delay:-.6s"><use href="#star" fill="#E36FB2"/></svg></span>
+        <span class="spark" style="left:28%;top:7%;width:8px;height:8px;animation-delay:-4s" aria-hidden="true"><svg viewBox="0 0 200 200" style="animation-delay:-2.6s"><use href="#star" fill="#141014"/></svg></span>
+        <button class="stage__star" id="bigStar" aria-label="Sacar una carta del tarot" data-cursor>
+          <svg viewBox="0 0 200 200" aria-hidden="true"><g id="starTilt"><g class="spin"><use href="#star" fill="#141014"/><circle cx="52" cy="52" r="6.5" fill="#141014"/><circle cx="148" cy="52" r="6.5" fill="#141014"/><circle cx="148" cy="148" r="6.5" fill="#141014"/><circle cx="52" cy="148" r="6.5" fill="#141014"/></g></g></svg>
+        </button>
+        <a class="door door--n" href="#lecturas" data-door="lecturas" data-cursor>Lecturas</a>
+        <a class="door door--e" href="#eventos" data-door="eventos" data-cursor>Eventos</a>
+        <a class="door door--s" href="#joyeria" data-door="tienda" data-cursor>Joyería</a>
+        <a class="door door--w" href="#eva" data-door="eva" data-cursor>Sobre Eva</a>
+      </div>
+      <p class="stage__caption" id="doorText" aria-live="polite">Cuatro puntas, cuatro puertas. Pasa por ellas o pulsa la estrella para sacar una carta.</p>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>Tarot <svg viewBox="0 0 200 200"><use href="#star" fill="#E36FB2"/></svg> Astrología <svg viewBox="0 0 200 200"><use href="#star" fill="#EE6B4D"/></svg> Pintura <svg viewBox="0 0 200 200"><use href="#star" fill="#8A5CF0"/></svg> Música <svg viewBox="0 0 200 200"><use href="#star" fill="#F6F1EA"/></svg></span>
+    <span>Tarot <svg viewBox="0 0 200 200"><use href="#star" fill="#E36FB2"/></svg> Astrología <svg viewBox="0 0 200 200"><use href="#star" fill="#EE6B4D"/></svg> Pintura <svg viewBox="0 0 200 200"><use href="#star" fill="#8A5CF0"/></svg> Música <svg viewBox="0 0 200 200"><use href="#star" fill="#F6F1EA"/></svg></span>
+  </div>
+</div>
+
+<!-- CIELO DE HOY -->
+<section class="cielo" id="cielo" aria-labelledby="cieloT">
+  <div class="wrap cielo__grid">
+    <div class="moon"><canvas id="moonCv" role="img" aria-label="Fase lunar de hoy"></canvas></div>
+    <div>
+      <p class="eyebrow">El cielo de hoy · <span id="today"></span></p>
+      <h2 id="cieloT"><span id="phaseName">Luna</span>, <em id="moonSign">—</em></h2>
+      <p class="cielo__msg" id="phaseMsg"></p>
+      <dl class="facts">
+        <div class="fact"><dt>Iluminación</dt><dd id="illum">—</dd></div>
+        <div class="fact"><dt>Sol en</dt><dd id="sunSign">—</dd></div>
+        <div class="fact"><dt>Próxima luna nueva</dt><dd id="nextNew">—</dd></div>
+        <div class="fact"><dt>Próxima luna llena</dt><dd id="nextFull">—</dd></div>
+      </dl>
+      <p class="cielo__note">Calculado en tu navegador a partir de la fecha de hoy. Posiciones aproximadas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LECTURAS -->
+<section class="sec" id="lecturas">
+  <div class="wrap">
+    <div class="sec__head reveal">
+      <div>
+        <p class="eyebrow">Lecturas y acompañamiento</p>
+        <h2>Astrología, tarot de Thoth y coaching para entender tu momento</h2>
+      </div>
+      <p>No son lecturas sueltas: es un acompañamiento para conocerte mejor. Elige la modalidad y envíame la solicitud por WhatsApp; te confirmo la fecha y la forma de pago.</p>
+    </div>
+    <div class="services">
+      <article class="svc reveal" data-tilt>
+        <svg class="svc__glyph" viewBox="0 0 200 200" aria-hidden="true"><use href="#star" fill="#141014"/></svg>
+        <p class="svc__num">i.</p>
+        <h3>Coaching astral</h3>
+        <p>Sesión de astrología y tarot centrada en los temas que quieras trabajar.</p>
+        <ul class="svc__list"><li>Presencial u online, hasta 1 hora</li><li>Pequeña guía de tu carta natal en PDF</li><li>Tiradas de tarot según tus preguntas</li><li>Puedes grabar la sesión</li></ul>
+        <div class="svc__meta"><p class="svc__price">80 €<small>sesión de hasta 1 h</small></p><button class="btn btn--ink" data-book="coach" data-cursor>Reservar</button></div>
+      </article>
+      <article class="svc reveal" data-tilt>
+        <svg class="svc__glyph" viewBox="0 0 200 200" aria-hidden="true"><use href="#star" fill="#141014"/></svg>
+        <p class="svc__num">ii.</p>
+        <h3>Carta natal resumida + sesión</h3>
+        <p>La síntesis de lo más importante de tu carta natal, interpretada contigo.</p>
+        <ul class="svc__list"><li>Informe personalizado de 15-20 páginas</li><li>Sesión de hasta 2 horas</li><li>Tirada astrológica de tarot</li><li>Espacio para tus preguntas concretas</li></ul>
+        <div class="svc__meta"><p class="svc__price">180 €<small>informe + sesión de hasta 2 h</small></p><button class="btn btn--ink" data-book="resumida" data-cursor>Reservar</button></div>
+      </article>
+      <article class="svc reveal" data-tilt>
+        <svg class="svc__glyph" viewBox="0 0 200 200" aria-hidden="true"><use href="#star" fill="#141014"/></svg>
+        <p class="svc__num">iii.</p>
+        <h3>Carta natal completa</h3>
+        <p>Un estudio exhaustivo de tu carta: planetas, signos, casas, aspectos y configuraciones.</p>
+        <ul class="svc__list"><li>Informe personalizado de 60-80 páginas</li><li>Incluye tu revolución solar</li><li>Elaboración durante aproximadamente un mes</li><li>Videollamada para comentarlo y profundizar</li><li>Incluye lectura de tarot</li></ul>
+        <div class="svc__meta"><p class="svc__price">250 €<small>informe completo + videollamada</small></p><button class="btn btn--ink" data-book="completa" data-cursor>Reservar</button></div>
+      </article>
+      <article class="svc reveal" data-tilt>
+        <svg class="svc__glyph" viewBox="0 0 200 200" aria-hidden="true"><use href="#star" fill="#141014"/></svg>
+        <p class="svc__num">iv.</p>
+        <h3>Acompañamiento continuado</h3>
+        <p>Coaching con astrología y tarot para seguir procesos personales y de pareja o vínculos.</p>
+        <ul class="svc__list"><li>Modalidad semanal o mensual</li><li>Seguimiento de tu proceso sesión a sesión</li><li>Consultas puntuales entre sesiones cuando lo necesites</li></ul>
+        <div class="svc__meta"><p class="svc__price"><small>Tarifa según frecuencia y continuidad</small></p><button class="btn btn--ink" data-book="acomp" data-cursor>Pedir información</button></div>
+      </article>
+    </div>
+    <div class="modes">
+      <span><svg width="18" height="18" viewBox="0 0 200 200" aria-hidden="true"><use href="#star" fill="#E36FB2"/></svg>Online por videollamada</span>
+      <span><svg width="18" height="18" viewBox="0 0 200 200" aria-hidden="true"><use href="#star" fill="#EE6B4D"/></svg>Presencial en Barcelona</span>
+      <span><svg width="18" height="18" viewBox="0 0 200 200" aria-hidden="true"><use href="#star" fill="#8A5CF0"/></svg>Informes personalizados en PDF</span>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTOS -->
+<section class="sec eventos" id="eventos">
+  <div class="wrap">
+    <div class="sec__head reveal">
+      <div>
+        <p class="eyebrow">Eventos</p>
+        <h2>El tarot, en vivo, en tu evento</h2>
+      </div>
+      <p>Lecturas breves y cercanas que tus invitados recuerdan y comparten. Para celebraciones, locales, marcas y empresas.</p>
+    </div>
+    <div class="ev-grid">
+      <div>
+        <div class="who" role="group" aria-label="¿Quién organiza?">
+          <button type="button" aria-pressed="true" data-who="particular">Particular</button>
+          <button type="button" aria-pressed="false" data-who="empresa">Empresa, marca o local</button>
+        </div>
+        <div class="uses" id="uses"></div>
+        <div class="formats" id="formats">
+          <button type="button" class="fmt" data-fmt="Encuentro · 2 h" aria-pressed="false"><span class="fmt__t">2 h</span><span class="fmt__d"><strong>Encuentro</strong><span>Lecturas breves para grupos pequeños.</span></span><span class="fmt__p">a consultar</span></button>
+          <button type="button" class="fmt" data-fmt="Evento · 4 h" aria-pressed="true"><span class="fmt__t">4 h</span><span class="fmt__d"><strong>Evento</strong><span>Lecturas continuas durante la celebración.</span></span><span class="fmt__p">a consultar</span></button>
+          <button type="button" class="fmt" data-fmt="Experiencia completa · noche" aria-pressed="false"><span class="fmt__t">Noche</span><span class="fmt__d"><strong>Experiencia completa</strong><span>Tarot toda la noche y contenido para redes.</span></span><span class="fmt__p">a consultar</span></button>
+        </div>
+      </div>
+      <form class="quote" id="quote" novalidate>
+        <div class="steps" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+        <div data-q="1">
+          <h3>Cuéntame tu evento</h3>
+          <div style="display:flex;flex-direction:column;gap:14px;margin-top:18px">
+            <div class="field"><label for="qTipo">Tipo de evento</label><select id="qTipo"></select></div>
+            <div class="field"><label for="qFmt">Formato</label><input id="qFmt" readonly value="Evento · 4 h"></div>
+          </div>
+        </div>
+        <div data-q="2" hidden>
+          <h3>Fecha y lugar</h3>
+          <div style="display:flex;flex-direction:column;gap:14px;margin-top:18px">
+            <div class="row2"><div class="field"><label for="qFecha">Fecha</label><input id="qFecha" type="date"></div><div class="field"><label for="qCiudad">Ciudad</label><input id="qCiudad" type="text" autocomplete="address-level2"></div></div>
+            <div class="field"><label for="qAsis">Número de asistentes</label><input id="qAsis" type="number" min="1" inputmode="numeric"></div>
+          </div>
+        </div>
+        <div data-q="3" hidden>
+          <h3>¿Cómo te contacto?</h3>
+          <div style="display:flex;flex-direction:column;gap:14px;margin-top:18px">
+            <div class="field" id="empField" hidden><label for="qEmp">Empresa o local</label><input id="qEmp" type="text" autocomplete="organization"></div>
+            <div class="row2"><div class="field"><label for="qNombre">Nombre</label><input id="qNombre" type="text" autocomplete="name"></div><div class="field"><label for="qEmail">Email (opcional)</label><input id="qEmail" type="email" autocomplete="email"></div></div>
+            <div class="field"><label for="qMsg">Algo más (opcional)</label><textarea id="qMsg" rows="3"></textarea></div>
+          </div>
+        </div>
+        <div data-q="4" hidden class="done">
+          <h3>Ya casi está</h3>
+          <p>Se ha abierto WhatsApp con los datos de tu evento. Envía el mensaje y te respondo con formatos, presupuesto y disponibilidad.</p>
+          <button type="button" class="btn" id="qAgain">Enviar otra solicitud</button>
+        </div>
+        <p class="err" id="qErr" aria-live="polite"></p>
+        <div class="q-actions" id="qActions">
+          <button type="button" class="btn" id="qBack" hidden>Atrás</button>
+          <button type="button" class="btn btn--ink" id="qNext" data-cursor>Siguiente <svg aria-hidden="true"><use href="#arrow"/></svg></button>
+        </div>
+      </form>
+    </div>
+    <div class="flyers reveal">
+      <figure class="flyer"><img src="img/giro-flyer.jpg" alt="Flyer de Giro al Alma: un cóctel junto a un tocadiscos, domingo 4 de octubre desde las 17:00" width="1179" height="700" loading="lazy"><figcaption>Giro al Alma · GIRO, Gràcia</figcaption></figure>
+      <figure class="flyer"><img src="img/giro-info.jpg" alt="Cartel de Giro al Alma: vinilos, cócteles, tarot, moda y joyas con Fandango, Artedeastrología y Artesana en GIRO.BAR" width="1179" height="1190" loading="lazy" style="object-position:top"><figcaption>Vinilos · Cócteles · Tarot · Moda · Joyas</figcaption></figure>
+    </div>
+    <div class="partners"><strong>Junto a</strong><span>GIRO.BAR</span><span>Fandango Barcelona</span><span>Artesana</span></div>
+    <article class="collab reveal">
+      <div class="collab__mark"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#star" fill="#F6F1EA"/></svg>Sacchetti Studio</div>
+      <div>
+        <p class="eyebrow">Colaboración</p>
+        <h3>Arte en directo y tarot en un mismo evento</h3>
+        <p>Con Sacchetti Studio, estudio de live sketching para eventos de lujo, activaciones de marca y bodas. Ellos dibujan a los invitados en directo; yo les leo las cartas.</p>
+      </div>
+      <a class="btn btn--light" href="#quote" data-cursor data-magnet>Pedir la experiencia conjunta <svg aria-hidden="true"><use href="#arrow"/></svg></a>
+    </article>
+  </div>
+</section>
+
+<!-- EVA -->
+<section class="sec eva" id="eva">
+  <div class="wrap eva__grid">
+    <div class="eva__photo reveal">
+      <img src="img/eva-cuadros.jpg" alt="Eva sonriendo junto a una mesa con cartas del tarot de Thoth y flores blancas; detrás, en la pared, cuatro de sus cuadros" width="1100" height="1375">
+      <span class="eva__badge"><svg width="16" height="16" viewBox="0 0 200 200" aria-hidden="true"><use href="#star" fill="#141014"/></svg>Sol en Cáncer · Luna y Ascendente en Leo</span>
+    </div>
+    <div>
+      <p class="eyebrow">Sobre Eva</p>
+      <h2>Cuatro lenguajes, un mismo lugar</h2>
+      <p class="eva__intro">Crecí escuchando a mi madre y a mi tía hablar de astrología. A los 15 empecé a estudiar tarot y astrología por mi cuenta, y con los años la pintura y la música se unieron al camino. Cada lenguaje abre una puerta distinta, pero todos llevan al mismo sitio: el autoconocimiento y la transformación.</p>
+      <div class="tabs" role="tablist" aria-label="Los cuatro lenguajes">
+        <button role="tab" id="t-tarot" aria-controls="tabp" aria-selected="true" data-tab="tarot">Tarot</button>
+        <button role="tab" id="t-astro" aria-controls="tabp" aria-selected="false" data-tab="astro" tabindex="-1">Astrología</button>
+        <button role="tab" id="t-pint" aria-controls="tabp" aria-selected="false" data-tab="pint" tabindex="-1">Pintura</button>
+        <button role="tab" id="t-mus" aria-controls="tabp" aria-selected="false" data-tab="mus" tabindex="-1">Música</button>
+      </div>
+      <div class="tabpanel" id="tabp" role="tabpanel" aria-labelledby="t-tarot">
+        <svg viewBox="0 0 200 200" aria-hidden="true"><use href="#star" id="tabStar" fill="#E36FB2"/></svg>
+        <p id="tabText"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OBRA -->
+<section class="sec obra" id="obra">
+  <div class="wrap">
+    <div class="sec__head reveal">
+      <div>
+        <p class="eyebrow">Obra · El tercer lenguaje</p>
+        <h2>Lo que no cabe en una carta, lo pinto</h2>
+      </div>
+      <p>La pintura es mi forma de transformar lo que siento: color, trazo y símbolo. Esta es la pared de mi estudio.</p>
+    </div>
+    <div class="obra__bar">
+      <div class="obra__prog" aria-hidden="true"><i id="obraProg"></i></div>
+      <div class="obra__nav"><button type="button" id="obraPrev" aria-label="Obra anterior"><svg aria-hidden="true"><use href="#arrow"/></svg></button><button type="button" id="obraNext" aria-label="Obra siguiente"><svg aria-hidden="true"><use href="#arrow"/></svg></button></div>
+    </div>
+  </div>
+  <div class="wall" id="wall" tabindex="0" aria-label="Galería de cuadros de Eva; desliza para ver más">
+    <figure class="piece"><button class="piece__frame" style="--r:-1.6deg" data-lb="0" aria-label="Ampliar obra I"><img src="img/obra-1.jpg" alt="Figura de colores vivos con un gran ojo de pestañas multicolor y una lágrima azul, sobre un fondo de rayas de cebra en blanco y negro" width="1058" height="1390" loading="lazy"></button><figcaption><span><i style="background:var(--rosa)"></i><b>I</b></span></figcaption></figure>
+    <figure class="piece"><button class="piece__frame" style="--r:1.2deg" data-lb="1" aria-label="Ampliar obra II"><img src="img/obra-2.jpg" alt="Un gato azul con jersey de rayas y cola verde caminando sobre un fondo rosa con lunares turquesa, soles y ojos" width="1029" height="1078" loading="lazy"></button><figcaption><span><i style="background:var(--violeta)"></i><b>II</b></span></figcaption></figure>
+    <figure class="piece"><button class="piece__frame" style="--r:-.8deg" data-lb="2" aria-label="Ampliar obra III"><img src="img/obra-3.jpg" alt="Dos figuras rosas que bailan de la mano al borde de un precipicio, una con cuernos y cola, bajo un cielo violeta y un sol amarillo" width="962" height="1173" loading="lazy"></button><figcaption><span><i style="background:var(--coral)"></i><b>III</b></span></figcaption></figure>
+    <figure class="piece"><button class="piece__frame" style="--r:1.6deg" data-lb="3" aria-label="Ampliar obra IV"><img src="img/obra-4.jpg" alt="Abstracción de bandas onduladas en verde, amarillo, violeta, rojo y azul alrededor de un río rosa con puntos, y unos ojos que asoman entre el color" width="1112" height="788" loading="lazy"></button><figcaption><span><i style="background:var(--tinta)"></i><b>IV</b></span></figcaption></figure>
+  </div>
+  <div class="wrap obra__note">
+    <p>Originales y obra por encargo. Pregunta por la disponibilidad de cada cuadro.</p>
+    <a class="btn btn--ink" href="#contacto" data-cursor>Preguntar por una obra <svg aria-hidden="true"><use href="#arrow"/></svg></a>
+  </div>
+  <dialog class="lb" id="lb" aria-label="Obra ampliada">
+    <div class="lb__in">
+      <button class="lb__close" id="lbClose" aria-label="Cerrar">×</button>
+      <button class="lb__btn lb__prev" id="lbPrev" aria-label="Obra anterior"><svg aria-hidden="true"><use href="#arrow"/></svg></button>
+      <img id="lbImg" src="img/obra-1.jpg" alt="">
+      <p class="lb__cap" id="lbCap"></p>
+      <button class="lb__btn lb__next" id="lbNext" aria-label="Obra siguiente"><svg aria-hidden="true"><use href="#arrow"/></svg></button>
+    </div>
+  </dialog>
+</section>
+
+<!-- RESEÑAS: sección retirada hasta tener opiniones reales con permiso (ver la portada original en web/piezas/). -->
+
+<!-- SACA TU CARTA -->
+<section class="sec carta" id="carta">
+  <div class="wrap">
+    <div class="sec__head reveal">
+      <div>
+        <p class="eyebrow">Saca tu carta</p>
+        <h2>¿Qué te dice hoy el tarot?</h2>
+      </div>
+      <p>Piensa en lo que te ocupa, baraja y elige una carta. Te enseño su mensaje aquí; si quieres profundizar, la leemos juntas en una sesión.</p>
+    </div>
+    <div class="deck-area">
+      <div class="deck" id="deck"></div>
+      <div class="reading" id="reading" aria-live="polite">
+        <h3 id="rTitle">Tres cartas boca abajo</h3>
+        <p class="reading__msg" id="rMsg">Elige la que te llame. No hay elección equivocada.</p>
+        <div class="hero__ctas">
+          <button class="btn btn--light" id="shuffle" type="button" data-cursor>Barajar de nuevo</button>
+        </div>
+        <div class="capture" id="capture" hidden>
+          <button class="btn btn--rosa" type="button" data-book="coach" data-cursor>Reservar una lectura</button>
+        </div>
+        <p class="ok" id="cOk" hidden></p>
+        <p class="reading__hint" id="cErr" aria-live="polite"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOYERÍA: EN EL VELO -->
+<section class="velo" id="joyeria">
+  <canvas class="velo__dust" id="dust" aria-hidden="true"></canvas>
+  <div class="wrap velo__in">
+    <div class="velo__head reveal">
+      <p class="eyebrow">Joyería · En el velo</p>
+      <h2>Algo se está forjando</h2>
+      <p>Estoy creando mi primera colección de joyería, hecha a mano e inspirada en los arcanos del tarot. Todavía no puedo enseñártela. Quien esté en la lista la verá antes que nadie.</p>
+    </div>
+    <div class="veils" id="veils">
+      <button type="button" class="veil" data-hint="Un arcano que habla de empezar" aria-label="Pieza I, todavía en el velo"><span class="veil__num">I</span><svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="78" fill="none" stroke="#F6F1EA" stroke-width="5"/><use href="#star" fill="#F6F1EA" transform="translate(40 40) scale(.6)"/></svg><span class="veil__tag">En el velo</span></button>
+      <button type="button" class="veil" data-hint="Un arcano que habla de la intuición" aria-label="Pieza II, todavía en el velo"><span class="veil__num">II</span><svg viewBox="0 0 200 200" aria-hidden="true"><path d="M100 22a78 78 0 1 0 .1 0" fill="none" stroke="#F6F1EA" stroke-width="5"/><circle cx="118" cy="92" r="46" fill="#F6F1EA" fill-opacity=".9"/><circle cx="100" cy="100" r="46" fill="#2A1F3A"/></svg><span class="veil__tag">En el velo</span></button>
+      <button type="button" class="veil" data-hint="Un arcano que habla de la luz" aria-label="Pieza III, todavía en el velo"><span class="veil__num">III</span><svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="40" fill="#F6F1EA"/><g stroke="#F6F1EA" stroke-width="5" stroke-linecap="round"><path d="M100 20v24M100 156v24M20 100h24M156 100h24M43 43l17 17M140 140l17 17M43 157l17-17M140 60l17-17"/></g></svg><span class="veil__tag">En el velo</span></button>
+    </div>
+    <p class="veil__hint" id="veilHint" aria-live="polite">Pasa por encima o pulsa una pieza para descubrir una pista.</p>
+    <div class="velo__grid">
+      <ol class="phases" aria-label="Estado de la colección">
+        <li class="on"><b>Idea y bocetos</b><span>En curso</span></li>
+        <li><b>Taller</b><span>Muy pronto</span></li>
+        <li><b>Revelación</b><span>Se anunciará en luna nueva, primero a la lista</span></li>
+      </ol>
+      <form class="wl" id="wl" novalidate>
+        <h3>Entra en la lista</h3>
+        <p style="color:var(--claro);margin:0">Te apunto por WhatsApp: pulsa el botón y envíame el mensaje.</p>
+        <div class="field"><label for="wlArc">¿Qué arcano te representa? (opcional)</label><select id="wlArc"><option value="">Aún no lo sé</option><option>El Loco</option><option>El Mago</option><option>La Sacerdotisa</option><option>La Emperatriz</option><option>Los Amantes</option><option>Arte</option><option>La Estrella</option><option>La Luna</option><option>El Sol</option><option>El Universo</option></select></div>
+        <ul class="perks"><li>Ves la colección antes que nadie</li><li>Te enseño el proceso de taller</li><li>Solo te escribo cuando haya novedades</li></ul>
+        <p class="err" id="wlErr" aria-live="polite"></p>
+        <button class="btn btn--rosa" type="submit" data-cursor>Quiero estar en la lista <svg aria-hidden="true"><use href="#arrow"/></svg></button>
+        <p class="wl__ok" id="wlOk" hidden></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- DIARIO: sección retirada hasta tener artículos publicados (ver la portada original en web/piezas/). -->
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div><h2>El tarot no adivina, orienta.</h2><p style="color:var(--claro);margin-top:14px">La astrología no predice, revela ciclos.</p></div>
+      <ul><li><a href="#lecturas">Lecturas</a></li><li><a href="#eventos">Eventos</a></li><li><a href="#joyeria">Joyería (pronto)</a></li><li><a href="#eva">Sobre Eva</a></li><li><a href="#obra">Obra</a></li></ul>
+      <ul id="contacto"><li><a href="mailto:artedeastrologia@gmail.com">artedeastrologia@gmail.com</a></li><li><a href="https://wa.me/34686156081" target="_blank" rel="noopener">WhatsApp +34 686 15 60 81</a></li><li><a href="https://www.instagram.com/artedeastro/" target="_blank" rel="noopener">Instagram @artedeastro</a></li><li>Online y presencial en Barcelona</li></ul>
+    </div>
+    <p class="foot__word" id="footWord" aria-hidden="true">artedeastro</p>
+    <div class="foot__legal"><span>© 2026 artedeastro</span><span><a href="aviso-legal.html">Aviso legal</a> · <a href="privacidad.html">Privacidad</a> · <a href="cookies.html">Cookies</a></span></div>
+  </div>
+</footer>
+
+<!-- RESERVA -->
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dT" hidden>
+  <div class="drawer__head"><h2 id="dT">Reserva tu lectura</h2><button class="x" id="dClose" aria-label="Cerrar reserva">×</button></div>
+  <div class="drawer__bar"><i id="dBar"></i></div>
+  <div class="drawer__body" id="dBody">
+    <div id="dForm">
+      <div style="display:flex;flex-direction:column;gap:12px"><p class="opt-title">1 · Lectura</p><div class="opts" id="oSvc"></div></div>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-top:26px"><p class="opt-title">2 · Modalidad</p><div class="opts" id="oMode"></div></div>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-top:26px"><p class="opt-title">3 · Día</p><div class="opts" id="oDay"></div></div>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-top:26px"><p class="opt-title">4 · Hora</p><div class="opts" id="oTime"></div><p style="font-size:13px;color:var(--tinta-3)">Hora orientativa: te confirmo la disponibilidad al responderte.</p></div>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-top:26px"><p class="opt-title">5 · Tus datos</p>
+        <div class="field"><label for="bName">Nombre</label><input id="bName" autocomplete="name"></div>
+        <div id="natalF" hidden style="display:flex;flex-direction:column;gap:12px"><div class="row2"><div class="field"><label for="bDob">Fecha de nacimiento</label><input id="bDob" type="date"></div><div class="field"><label for="bTob">Hora de nacimiento</label><input id="bTob" type="time"></div></div><div class="field"><label for="bPob">Lugar de nacimiento</label><input id="bPob"></div></div>
+        <div class="field" id="topicF"><label for="bTopic">Tema que quieres trabajar (opcional)</label><textarea id="bTopic" rows="2"></textarea></div>
+      </div>
+      <div class="summary" style="margin-top:26px">
+        <p class="eyebrow" style="color:var(--claro)">Resumen</p>
+        <dl><dt>Lectura</dt><dd id="sSvc">—</dd><dt>Modalidad</dt><dd id="sMode">—</dd><dt>Cuándo</dt><dd id="sWhen">—</dd></dl>
+        <p class="err" id="bErr" style="color:#F2A79A" aria-live="polite"></p>
+        <button class="btn btn--rosa" id="bPay" type="button">Enviar solicitud por WhatsApp</button>
+        <p style="font-size:13px;color:var(--claro)">Te respondo para confirmar la cita, el precio y la forma de pago.</p>
+      </div>
+    </div>
+    <div class="done" id="dDone" hidden>
+      <svg width="64" height="64" viewBox="0 0 100 100" aria-hidden="true"><use href="#logo"/></svg>
+      <h3>Ya casi está</h3>
+      <p id="doneTxt"></p>
+      <p style="color:var(--tinta-2)">Se ha abierto WhatsApp con tu solicitud. Envía el mensaje y te respondo para confirmar la cita.</p>
+      <button class="btn" id="dAgain" type="button">Cerrar</button>
+    </div>
+  </div>
+</aside>
+
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const C = { rosa:'#E36FB2', coral:'#EE6B4D', violeta:'#8A5CF0', tinta:'#141014', hueso:'#F6F1EA', arena:'#ECE4DA' };
+  /* Contacto real: las solicitudes se envían por WhatsApp a Eva (número de las tarjetas de visita). */
+  const WA_NUM = '34686156081';
+  const wa = txt => window.open(`https://wa.me/${WA_NUM}?text=${encodeURIComponent(txt)}`, '_blank', 'noopener');
+
+  /* ---------- Header: menu, progress, hide on scroll ---------- */
+  const top = $('#top'), nav = $('#nav'), menuBtn = $('#menuBtn'), prog = $('#progress');
+  const mq = matchMedia('(max-width: 900px)');
+  const syncNav = () => { if (!mq.matches) { nav.hidden = false; } else { nav.hidden = menuBtn.getAttribute('aria-expanded') !== 'true'; } };
+  syncNav(); mq.addEventListener('change', syncNav);
+  menuBtn.addEventListener('click', () => { const o = menuBtn.getAttribute('aria-expanded') === 'true'; menuBtn.setAttribute('aria-expanded', String(!o)); menuBtn.textContent = o ? 'Menú' : 'Cerrar'; syncNav(); });
+  nav.addEventListener('click', e => { if (mq.matches && e.target.closest('a,button')) { menuBtn.setAttribute('aria-expanded', 'false'); menuBtn.textContent = 'Menú'; syncNav(); } });
+  let lastY = 0;
+  const onScroll = () => {
+    const y = scrollY, h = document.documentElement.scrollHeight - innerHeight;
+    prog.style.transform = `scaleX(${h > 0 ? y / h : 0})`;
+    top.classList.toggle('is-scrolled', y > 8);
+    if (!mq.matches || menuBtn.getAttribute('aria-expanded') !== 'true') top.classList.toggle('is-hidden', y > lastY && y > 400);
+    lastY = y;
+    const fw = $('#footWord'); if (fw) { const r = fw.getBoundingClientRect(); fw.style.transform = `translateX(${Math.max(-12, Math.min(0, (r.top - innerHeight) / 40))}%)`; }
+  };
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  /* ---------- Reveal (only elements below the fold get a start offset) ---------- */
+  if (!reduce && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.remove('pre'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+    $$('.reveal').forEach(el => { if (el.getBoundingClientRect().top > innerHeight) { el.classList.add('pre'); io.observe(el); } });
+  }
+
+  /* ---------- Starfield ---------- */
+  const cv = $('#sky'), ctx = cv.getContext('2d');
+  let W = 0, H = 0, stars = [], mx = -999, my = -999, shoot = null, lastShoot = 0;
+  const resize = () => {
+    const r = cv.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2);
+    W = r.width; H = r.height; cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0);
+    const n = Math.round(W * H / 9000);
+    stars = Array.from({ length: n }, () => ({ x: Math.random() * W, y: Math.random() * H, r: Math.random() * 1.3 + .3, p: Math.random() * Math.PI * 2, s: .4 + Math.random() * 1.2 }));
+  };
+  const drawSky = t => {
+    ctx.clearRect(0, 0, W, H);
+    const near = [];
+    for (const s of stars) {
+      const a = reduce ? .45 : .25 + .35 * (1 + Math.sin(t / 1000 * s.s + s.p)) / 2;
+      ctx.fillStyle = `rgba(20,16,20,${a})`; ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, 7); ctx.fill();
+      const dx = s.x - mx, dy = s.y - my; if (dx * dx + dy * dy < 150 * 150) near.push(s);
+    }
+    ctx.strokeStyle = 'rgba(91,54,194,.35)'; ctx.lineWidth = .8;
+    for (let i = 0; i < near.length; i++) for (let j = i + 1; j < near.length; j++) {
+      const a = near[i], b = near[j], dx = a.x - b.x, dy = a.y - b.y;
+      if (dx * dx + dy * dy < 90 * 90) { ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); }
+    }
+    if (!reduce) {
+      if (!shoot && t - lastShoot > 6500 + Math.random() * 5000) { shoot = { x: Math.random() * W * .6 + W * .1, y: Math.random() * H * .3, t0: t }; lastShoot = t; }
+      if (shoot) {
+        const k = (t - shoot.t0) / 1100;
+        if (k >= 1) shoot = null; else {
+          const len = 140, sx = shoot.x + k * 360, sy = shoot.y + k * 150;
+          const gr = ctx.createLinearGradient(sx, sy, sx - len, sy - len * .42);
+          gr.addColorStop(0, `rgba(91,54,194,${.75 * (1 - k)})`); gr.addColorStop(1, 'rgba(91,54,194,0)');
+          ctx.strokeStyle = gr; ctx.lineWidth = 1.6; ctx.beginPath(); ctx.moveTo(sx, sy); ctx.lineTo(sx - len, sy - len * .42); ctx.stroke();
+          ctx.fillStyle = `rgba(20,16,20,${1 - k})`; ctx.beginPath(); ctx.arc(sx, sy, 1.8, 0, 7); ctx.fill();
+        }
+      }
+    }
+    if (!reduce) requestAnimationFrame(drawSky);
+  };
+  resize(); addEventListener('resize', resize); requestAnimationFrame(drawSky);
+  const hero = $('#inicio');
+  hero.addEventListener('pointermove', e => { const r = cv.getBoundingClientRect(); mx = e.clientX - r.left; my = e.clientY - r.top; if (reduce) drawSky(0); });
+  hero.addEventListener('pointerleave', () => { mx = my = -999; });
+
+  /* ---------- Star stage ---------- */
+  const disc = $('#disc'), tilt = $('#starTilt'), doorText = $('#doorText'), stage = $('#stage');
+  const doors = {
+    lecturas: [C.rosa, 'Lecturas de tarot de Thoth, carta natal y astrocoaching. Online o presencial.'],
+    eventos: [C.coral, 'Tarot en vivo para fiestas, locales, marcas y empresas.'],
+    tienda: [C.violeta, 'Mi primera colección de joyería está en el velo. Apúntate para verla antes que nadie.'],
+    eva: [C.arena, 'Quién soy y cómo trabajo con cuatro lenguajes.']
+  };
+  const restText = doorText.textContent;
+  $$('[data-door]').forEach(d => {
+    const on = () => { const [c, t] = doors[d.dataset.door]; disc.style.background = c; doorText.textContent = t; $$('[data-door]').forEach(x => x.classList.toggle('is-on', x === d)); d.style.background = c; d.style.color = d.dataset.door === 'tienda' ? '#fff' : C.tinta; };
+    const off = () => { d.style.background = ''; d.style.color = ''; d.classList.remove('is-on'); };
+    d.addEventListener('pointerenter', on); d.addEventListener('focus', on);
+    d.addEventListener('pointerleave', off); d.addEventListener('blur', off);
+  });
+  stage.addEventListener('pointerleave', () => { disc.style.background = ''; doorText.textContent = restText; });
+  if (!reduce) stage.addEventListener('pointermove', e => {
+    const r = stage.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+    tilt.setAttribute('transform', `translate(${x * 10} ${y * 10}) rotate(${x * 14} 100 100)`);
+  });
+  $('#bigStar').addEventListener('click', () => { document.getElementById('carta').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); setTimeout(() => dealIfNeeded(true), reduce ? 0 : 700); });
+
+  /* ---------- Astronomy (approximate) ---------- */
+  const SIGNS = ['Aries','Tauro','Géminis','Cáncer','Leo','Virgo','Libra','Escorpio','Sagitario','Capricornio','Acuario','Piscis'];
+  const SYN = 29.530588853, REF = Date.UTC(2000, 0, 6, 18, 14);
+  const rad = Math.PI / 180;
+  const now = new Date();
+  const dJ = (now - Date.UTC(2000, 0, 1, 12)) / 864e5;
+  const age = (((now - REF) / 864e5) % SYN + SYN) % SYN;
+  const frac = (1 - Math.cos(2 * Math.PI * age / SYN)) / 2;
+  const norm = a => ((a % 360) + 360) % 360;
+  const g = norm(357.528 + .9856003 * dJ);
+  const sunLon = norm(280.46 + .9856474 * dJ + 1.915 * Math.sin(g * rad) + .02 * Math.sin(2 * g * rad));
+  const Lm = norm(218.316 + 13.176396 * dJ), Mm = norm(134.963 + 13.064993 * dJ);
+  const moonLon = norm(Lm + 6.289 * Math.sin(Mm * rad));
+  const sign = l => SIGNS[Math.floor(l / 30)];
+  let phase = 'Luna nueva';
+  if (age >= 1.85 && age < 5.54) phase = 'Luna creciente'; else if (age < 9.23 && age >= 5.54) phase = 'Cuarto creciente'; else if (age < 12.92 && age >= 9.23) phase = 'Gibosa creciente'; else if (age < 16.61 && age >= 12.92) phase = 'Luna llena'; else if (age < 20.3 && age >= 16.61) phase = 'Gibosa menguante'; else if (age < 23.99 && age >= 20.3) phase = 'Cuarto menguante'; else if (age < 27.68 && age >= 23.99) phase = 'Luna menguante';
+  const waxing = age < SYN / 2;
+  const msgs = {
+    'Luna nueva': 'Momento de sembrar intenciones. Escribe qué quieres que empiece en este ciclo.',
+    'Luna llena': 'Momento de celebrar y soltar. Mira lo que ya has conseguido y deja ir lo que pesa.'
+  };
+  const msg = msgs[phase] || (waxing ? 'La luz crece. Buen momento para dar forma a lo que empezaste y pedir ayuda si la necesitas.' : 'La luz decrece. Ordena, descansa y revisa antes de empezar algo nuevo.');
+  const fmtDate = d => d.toLocaleDateString('es-ES', { day: 'numeric', month: 'long' });
+  const nextNew = new Date(+now + (SYN - age) * 864e5);
+  const toFull = age < SYN / 2 ? SYN / 2 - age : SYN * 1.5 - age;
+  const nextFull = new Date(+now + toFull * 864e5);
+  $('#today').textContent = fmtDate(now);
+  $('#phaseName').textContent = phase;
+  $('#moonSign').textContent = 'en ' + sign(moonLon);
+  $('#phaseMsg').textContent = msg;
+  $('#illum').textContent = Math.round(frac * 100) + ' %';
+  $('#sunSign').textContent = sign(sunLon);
+  $('#nextNew').textContent = fmtDate(nextNew);
+  $('#nextFull').textContent = fmtDate(nextFull);
+  $('#moonCv').setAttribute('aria-label', `${phase}, ${Math.round(frac * 100)} % iluminada`);
+  (() => { // luna pintada: textura procedural, mares, cráteres y terminador suave
+    const cv = $('#moonCv'), S = 440, d = Math.min(devicePixelRatio || 1, 2);
+    cv.width = S * d; cv.height = S * d; const x = cv.getContext('2d'); x.scale(d, d);
+    const c = S / 2, R = S / 2 - 6;
+    let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    const tex = document.createElement('canvas'); tex.width = S; tex.height = S; const t = tex.getContext('2d');
+    t.save(); t.beginPath(); t.arc(c, c, R, 0, Math.PI * 2); t.clip();
+    let gr = t.createRadialGradient(c - R * .25, c - R * .3, R * .1, c, c, R);
+    gr.addColorStop(0, '#ECE7DF'); gr.addColorStop(.65, '#D3CDC3'); gr.addColorStop(1, '#A49D93');
+    t.fillStyle = gr; t.fillRect(0, 0, S, S);
+    const blob = (ux, uy, ur, a, sx = 1, sy = 1) => {
+      const g2 = t.createRadialGradient(c + ux * R, c + uy * R, 0, c + ux * R, c + uy * R, ur * R);
+      g2.addColorStop(0, `rgba(108,102,94,${a})`); g2.addColorStop(.6, `rgba(108,102,94,${a * .75})`); g2.addColorStop(1, 'rgba(108,102,94,0)');
+      t.save(); t.translate(c + ux * R, c + uy * R); t.scale(sx, sy); t.translate(-(c + ux * R), -(c + uy * R));
+      t.fillStyle = g2; t.beginPath(); t.arc(c + ux * R, c + uy * R, ur * R, 0, Math.PI * 2); t.fill(); t.restore();
+    };
+    [[-.55,-.02,.42,.5,.8,1.25],[-.3,-.42,.28,.62],[.12,-.36,.16,.6],[.3,-.1,.2,.58],[.66,-.3,.12,.62,1.2,.9],[.55,.12,.16,.5,.8,1.2],[.36,.32,.11,.45],[-.18,.38,.18,.45],[-.46,.36,.1,.5],[.0,-.7,.22,.32,2.6,.5],[-.7,.18,.12,.4]].forEach(m => blob(...m));
+    for (let i = 0; i < 160; i++) {
+      const a = rnd() * Math.PI * 2, rr = Math.sqrt(rnd()) * .96, px = c + Math.cos(a) * rr * R, py = c + Math.sin(a) * rr * R;
+      const cr = (rnd() < .08 ? 6 + rnd() * 9 : 1 + rnd() * 3.5) * (1 - rr * .35);
+      t.fillStyle = `rgba(80,74,68,${.18 + rnd() * .2})`; t.beginPath(); t.arc(px, py, cr, 0, Math.PI * 2); t.fill();
+      t.strokeStyle = `rgba(250,247,242,${.18 + rnd() * .2})`; t.lineWidth = Math.max(.6, cr * .25);
+      t.beginPath(); t.arc(px + cr * .18, py + cr * .18, cr, Math.PI * .9, Math.PI * 1.9); t.stroke();
+    }
+    const tx = c - .12 * R, ty = c + .68 * R; // Tycho y sus rayos
+    t.strokeStyle = 'rgba(250,247,242,.16)'; t.lineWidth = 1.2;
+    for (let i = 0; i < 14; i++) { const a = rnd() * Math.PI * 2, L = R * (.25 + rnd() * .6); t.beginPath(); t.moveTo(tx, ty); t.lineTo(tx + Math.cos(a) * L, ty + Math.sin(a) * L); t.stroke(); }
+    t.fillStyle = 'rgba(250,247,242,.85)'; t.beginPath(); t.arc(tx, ty, 4, 0, Math.PI * 2); t.fill();
+    const id = t.getImageData(0, 0, S, S), px = id.data;
+    for (let i = 0; i < px.length; i += 4) { const n = (rnd() - .5) * 18; px[i] += n; px[i + 1] += n; px[i + 2] += n; }
+    t.putImageData(id, 0, 0);
+    gr = t.createRadialGradient(c, c, R * .55, c, c, R); gr.addColorStop(0, 'rgba(60,54,50,0)'); gr.addColorStop(1, 'rgba(60,54,50,.35)');
+    t.fillStyle = gr; t.fillRect(0, 0, S, S); t.restore();
+    x.drawImage(tex, 0, 0);
+    // sombra de fase con terminador difuso; deja ver la luz cenicienta
+    const sh = document.createElement('canvas'); sh.width = S; sh.height = S; const s2 = sh.getContext('2d');
+    s2.fillStyle = 'rgba(16,13,16,.9)'; s2.beginPath(); s2.arc(c, c, R + 2, 0, Math.PI * 2); s2.fill();
+    const rx = Math.abs(1 - 2 * frac) * R;
+    s2.globalCompositeOperation = 'destination-out'; s2.filter = 'blur(5px)'; s2.fillStyle = '#000';
+    s2.beginPath();
+    if (frac > .99) s2.arc(c, c, R, 0, Math.PI * 2);
+    else if (frac > .01) {
+      const right = waxing; // hemisferio norte: creciente iluminada a la derecha
+      s2.ellipse(c, c, R, R, 0, -Math.PI / 2, Math.PI / 2, !right);
+      const bulgeOut = frac >= .5;
+      s2.ellipse(c, c, rx, R, 0, Math.PI / 2, -Math.PI / 2, right ? !bulgeOut : bulgeOut);
+    }
+    s2.fill();
+    x.drawImage(sh, 0, 0);
+  })();
+
+  /* ---------- Joyería en el velo ---------- */
+  (() => {
+    const hint = $('#veilHint'), rest = hint.textContent;
+    $$('.veil').forEach(v => {
+      const on = () => { hint.textContent = v.dataset.hint + '…'; };
+      v.addEventListener('pointerenter', on); v.addEventListener('focus', on);
+      v.addEventListener('click', () => { $$('.veil').forEach(x => x.classList.toggle('peek', x === v)); on(); });
+      v.addEventListener('pointerleave', () => { if (!v.classList.contains('peek')) hint.textContent = rest; });
+    });
+    const wl = $('#wl');
+    wl.addEventListener('submit', e => {
+      e.preventDefault();
+      const arc = $('#wlArc').value;
+      wa(`Hola Eva, quiero entrar en la lista de la colección de joyería de artedeastro.${arc ? ` Mi arcano: ${arc}.` : ''}`);
+      const ok = $('#wlOk'); ok.hidden = false;
+      ok.textContent = 'Se ha abierto WhatsApp con tu mensaje. Envíalo y te apunto a la lista.';
+    });
+    // polvo de plata
+    const cv = $('#dust'), ctx = cv.getContext('2d'); let W = 0, H = 0, ps = [];
+    const rs = () => { const r = cv.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2); W = r.width; H = r.height; cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0); ps = Array.from({ length: Math.round(W * H / 7000) }, () => ({ x: Math.random() * W, y: Math.random() * H, r: Math.random() * 1.4 + .3, v: .1 + Math.random() * .35, p: Math.random() * 6.3 })); };
+    let vis = false;
+    const draw = t => { ctx.clearRect(0, 0, W, H); for (const p of ps) { if (!reduce) { p.y -= p.v; if (p.y < -4) { p.y = H + 4; p.x = Math.random() * W; } } const a = .25 + .45 * (1 + Math.sin(t / 900 + p.p)) / 2; ctx.fillStyle = `rgba(232,224,255,${a})`; ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 7); ctx.fill(); } if (vis && !reduce) requestAnimationFrame(draw); };
+    rs(); addEventListener('resize', rs); draw(0);
+    if ('IntersectionObserver' in window) new IntersectionObserver(es => { const was = vis; vis = es[0].isIntersecting; if (vis && !was) requestAnimationFrame(draw); }).observe($('#joyeria'));
+  })();
+
+  /* ---------- Eva tabs ---------- */
+  const tabs = {
+    tarot: [C.rosa, 'Trabajo con el tarot de Thoth, más simbólico y psicológico. No lo uso para adivinar, sino para ver con claridad dónde estás y qué opciones tienes.'],
+    astro: [C.violeta, 'Tu carta natal es el mapa del cielo del día en que naciste. Me ayuda a entender tus talentos, tus retos y los ciclos que estás viviendo.'],
+    pint: [C.coral, 'Pinto desde siempre, y desde 2020 de una forma más consciente. El color y el trazo son mi manera de transformar lo que siento.'],
+    mus: [C.tinta, 'La música es otro de mis lenguajes: una forma de expresar lo que no cabe en palabras.']
+  };
+  const tabBtns = $$('[role="tab"]');
+  const setTab = b => {
+    tabBtns.forEach(x => { const on = x === b; x.setAttribute('aria-selected', String(on)); x.tabIndex = on ? 0 : -1; });
+    const [c, t] = tabs[b.dataset.tab]; $('#tabStar').setAttribute('fill', c); $('#tabText').textContent = t; $('#tabp').setAttribute('aria-labelledby', b.id);
+  };
+  tabBtns.forEach((b, i) => {
+    b.addEventListener('click', () => setTab(b));
+    b.addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { const n = tabBtns[(i + (e.key === 'ArrowRight' ? 1 : tabBtns.length - 1)) % tabBtns.length]; n.focus(); setTab(n); } });
+  });
+  setTab(tabBtns[0]);
+
+  /* ---------- Saca tu carta ---------- */
+  const ARCANA = [
+    ['0', 'El Loco', 'Algo nuevo empieza. Ve ligera de equipaje y confía en el primer paso.'],
+    ['I', 'El Mago', 'Tienes las herramientas que necesitas. Solo falta decidir y empezar.'],
+    ['II', 'La Sacerdotisa', 'La respuesta está dentro. Date silencio para escucharla.'],
+    ['III', 'La Emperatriz', 'Momento de cuidar lo que estás haciendo crecer, empezando por ti.'],
+    ['XIV', 'Arte', 'Mezcla lo que parecía opuesto. El equilibrio aparece al combinar.'],
+    ['XVII', 'La Estrella', 'Confía en tu rumbo. Lo que buscas también te está buscando.'],
+    ['XVIII', 'La Luna', 'No todo está claro todavía, y está bien. Escucha tu intuición antes de decidir.'],
+    ['XIX', 'El Sol', 'Claridad y energía. Es buen momento para mostrarte tal como eres.'],
+    ['XXI', 'El Universo', 'Se cierra un ciclo. Reconoce todo lo que has recorrido.']
+  ];
+  const backs = [C.violeta, C.rosa, C.coral];
+  const deck = $('#deck'), rTitle = $('#rTitle'), rMsg = $('#rMsg'), cap = $('#capture'), cOk = $('#cOk'), cErr = $('#cErr');
+  let chosen = null, dealt = false;
+  const deal = () => {
+    chosen = null; cap.hidden = true; cOk.hidden = true; cErr.textContent = '';
+    rTitle.textContent = 'Tres cartas boca abajo'; rMsg.textContent = 'Elige la que te llame. No hay elección equivocada.';
+    const pool = [...ARCANA].sort(() => Math.random() - .5).slice(0, 3);
+    deck.innerHTML = pool.map((a, i) => `
+      <button class="card" type="button" aria-label="Carta ${i + 1}, boca abajo" data-i="${i}" style="transform:translateX(0) rotate(0deg)">
+        <span class="card__b" style="background:${backs[i]}"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#star" fill="#141014"/></svg></span>
+        <span class="card__f"><span class="num">${a[0]}</span><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#star" fill="${backs[i]}"/><circle cx="52" cy="52" r="8" fill="#141014"/><circle cx="148" cy="52" r="8" fill="#141014"/><circle cx="148" cy="148" r="8" fill="#141014"/><circle cx="52" cy="148" r="8" fill="#141014"/></svg><span class="name">${a[1]}</span></span>
+      </button>`).join('');
+    const cards = $$('.card', deck);
+    const spread = () => { const w = deck.clientWidth, off = Math.min(150, (w - 240) / 2); cards.forEach((c, i) => { if (!c.classList.contains('is-flipped')) c.style.transform = `translateX(${(i - 1) * off}px) rotate(${(i - 1) * 7}deg)`; }); };
+    if (reduce) spread(); else setTimeout(spread, 60);
+    addEventListener('resize', spread);
+    cards.forEach((c, i) => c.addEventListener('click', () => {
+      if (chosen !== null) return;
+      chosen = pool[i];
+      cards.forEach((o, j) => { if (j !== i) o.style.transform += ' translateY(40px) scale(.9)'; o.style.opacity = j === i ? '1' : '.35'; o.setAttribute('aria-disabled', 'true'); });
+      c.classList.add('is-flipped'); c.style.transform = 'translateX(0) rotateY(180deg) scale(1.05)';
+      c.setAttribute('aria-label', `Tu carta: ${chosen[1]}`);
+      rTitle.textContent = chosen[1]; rMsg.textContent = chosen[2]; cap.hidden = false;
+    }));
+    dealt = true;
+  };
+  window.dealIfNeeded = force => { if (!dealt || force) deal(); };
+  deal();
+  $('#shuffle').addEventListener('click', deal);
+
+  /* ---------- Eventos ---------- */
+  const USES = { particular: ['Cumpleaños', 'Despedidas', 'Bodas', 'Fiestas en casa'], empresa: ['Noches en locales', 'Aperturas', 'Eventos de marca', 'Cenas de empresa', 'Ferias'] };
+  const TIPOS = { particular: ['Cumpleaños o fiesta', 'Boda o despedida', 'Otro'], empresa: ['Noche en un local', 'Evento de marca', 'Evento de empresa', 'Otro'] };
+  let who = 'particular';
+  const renderWho = () => {
+    $('#uses').innerHTML = USES[who].map((u, i) => `<span class="${i === 0 ? 'hot' : ''}">${u}</span>`).join('');
+    $('#qTipo').innerHTML = TIPOS[who].map(t => `<option>${t}</option>`).join('');
+    $('#empField').hidden = who !== 'empresa';
+  };
+  $$('[data-who]').forEach(b => b.addEventListener('click', () => { who = b.dataset.who; $$('[data-who]').forEach(x => x.setAttribute('aria-pressed', String(x === b))); renderWho(); }));
+  renderWho();
+  if (!reduce) setInterval(() => { const s = $$('#uses span'); if (!s.length) return; const i = s.findIndex(x => x.classList.contains('hot')); s.forEach(x => x.classList.remove('hot')); s[(i + 1) % s.length].classList.add('hot'); }, 1600);
+  $$('.fmt').forEach(b => b.addEventListener('click', () => { $$('.fmt').forEach(x => x.setAttribute('aria-pressed', String(x === b))); $('#qFmt').value = b.dataset.fmt; }));
+  let qs = 1;
+  const qErr = $('#qErr'), qNext = $('#qNext'), qBack = $('#qBack');
+  const showQ = () => {
+    $$('[data-q]').forEach(p => { p.hidden = +p.dataset.q !== qs; });
+    $$('.steps i').forEach((s, i) => s.classList.toggle('on', i < Math.min(qs, 3)));
+    qBack.hidden = qs === 1 || qs === 4; $('#qActions').hidden = qs === 4;
+    qNext.firstChild.textContent = qs === 3 ? 'Enviar por WhatsApp ' : 'Siguiente ';
+    qErr.textContent = '';
+  };
+  qNext.addEventListener('click', () => {
+    if (qs === 2 && !$('#qFecha').value) { qErr.textContent = 'Indica la fecha aproximada del evento.'; return; }
+    if (qs === 3) {
+      if (!$('#qNombre').value.trim()) { qErr.textContent = 'Escribe tu nombre.'; return; }
+      const v = id => $(id).value.trim();
+      wa(['Hola Eva, quiero pedir presupuesto para un evento.',
+        `Organiza: ${who === 'empresa' ? 'empresa, marca o local' : 'particular'}${v('#qEmp') ? ` (${v('#qEmp')})` : ''}`,
+        `Tipo: ${v('#qTipo')}`, `Formato: ${v('#qFmt')}`, `Fecha: ${v('#qFecha')}`,
+        v('#qCiudad') && `Ciudad: ${v('#qCiudad')}`, v('#qAsis') && `Asistentes: ${v('#qAsis')}`,
+        `Nombre: ${v('#qNombre')}`, v('#qEmail') && `Email: ${v('#qEmail')}`, v('#qMsg') && `Más: ${v('#qMsg')}`
+      ].filter(Boolean).join('\n'));
+    }
+    qs++; showQ();
+  });
+  qBack.addEventListener('click', () => { qs--; showQ(); });
+  $('#qAgain').addEventListener('click', () => { $('#quote').reset(); $('#qFmt').value = $('.fmt[aria-pressed="true"]').dataset.fmt; qs = 1; showQ(); });
+  $('#quote').addEventListener('submit', e => e.preventDefault());
+  showQ();
+
+  /* ---------- Reserva (drawer) ---------- */
+  const SVC = { coach: 'Coaching astral · 80 €', resumida: 'Carta natal resumida + sesión · 180 €', completa: 'Carta natal completa · 250 €', acomp: 'Acompañamiento continuado' };
+  const NEEDS_BIRTH = ['coach', 'resumida', 'completa'];
+  const MODES = { online: 'Online, videollamada', presencial: 'Presencial en Barcelona' };
+  const WD = ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'], MO = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+  const days = []; for (let i = 1; days.length < 8; i++) { const d = new Date(now.getFullYear(), now.getMonth(), now.getDate() + i); if (d.getDay() !== 0) days.push(d); }
+  const TIMES = ['10:00', '12:00', '17:00', '19:00'];
+  const B = { svc: 'coach', mode: null, day: null, time: null };
+  const drawer = $('#drawer'), scrim = $('#scrim');
+  let lastFocus = null;
+  const opt = (k, v, html) => `<button type="button" class="opt${k === 'day' ? ' opt--day' : ''}" data-k="${k}" data-v="${v}" aria-pressed="${B[k] === v}">${html}</button>`;
+  const renderB = () => {
+    $('#oSvc').innerHTML = Object.entries(SVC).map(([k, v]) => opt('svc', k, v)).join('');
+    $('#oMode').innerHTML = Object.entries(MODES).map(([k, v]) => opt('mode', k, v)).join('');
+    $('#oDay').innerHTML = days.map((d, i) => opt('day', String(i), `<small>${WD[d.getDay()]}</small>${d.getDate()} ${MO[d.getMonth()]}`)).join('');
+    $('#oTime').innerHTML = TIMES.map(t => opt('time', t, t)).join('');
+    $('#natalF').hidden = !NEEDS_BIRTH.includes(B.svc); $('#topicF').hidden = false;
+    $('#sSvc').textContent = SVC[B.svc]; $('#sMode').textContent = B.mode ? MODES[B.mode] : '—';
+    const d = B.day != null ? days[+B.day] : null;
+    $('#sWhen').textContent = d ? `${WD[d.getDay()]} ${d.getDate()} ${MO[d.getMonth()]}${B.time ? ' · ' + B.time : ''}` : '—';
+    const filled = [B.svc, B.mode, B.day, B.time].filter(x => x != null).length;
+    $('#dBar').style.transform = `scaleX(${filled / 5})`;
+  };
+  $('#dBody').addEventListener('click', e => { const b = e.target.closest('.opt'); if (!b) return; B[b.dataset.k] = b.dataset.v; renderB(); $('#bErr').textContent = ''; const nb = $(`.opt[data-k="${b.dataset.k}"][data-v="${b.dataset.v}"]`); if (nb) nb.focus(); });
+  const openB = svc => {
+    lastFocus = document.activeElement; if (svc) B.svc = svc;
+    $('#dForm').hidden = false; $('#dDone').hidden = true; renderB();
+    scrim.hidden = false; drawer.hidden = false;
+    requestAnimationFrame(() => { scrim.classList.add('on'); drawer.classList.add('on'); $('#dClose').focus(); });
+    document.body.style.overflow = 'hidden';
+  };
+  const closeB = () => {
+    scrim.classList.remove('on'); drawer.classList.remove('on'); document.body.style.overflow = '';
+    setTimeout(() => { scrim.hidden = true; drawer.hidden = true; }, reduce ? 0 : 500);
+    if (lastFocus) lastFocus.focus();
+  };
+  $$('[data-book]').forEach(b => b.addEventListener('click', () => openB(b.dataset.book)));
+  $('#dClose').addEventListener('click', closeB); scrim.addEventListener('click', closeB); $('#dAgain').addEventListener('click', closeB);
+  addEventListener('keydown', e => {
+    if (drawer.hidden) return;
+    if (e.key === 'Escape') closeB();
+    if (e.key === 'Tab') { const f = $$('button,input,textarea,select', drawer).filter(x => !x.closest('[hidden]') && !x.disabled); const a = f[0], z = f[f.length - 1]; if (e.shiftKey && document.activeElement === a) { e.preventDefault(); z.focus(); } else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); } }
+  });
+  $('#bPay').addEventListener('click', () => {
+    const miss = !B.mode ? 'la modalidad' : B.day == null ? 'el día' : !B.time ? 'la hora' : !$('#bName').value.trim() ? 'tu nombre' : null;
+    if (miss) { $('#bErr').textContent = `Falta ${miss} para enviar la solicitud.`; return; }
+    const v = id => $(id).value.trim();
+    const natal = NEEDS_BIRTH.includes(B.svc);
+    wa([B.svc === 'acomp' ? 'Hola Eva, quiero información sobre el acompañamiento continuado.' : 'Hola Eva, quiero reservar una sesión.',
+      `Lectura: ${SVC[B.svc]}`, `Modalidad: ${MODES[B.mode]}`, `Cuándo: ${$('#sWhen').textContent}`, `Nombre: ${v('#bName')}`,
+      natal && v('#bDob') && `Nacimiento: ${v('#bDob')}${v('#bTob') ? ' a las ' + v('#bTob') : ''}${v('#bPob') ? ' en ' + v('#bPob') : ''}`,
+      v('#bTopic') && `Tema: ${v('#bTopic')}`
+    ].filter(Boolean).join('\n'));
+    $('#dBar').style.transform = 'scaleX(1)';
+    $('#doneTxt').textContent = `${SVC[B.svc]} · ${$('#sWhen').textContent} · ${MODES[B.mode]}`;
+    $('#dForm').hidden = true; $('#dDone').hidden = false; $('#dAgain').focus();
+  });
+
+  /* ---------- Tilt on service cards ---------- */
+  if (!reduce && matchMedia('(pointer:fine)').matches) $$('[data-tilt]').forEach(c => {
+    c.addEventListener('pointermove', e => { const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; c.style.transform = `perspective(900px) rotateX(${-y * 5}deg) rotateY(${x * 6}deg) translateY(-4px)`; });
+    c.addEventListener('pointerleave', () => { c.style.transform = ''; });
+  });
+
+  /* ---------- Reseñas (plantilla para reseñas reales) ---------- */
+  const REV = [
+    [C.rosa, 'Lectura de tarot'], [C.coral, 'Evento privado'], [C.violeta, 'Carta natal'],
+    [C.rosa, 'Lectura online'], [C.coral, 'Evento en un local'], [C.violeta, 'Astrocoaching']
+  ];
+  const starRow = '<div class="rev__stars" aria-label="5 de 5">' + Array.from({ length: 5 }, () => '<svg viewBox="0 0 200 200" aria-hidden="true"><use href="#star" fill="#141014"/></svg>').join('') + '</div>';
+  const revCard = ([c, kind], hidden) => `<figure class="rev"${hidden ? ' aria-hidden="true"' : ''}>${starRow}<blockquote>«[Reseña real, con permiso de la clienta]»</blockquote><footer><span class="rev__av" style="background:${c}">·</span><span><strong>[Nombre]</strong><br>[Ciudad] · ${kind}</span></footer></figure>`;
+  const revTrack = $('#revTrack');
+  if (revTrack) revTrack.innerHTML = REV.map(r => revCard(r, false)).join('') + REV.map(r => revCard(r, true)).join('');
+
+  /* ---------- Titulares que suben palabra a palabra ---------- */
+  if (!reduce && 'IntersectionObserver' in window) {
+    const hio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.remove('split-pre'); hio.unobserve(e.target); } }), { rootMargin: '0px 0px -10% 0px' });
+    $$('.sec__head h2, .cielo h2').forEach(h => {
+      if (h.getBoundingClientRect().top < innerHeight) return;
+      const words = h.textContent.trim().split(/\s+/);
+      if (h.querySelector('*')) return;
+      h.innerHTML = words.map((w, i) => `<span class="hw" style="transition-delay:${i * 45}ms">${w}</span>`).join(' ');
+      h.classList.add('split-pre'); hio.observe(h);
+    });
+  }
+
+  /* ---------- Cinta: velocidad según el scroll ---------- */
+  const track = $('.marquee__track');
+  if (!reduce && track) {
+    track.style.animation = 'none';
+    let x = 0, v = 0, py = scrollY;
+    const run = () => {
+      const dy = scrollY - py; py = scrollY; v += (Math.abs(dy) * .08 - v) * .1;
+      x -= .45 + Math.min(v, 6); const half = track.scrollWidth / 2; if (-x >= half) x += half;
+      track.style.transform = `translateX(${x}px)`; requestAnimationFrame(run);
+    };
+    run();
+  }
+
+  /* ---------- Paralaje suave en la foto de Eva ---------- */
+  const evaImg = $('.eva__photo img');
+  if (!reduce && evaImg) addEventListener('scroll', () => { const r = evaImg.parentElement.getBoundingClientRect(); const p = (r.top + r.height / 2 - innerHeight / 2) / innerHeight; evaImg.style.translate = `0 ${Math.max(-30, Math.min(30, p * -40))}px`; }, { passive: true });
+
+  /* ---------- Botones magnéticos ---------- */
+  if (!reduce && matchMedia('(pointer:fine)').matches) $$('.btn').forEach(b => {
+    b.addEventListener('pointermove', e => { const r = b.getBoundingClientRect(); b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .18}px, ${(e.clientY - r.top - r.height / 2) * .3}px)`; });
+    b.addEventListener('pointerleave', () => { b.style.transform = ''; });
+  });
+
+  /* ---------- Obra: pared deslizable y visor ---------- */
+  (() => {
+    const wall = $('#wall'), prog = $('#obraProg'), pieces = $$('.piece', wall);
+    const upd = () => { const m = wall.scrollWidth - wall.clientWidth; const p = m > 0 ? wall.scrollLeft / m : 0; prog.style.transform = `scaleX(${.25 + p * .75})`; };
+    wall.addEventListener('scroll', upd, { passive: true }); upd();
+    const step = dir => { const w = pieces[0].offsetWidth + 48; wall.scrollBy({ left: dir * w, behavior: reduce ? 'auto' : 'smooth' }); };
+    $('#obraPrev').addEventListener('click', () => step(-1)); $('#obraNext').addEventListener('click', () => step(1));
+    wall.addEventListener('keydown', e => { if (e.key === 'ArrowRight') { e.preventDefault(); step(1); } if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); } });
+    let down = false, sx = 0, sl = 0, moved = 0;
+    wall.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse') return; down = true; moved = 0; sx = e.clientX; sl = wall.scrollLeft; });
+    addEventListener('pointermove', e => { if (!down) return; const dx = e.clientX - sx; moved = Math.max(moved, Math.abs(dx)); if (moved > 4) wall.classList.add('drag'); wall.scrollLeft = sl - dx; });
+    addEventListener('pointerup', () => { if (!down) return; down = false; setTimeout(() => wall.classList.remove('drag'), 0); });
+    if (!reduce && matchMedia('(pointer:fine)').matches) $$('.piece__frame', wall).forEach(f => {
+      f.addEventListener('pointermove', e => { if (down) return; const r = f.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; f.style.transform = `perspective(1000px) rotateY(${x * 6}deg) rotateX(${-y * 5}deg) translateY(-8px)`; });
+      f.addEventListener('pointerleave', () => { f.style.transform = ''; });
+    });
+    const lb = $('#lb'), img = $('#lbImg'), cap = $('#lbCap');
+    let cur = 0;
+    const show = i => { cur = (i + pieces.length) % pieces.length; const src = $('img', pieces[cur]); img.src = src.getAttribute('src'); img.alt = src.alt; cap.textContent = ['I','II','III','IV'][cur]; img.style.animation = 'none'; void img.offsetWidth; img.style.animation = ''; };
+    $$('.piece__frame', wall).forEach(f => f.addEventListener('click', e => { if (moved > 4) { e.preventDefault(); return; } show(+f.dataset.lb); if (lb.showModal) lb.showModal(); else lb.setAttribute('open', ''); }));
+    $('#lbClose').addEventListener('click', () => lb.close());
+    $('#lbPrev').addEventListener('click', () => show(cur - 1)); $('#lbNext').addEventListener('click', () => show(cur + 1));
+    lb.addEventListener('click', e => { if (e.target === lb || e.target.classList.contains('lb__in')) lb.close(); });
+    lb.addEventListener('keydown', e => { if (e.key === 'ArrowRight') show(cur + 1); if (e.key === 'ArrowLeft') show(cur - 1); });
+  })();
+
+  /* ---------- Cursor ---------- */
+  const cur = $('#cursor');
+  if (!reduce && matchMedia('(pointer:fine)').matches) {
+    let tx = -100, ty = -100, cx = -100, cy = -100;
+    addEventListener('pointermove', e => { tx = e.clientX; ty = e.clientY; cur.classList.toggle('big', !!e.target.closest('[data-cursor],a,button')); });
+    const loop = () => { cx += (tx - cx) * .2; cy += (ty - cy) * .2; cur.style.transform = `translate(${cx}px,${cy}px)`; requestAnimationFrame(loop); };
+    loop();
+  }
+})();
+</script>
+
+</body></html>

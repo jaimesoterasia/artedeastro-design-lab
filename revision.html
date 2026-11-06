@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Revisión · artedeastro Design Lab</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="lab.css">
+</head>
+<body>
+<header class="bar">
+  <h1>artedeastro <span>— Design Lab</span></h1>
+  <span class="pill">Entorno de pruebas · no es la web pública</span>
+  <nav><a href="index.html">Laboratorio</a><a href="revision.html" aria-current="page">Revisión y aprobación</a></nav>
+</header>
+
+<main class="page">
+  <h2>Revisión y aprobación</h2>
+  <p class="lead">Marca cada propuesta como aprobada, a revisar o descartada. Las decisiones se guardan en este dispositivo y no cambian la web pública: para pasarlas a Claude, pulsa «Copiar decisiones» y pégalas en el chat.</p>
+  <div class="sum">
+    <span class="badge ok" id="nOk"></span><span class="badge rev" id="nRev"></span><span class="badge no" id="nNo"></span><span class="badge" id="nPend"></span>
+    <div class="right"><button id="copy">Copiar decisiones</button><button id="reset">Borrar todo</button></div>
+  </div>
+  <div id="list"></div>
+</main>
+
+<script src="propuestas.js"></script>
+<script>
+(() => {
+  const { P, NAMES, load, save } = LAB;
+  let D = load();
+  const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const list = document.getElementById('list');
+  const card = p => {
+    const d = D[p.id] || {};
+    return `<article class="card ${d.s || ''}" data-id="${p.id}">
+      <header><span class="scope">${p.scope}</span><h3>${esc(p.el)}</h3></header>
+      <dl><dt>Diseño actual</dt><dd>${esc(p.actual)}</dd><dt>Diseño propuesto</dt><dd>${esc(p.nuevo)}</dd><dt>Justificación</dt><dd>${esc(p.porque)}</dd></dl>
+      <div class="meta"><span>Impacto visual: ${esc(p.visual)}</span><span>Usabilidad: ${esc(p.uso)}</span><span>Complejidad: ${esc(p.tec)}</span></div>
+      <div class="act">${Object.entries(NAMES).map(([k, n]) => `<button data-s="${k}" aria-pressed="${d.s === k}">${n}</button>`).join('')}<a href="index.html#${p.ver}">Ver en el laboratorio →</a></div>
+      <textarea aria-label="Nota sobre ${esc(p.el)}" placeholder="Nota (opcional)">${esc(d.n || '')}</textarea>
+    </article>`;
+  };
+  const counts = () => {
+    const c = { ok: 0, rev: 0, no: 0 }; P.forEach(p => { const s = (D[p.id] || {}).s; if (s) c[s]++; });
+    document.getElementById('nOk').textContent = `${c.ok} aprobadas`;
+    document.getElementById('nRev').textContent = `${c.rev} a revisar`;
+    document.getElementById('nNo').textContent = `${c.no} descartadas`;
+    document.getElementById('nPend').textContent = `${P.length - c.ok - c.rev - c.no} sin decidir`;
+  };
+  const render = () => { list.innerHTML = P.map(card).join(''); counts(); };
+  list.addEventListener('click', e => {
+    const b = e.target.closest('button[data-s]'); if (!b) return;
+    const el = b.closest('.card'), id = el.dataset.id, cur = D[id] || {};
+    D[id] = { ...cur, s: cur.s === b.dataset.s ? undefined : b.dataset.s, t: new Date().toISOString() };
+    if (!D[id].s && !D[id].n) delete D[id];
+    save(D);
+    el.className = 'card ' + ((D[id] || {}).s || '');
+    el.querySelectorAll('button[data-s]').forEach(x => x.setAttribute('aria-pressed', String((D[id] || {}).s === x.dataset.s)));
+    counts();
+  });
+  list.addEventListener('input', e => {
+    if (e.target.tagName !== 'TEXTAREA') return;
+    const id = e.target.closest('.card').dataset.id;
+    D[id] = { ...(D[id] || {}), n: e.target.value }; save(D);
+  });
+  document.getElementById('copy').addEventListener('click', async e => {
+    const txt = 'Decisiones del Design Lab de artedeastro\n' + P.map(p => { const d = D[p.id] || {}; return `- ${p.el}: ${d.s ? NAMES[d.s] : 'Sin decidir'}${d.n ? ' — ' + d.n : ''}`; }).join('\n');
+    try { await navigator.clipboard.writeText(txt); e.target.textContent = 'Copiado'; }
+    catch { prompt('Copia este texto:', txt); }
+    setTimeout(() => { e.target.textContent = 'Copiar decisiones'; }, 1800);
+  });
+  document.getElementById('reset').addEventListener('click', () => { if (confirm('¿Borrar todas las decisiones guardadas en este dispositivo?')) { D = {}; save(D); render(); } });
+  render();
+})();
+</script>
+</body>
+</html>

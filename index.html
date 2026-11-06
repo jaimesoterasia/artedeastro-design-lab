@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>artedeastro · Design Lab</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="lab.css">
+</head>
+<body>
+<header class="bar">
+  <h1>artedeastro <span>— Design Lab</span></h1>
+  <span class="pill">Entorno de pruebas · no es la web pública</span>
+  <nav><a href="index.html" aria-current="page">Laboratorio</a><a href="revision.html">Revisión y aprobación</a></nav>
+</header>
+
+<div class="ctl">
+  <div class="grp"><span>Diseño</span><div class="seg" data-k="v">
+    <button data-v="actual">Actual</button><button data-v="a">A · Editorial</button><button data-v="b">B · Cinematográfico</button><button data-v="c">C · Arte</button>
+  </div></div>
+  <div class="grp"><span>Página</span><div class="seg" data-k="p"><button data-v="inicio">Inicio</button><button data-v="sesiones">Sesiones</button></div></div>
+  <div class="grp only-wide"><span>Dispositivo</span><div class="seg" data-k="d"><button data-v="escritorio">Escritorio</button><button data-v="movil">Móvil</button></div></div>
+  <div class="grp only-wide"><span>Modo</span><div class="seg" data-k="m"><button data-v="uno">Uno</button><button data-v="comparar">Antes / después</button></div></div>
+  <a class="open" id="open" target="_blank" rel="noopener">Abrir a pantalla completa ↗</a>
+</div>
+<div class="info"><b id="iName"></b><span id="iDesc"></span><span class="badge" id="iState"></span></div>
+
+<main class="stage" id="stage"></main>
+
+<script src="propuestas.js"></script>
+<script>
+(() => {
+  const INFO = {
+    actual: ['Web actual', 'Copia de artedeastro.com tal como está publicada hoy.'],
+    a: ['A · Editorial Luxury', 'Una revista de arte: papel, tinta, un acento terracota y tipografía a gran formato.'],
+    b: ['B · Cinematic Mysticism', 'Una película a la luz de una vela: berenjena, oro y fotografía a pantalla completa.'],
+    c: ['C · Contemporary Art', 'La pared del estudio de Eva: color plano, contorno negro y gesto, sacados de sus cuadros.']
+  };
+  const S = Object.assign({ v: 'a', p: 'inicio', d: 'escritorio', m: 'uno' }, Object.fromEntries(new URLSearchParams(location.hash.slice(1))));
+  const src = (v, p) => v === 'actual' ? 'actual/index.html' + (p === 'sesiones' ? '#lecturas' : '') : `${v}/${p === 'sesiones' ? 'sesiones.html' : 'index.html'}`;
+  const stage = document.getElementById('stage');
+  const frame = (v) => `<div class="frame"><h2>${INFO[v][0]}</h2><iframe src="${src(v, S.p)}" title="${INFO[v][0]}"></iframe></div>`;
+  const render = () => {
+    const small = matchMedia('(max-width: 820px)').matches;
+    const cmp = S.m === 'comparar' && !small;
+    const v = cmp && S.v === 'actual' ? 'a' : S.v;
+    stage.className = 'stage' + (S.d === 'movil' && !small ? ' movil' : '');
+    stage.innerHTML = cmp ? frame('actual') + frame(v) : frame(S.v);
+    document.querySelectorAll('.seg').forEach(g => g.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(S[g.dataset.k] === b.dataset.v))));
+    document.getElementById('open').href = src(S.v, S.p);
+    document.getElementById('iName').textContent = INFO[S.v][0];
+    document.getElementById('iDesc').textContent = INFO[S.v][1];
+    const st = document.getElementById('iState');
+    const dec = (window.LAB ? LAB.load() : {})['dir-' + S.v];
+    st.hidden = S.v === 'actual';
+    st.className = 'badge ' + (dec ? dec.s : '');
+    st.textContent = dec ? LAB.NAMES[dec.s] : 'Sin decidir';
+    history.replaceState(null, '', '#' + new URLSearchParams(S));
+  };
+  document.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => { S[b.parentElement.dataset.k] = b.dataset.v; render(); }));
+  addEventListener('resize', (() => { let t; return () => { clearTimeout(t); t = setTimeout(render, 200); }; })());
+  render();
+})();
+</script>
+</body>
+</html>
