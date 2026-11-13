@@ -126,8 +126,16 @@
 
   // Las cartas de sesiones se giran al tocarlas
   $$('.card').forEach(c => {
-    const flip = () => { const on = c.classList.toggle('flip'); c.setAttribute('aria-pressed', String(on)); };
-    c.addEventListener('click', flip);
-    c.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flip(); } });
+    const enlace = c.querySelector('.card__cta');
+    const flip = () => {
+      const on = c.classList.toggle('flip'); c.setAttribute('aria-pressed', String(on));
+      if (enlace) enlace.tabIndex = on ? 0 : -1; // el botón del reverso solo se alcanza con teclado cuando la carta está girada
+    };
+    // Pulsar el botón del reverso abre WhatsApp sin girar la carta
+    c.addEventListener('click', e => { if (e.target.closest('.card__cta')) return; flip(); });
+    c.addEventListener('keydown', e => {
+      if (e.target.closest('.card__cta')) return; // Enter sobre el botón lo activa; no gira la carta
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flip(); }
+    });
   });
 })();
