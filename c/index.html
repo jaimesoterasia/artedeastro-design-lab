@@ -2,24 +2,32 @@
 <html lang="es" data-concept="C">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#F06FB5">
-<title>Concepto C · Arte contemporáneo · artedeastro Design Lab</title>
+<title>artedeastro · Tarot de Thoth, astrología y arte en Barcelona</title>
+<meta name="description" content="Soy Eva. Carta natal, coaching astral y tarot de Thoth, online y en Barcelona. Tarot en vivo para eventos. El tarot no adivina, orienta.">
+<link rel="canonical" href="https://artedeastro.com/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://artedeastro.com/">
+<meta property="og:title" content="artedeastro · Tarot de Thoth, astrología y arte">
+<meta property="og:description" content="El tarot no adivina, orienta. La astrología no predice, revela ciclos.">
+<meta property="og:image" content="https://artedeastro.com/img/obra-1.jpg">
+<meta property="og:locale" content="es_ES">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap">
-<link rel="stylesheet" href="c.css">
+<link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F4734F"/><stop offset=".5" stop-color="#E5579E"/><stop offset="1" stop-color="#A65CF2"/></linearGradient></defs><symbol id="logo" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="url(#lg)"/><path d="M50 12 C53 40 60 47 88 50 C60 53 53 60 50 88 C47 60 40 53 12 50 C40 47 47 40 50 12Z" fill="#141014"/><circle cx="35" cy="35" r="3.4" fill="#141014"/><circle cx="65" cy="35" r="3.4" fill="#141014"/><circle cx="35" cy="65" r="3.4" fill="#141014"/><circle cx="65" cy="65" r="3.4" fill="#141014"/></symbol><symbol id="star" viewBox="0 0 200 200"><path d="M100 0 Q108 92 200 100 Q108 108 100 200 Q92 108 0 100 Q92 92 100 0Z"/></symbol></svg>
 
 <header class="top">
-  <a class="brand" href="index.html"><svg aria-hidden="true"><use href="#logo"/></svg>artedeastro</a>
+  <a class="brand" href="./"><svg aria-hidden="true"><use href="#logo"/></svg>artedeastro</a>
   <button class="menu-btn" data-menu aria-expanded="false">Menú</button>
 </header>
 <nav class="menu" aria-label="Principal">
-  <a href="sesiones.html">Sesiones</a><a href="#eva">Eva</a><a href="#obra">Obra</a><a href="#eventos">Eventos</a><a href="#contacto">Contacto</a>
+  <a href="sesiones.html">Sesiones</a><a href="#eva">Eva</a><a href="#obra">Obra</a><a href="#eventos">Eventos</a><a href="#testimonios">Testimonios</a><a href="#joyeria">Joyería</a><a href="#contacto">Contacto</a>
 </nav>
 
 <main>
@@ -87,7 +95,26 @@
       <div class="out"><strong>4 h</strong><span>Evento. Lecturas continuas durante la celebración.</span></div>
       <div class="out"><strong>Noche</strong><span>Experiencia completa, como Giro al Alma, en Gràcia.</span></div>
     </div>
-    <button class="btn" data-sim="Hola Eva, quiero pedir presupuesto para un evento." data-sim-title="Pedir presupuesto">Pedir presupuesto →</button>
+    <a class="btn" data-wa="Hola Eva, quiero pedir presupuesto para un evento." href="https://wa.me/34686156081" target="_blank" rel="noopener">Pedir presupuesto →</a>
+    <div class="past" id="eventos-pasados">
+      <h3 class="past__t" data-reveal>Donde ya he leído</h3>
+      <div class="past__list"></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec testis" id="testimonios">
+  <div class="wrap">
+    <div class="sec__head" data-reveal><span class="tag">Testimonios</span><h2>Lo que se llevan <em>de cada lectura.</em></h2></div>
+    <div class="testis__grid" id="testimonios-lista"></div>
+  </div>
+</section>
+
+<section class="sec joy" id="joyeria">
+  <div class="wrap">
+    <div class="sec__head" data-reveal><span class="tag">Joyería · muy pronto</span><h2>Algo se está <em>forjando.</em></h2></div>
+    <p class="joy__p" data-reveal>Estoy creando mi primera colección de joyería, hecha a mano e inspirada en los arcanos del tarot. Todavía no puedo enseñártela. Quien esté en la lista la verá antes que nadie.</p>
+    <a class="btn btn--alt" data-wa="Hola Eva, quiero entrar en la lista de la colección de joyería de artedeastro." href="https://wa.me/34686156081" target="_blank" rel="noopener" data-reveal>Quiero estar en la lista →</a>
   </div>
 </section>
 </main>
@@ -95,10 +122,15 @@
 <footer class="foot" id="contacto">
   <div class="foot__zebra" aria-hidden="true"></div>
   <div class="wrap">
+    <div class="foot__cta">
+      <p>¿Hablamos?</p>
+      <a class="btn" data-wa="Hola Eva, quiero reservar una sesión." href="https://wa.me/34686156081" target="_blank" rel="noopener">Escribir a Eva por WhatsApp →</a>
+    </div>
     <p class="foot__word" aria-hidden="true">artedeastro</p>
-    <div class="foot__row"><span>WhatsApp +34 686 15 60 81 · @artedeastro · artedeastrologia@gmail.com</span><span>© 2026 artedeastro · Barcelona y online</span></div>
+    <div class="foot__row"><span><a href="https://wa.me/34686156081" target="_blank" rel="noopener">WhatsApp +34 686 15 60 81</a> · <a href="https://www.instagram.com/artedeastro/" target="_blank" rel="noopener">Instagram @artedeastro</a> · <a href="mailto:artedeastrologia@gmail.com">artedeastrologia@gmail.com</a></span><span>Online y presencial en Barcelona</span></div>
+    <div class="foot__row"><span>© 2026 artedeastro · <a href="testimonio.html">Deja tu testimonio</a></span><span><a href="https://artedeastro.com/aviso-legal.html">Aviso legal</a> · <a href="https://artedeastro.com/privacidad.html">Privacidad</a> · <a href="https://artedeastro.com/cookies.html">Cookies</a></span></div>
   </div>
 </footer>
-<script src="../shared/proto.js"></script><script src="c.js"></script>
+<script src="../shared/proto.js"></script><script src="datos.js"></script><script src="../shared/demo-testimonios.js"></script><script src="site.js"></script>
 </body>
 </html>

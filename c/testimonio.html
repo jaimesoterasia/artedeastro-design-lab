@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es" data-concept="C">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#F06FB5">
+<title>Deja tu testimonio · artedeastro</title>
+<meta name="description" content="¿Has hecho una sesión con Eva o has pasado por uno de sus eventos? Cuéntalo con tus palabras.">
+<link rel="canonical" href="https://artedeastro.com/testimonio.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://artedeastro.com/testimonio.html">
+<meta property="og:title" content="Deja tu testimonio · artedeastro">
+<meta property="og:description" content="¿Has hecho una sesión con Eva? Cuéntalo con tus palabras.">
+<meta property="og:image" content="https://artedeastro.com/img/obra-1.jpg">
+<meta property="og:locale" content="es_ES">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap">
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F4734F"/><stop offset=".5" stop-color="#E5579E"/><stop offset="1" stop-color="#A65CF2"/></linearGradient></defs><symbol id="logo" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="url(#lg)"/><path d="M50 12 C53 40 60 47 88 50 C60 53 53 60 50 88 C47 60 40 53 12 50 C40 47 47 40 50 12Z" fill="#141014"/><circle cx="35" cy="35" r="3.4" fill="#141014"/><circle cx="65" cy="35" r="3.4" fill="#141014"/><circle cx="35" cy="65" r="3.4" fill="#141014"/><circle cx="65" cy="65" r="3.4" fill="#141014"/></symbol></svg>
+
+<header class="top">
+  <a class="brand" href="./"><svg aria-hidden="true"><use href="#logo"/></svg>artedeastro</a>
+  <button class="menu-btn" data-menu aria-expanded="false">Menú</button>
+</header>
+<nav class="menu" aria-label="Principal">
+  <a href="sesiones.html">Sesiones</a><a href="./#eva">Eva</a><a href="./#obra">Obra</a><a href="./#eventos">Eventos</a><a href="./#testimonios">Testimonios</a><a href="./#joyeria">Joyería</a><a href="./#contacto">Contacto</a>
+</nav>
+
+<main>
+<section class="page-head page-head--rosa">
+  <div class="wrap" data-reveal>
+    <span class="tag">Testimonios</span>
+    <h1 class="big" style="margin-top:18px">Cuéntalo <em>con tus palabras.</em></h1>
+    <p class="page-head__p">¿Has hecho una sesión conmigo o has pasado por uno de mis eventos? Me encantará saber cómo lo viviste. Lo leeré antes de publicarlo en la web.</p>
+  </div>
+</section>
+
+<div class="wrap tpage">
+  <form class="tform out" id="tform" novalidate>
+    <div class="field">
+      <label for="t-nombre">Tu nombre, tal como quieres que aparezca</label>
+      <input id="t-nombre" name="nombre" type="text" autocomplete="name" maxlength="60" required placeholder="Por ejemplo: Laura M.">
+      <small>Puedes poner tu nombre, tu nombre y una inicial, o solo iniciales.</small>
+    </div>
+    <div class="row2">
+      <div class="field">
+        <label for="t-servicio">¿Qué hiciste con Eva?</label>
+        <select id="t-servicio" name="servicio" required>
+          <option value="">Elige una opción</option>
+          <option>Coaching astral</option>
+          <option>Carta natal resumida + sesión</option>
+          <option>Carta natal completa</option>
+          <option>Acompañamiento continuado</option>
+          <option>Un evento</option>
+          <option>Otra cosa</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="t-ciudad">Ciudad <span>(opcional)</span></label>
+        <input id="t-ciudad" name="ciudad" type="text" autocomplete="address-level2" maxlength="40" placeholder="Barcelona">
+      </div>
+    </div>
+    <div class="field">
+      <label for="t-texto">Tu testimonio</label>
+      <textarea id="t-texto" name="texto" required minlength="30" maxlength="700" rows="7" placeholder="¿Qué te llevaste de la sesión? ¿Qué te ayudó a ver o a decidir?"></textarea>
+      <small class="count" id="t-count" aria-live="polite">0 / 700</small>
+    </div>
+    <label class="check" for="t-permiso">
+      <input id="t-permiso" type="checkbox" required>
+      <span>Doy permiso a artedeastro para publicar este testimonio, con el nombre que he indicado, en su web y sus redes. Puedo pedir que lo retiren cuando quiera escribiendo a <a href="mailto:artedeastrologia@gmail.com">artedeastrologia@gmail.com</a>. Más información en la <a href="https://artedeastro.com/privacidad.html">política de privacidad</a>.</span>
+    </label>
+    <p class="err" id="t-err" role="alert" aria-live="assertive"></p>
+    <div class="tform__actions">
+      <button class="btn" type="submit">Enviar por WhatsApp →</button>
+      <a class="tform__alt" href="mailto:artedeastrologia@gmail.com" id="t-email">Prefiero enviarlo por email</a>
+    </div>
+    <p class="tform__note">Se abrirá WhatsApp (o tu correo) con el mensaje ya escrito para Eva: solo tienes que pulsar enviar.</p>
+  </form>
+
+  <div class="tdone out" id="t-ok" hidden>
+    <span class="invite__q" aria-hidden="true">“</span>
+    <h2 tabindex="-1">Gracias por contarlo.</h2>
+    <p>Solo falta un paso: pulsa enviar en el mensaje que se ha abierto. Eva lo leerá y, en cuanto lo publique, lo verás en la web.</p>
+    <p>¿No se ha abierto nada? Escríbele a <a href="https://wa.me/34686156081" target="_blank" rel="noopener">WhatsApp +34 686 15 60 81</a> o a <a href="mailto:artedeastrologia@gmail.com">artedeastrologia@gmail.com</a>.</p>
+    <div class="tform__actions"><a class="btn" href="./#testimonios">Ver los testimonios →</a><button class="btn btn--alt" type="button" id="t-otro">Escribir otro</button></div>
+  </div>
+
+  <ol class="tsteps" aria-label="Cómo funciona">
+    <li><b>1</b><span>Escribes cómo fue tu experiencia.</span></li>
+    <li><b>2</b><span>Se abre WhatsApp o tu correo con el mensaje para Eva.</span></li>
+    <li><b>3</b><span>Eva lo lee y lo publica en la web.</span></li>
+  </ol>
+</div>
+</main>
+
+<footer class="foot">
+  <div class="foot__zebra" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="foot__word" aria-hidden="true">artedeastro</p>
+    <div class="foot__row"><span><a href="https://wa.me/34686156081" target="_blank" rel="noopener">WhatsApp +34 686 15 60 81</a> · <a href="https://www.instagram.com/artedeastro/" target="_blank" rel="noopener">Instagram @artedeastro</a> · <a href="mailto:artedeastrologia@gmail.com">artedeastrologia@gmail.com</a></span><a href="./">Volver al inicio</a></div>
+    <div class="foot__row"><span>© 2026 artedeastro</span><span><a href="https://artedeastro.com/aviso-legal.html">Aviso legal</a> · <a href="https://artedeastro.com/privacidad.html">Privacidad</a> · <a href="https://artedeastro.com/cookies.html">Cookies</a></span></div>
+  </div>
+</footer>
+<script src="../shared/proto.js"></script><script src="datos.js"></script><script src="../shared/demo-testimonios.js"></script><script src="site.js"></script>
+</body>
+</html>

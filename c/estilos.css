@@ -145,3 +145,90 @@ a{color:inherit}
 @media (max-width:860px){html{overflow-x:hidden}[data-reveal]{transform:translateY(30px)}}
 :focus-visible{outline:3px solid var(--violeta);outline-offset:3px}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}[data-reveal]{opacity:1;transform:none}}
+
+/* Joyería y cierre (añadidos al pasar el prototipo a producción) */
+.joy{background:var(--violeta);color:var(--papel);border-top:3px solid var(--tinta)}
+.joy .sec__head h2 em{color:var(--sol)}
+.joy__p{margin:0 0 28px;max-width:52ch;font-size:19px;font-weight:500}
+.foot__cta{display:flex;flex-wrap:wrap;gap:18px 28px;align-items:center;padding-top:clamp(36px,6vw,72px)}
+.foot__cta p{margin:0;font:italic 400 clamp(44px,7vw,96px)/.9 var(--serif)}
+.foot__row a{color:inherit;text-underline-offset:3px}
+.foot__row+.foot__row{margin-top:10px;opacity:.75}
+section[id]{scroll-margin-top:70px}
+.joy .tag{color:var(--tinta)}
+
+/* ---------- Eventos en los que ha participado Eva ---------- */
+.past{margin-top:clamp(56px,8vw,100px)}
+.past[hidden]{display:none}
+.past__t{margin:0 0 24px;font:italic 400 clamp(38px,5vw,72px)/1 var(--serif)}
+.past__list{display:flex;flex-direction:column;gap:30px}
+.gig{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(24px,4vw,60px);align-items:center;background:var(--papel);border:3px solid var(--tinta);border-radius:26px;box-shadow:8px 8px 0 var(--tinta);padding:clamp(18px,3vw,40px)}
+.gig__pics{position:relative;aspect-ratio:5/4}
+.gig__pics img{position:absolute;margin:0;border:3px solid var(--tinta);box-shadow:6px 6px 0 var(--tinta);background:var(--papel);transition:transform .5s var(--ease)}
+.gig__pics img:nth-child(1){left:0;bottom:2%;width:80%;transform:rotate(-3deg);z-index:2}
+.gig__pics img:nth-child(2){right:0;top:0;width:60%;transform:rotate(4deg)}
+.gig:hover .gig__pics img:nth-child(1){transform:rotate(-1deg) translateY(-6px)}
+.gig:hover .gig__pics img:nth-child(2){transform:rotate(6deg)}
+.gig__pics--uno{aspect-ratio:auto}.gig__pics--uno img{position:relative;width:100%}
+.gig__date{background:var(--sol)}
+.gig h4{margin:14px 0 8px;font:800 clamp(38px,5vw,76px)/.88 var(--display);font-stretch:75%;text-transform:uppercase;letter-spacing:-.02em}
+.gig__place{margin:0 0 14px;font-weight:600}
+.gig__txt>p:not(.gig__place){margin:0 0 18px;max-width:52ch}
+.gig__tags{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.gig__tags li{padding:6px 14px;border:2.5px solid var(--tinta);border-radius:999px;font:800 14px var(--display);font-stretch:75%;text-transform:uppercase}
+.gig__tags li:nth-child(4n+1){background:var(--rosa)}.gig__tags li:nth-child(4n+2){background:var(--sol)}.gig__tags li:nth-child(4n+3){background:var(--coral)}.gig__tags li:nth-child(4n+4){background:var(--violeta);color:var(--papel)}
+@media (max-width:860px){.gig{grid-template-columns:1fr}.gig__pics{margin:6px 10px 10px 0}}
+
+/* ---------- Testimonios ---------- */
+.testis{background:var(--papel);border-top:3px solid var(--tinta)}
+.testis__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;align-items:start}
+.testis__grid--vacio{grid-template-columns:1fr}
+.testi{margin:0;padding:28px 26px 24px;background:var(--c,var(--rosa));border:3px solid var(--tinta);border-radius:24px;box-shadow:8px 8px 0 var(--tinta);display:flex;flex-direction:column;gap:18px}
+.testi:nth-child(3n+1){transform:rotate(-1.2deg)}.testi:nth-child(3n+2){transform:rotate(1deg) translateY(14px)}
+.testi[style*="violeta"]{color:var(--papel)}
+.testi blockquote{margin:0;font:400 clamp(22px,1.9vw,27px)/1.28 var(--serif)}
+.testi blockquote::before{content:"“";display:block;height:.42em;font:italic 400 3.4em/1 var(--serif)}
+.testi figcaption{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-weight:600}
+.testi figcaption small{padding:4px 11px;border:2px solid var(--tinta);border-radius:999px;background:var(--papel);color:var(--tinta);font:600 11px var(--sans);letter-spacing:.1em;text-transform:uppercase}
+.invite{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;min-height:260px;padding:28px 26px;border:3px dashed var(--tinta);border-radius:24px;color:var(--tinta);text-decoration:none;transition:background .3s,transform .3s var(--ease)}
+a.invite:hover{background:var(--sol);transform:rotate(-1deg)}
+.invite strong{font:800 clamp(28px,2.6vw,40px)/.92 var(--display);font-stretch:75%;text-transform:uppercase}
+.invite span:not(.invite__q){font:italic 400 24px var(--serif)}
+.invite__q{position:absolute;top:6px;left:20px;font:italic 400 140px/1 var(--serif);color:var(--rosa);pointer-events:none}
+.invite--solo{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:clamp(18px,3vw,44px);min-height:0;padding:clamp(28px,4vw,56px);border-style:solid;background:var(--tinta);color:var(--papel);box-shadow:8px 8px 0 var(--rosa)}
+.invite--solo .invite__q{position:static;font-size:clamp(120px,14vw,200px);line-height:.6;padding-top:.24em;color:var(--sol)}
+.invite--solo p{margin:12px 0 0;max-width:56ch;color:var(--papel)}
+@media (max-width:1040px){.testis__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.testis__grid{grid-template-columns:1fr}.testi:nth-child(n){transform:none}.invite--solo{grid-template-columns:1fr;justify-items:start}.invite--solo .invite__q{font-size:110px}}
+
+/* ---------- Página «Deja tu testimonio» ---------- */
+.page-head--rosa{background:var(--rosa);color:var(--tinta)}
+.page-head--rosa .big em{color:var(--papel)}
+.page-head__p{margin:34px 0 0;max-width:56ch;font-size:19px;font-weight:500}
+.tpage{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start;padding-block:clamp(40px,6vw,80px)}
+.tform,.tdone{display:flex;flex-direction:column;gap:22px;padding:clamp(22px,3.5vw,44px);background:var(--papel);border-radius:26px}
+.tform[hidden],.tdone[hidden]{display:none}
+.field label{display:block;margin-bottom:8px;font:800 19px/1.1 var(--display);font-stretch:75%;text-transform:uppercase;letter-spacing:.02em}
+.field label span{font:400 15px var(--sans);text-transform:none;letter-spacing:0;color:#5A4E52}
+.field input,.field select,.field textarea{width:100%;min-height:54px;padding:12px 16px;border:3px solid var(--tinta);border-radius:16px;background:#fff;color:var(--tinta);font:500 17px/1.45 var(--sans)}
+.field textarea{min-height:190px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;box-shadow:5px 5px 0 var(--violeta)}
+.field small{display:block;margin-top:7px;color:#5A4E52;font-size:14px}
+.field .count{text-align:right}
+.row2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
+.check{display:flex;gap:14px;align-items:flex-start;font-size:15px;line-height:1.5;cursor:pointer}
+.check input{flex:0 0 auto;width:26px;height:26px;margin:2px 0 0;accent-color:var(--tinta);cursor:pointer}
+.check a{color:inherit}
+.err{margin:0;min-height:1.4em;color:#A4161A;font-weight:600}
+.tform__actions{display:flex;flex-wrap:wrap;gap:16px 26px;align-items:center}
+.tform__alt{font-weight:600;color:var(--tinta);text-underline-offset:4px}
+.tform__note{margin:0;font-size:14px;color:#5A4E52}
+.tdone{position:relative;padding-top:clamp(70px,8vw,100px)}
+.tdone .invite__q{top:0;left:24px}
+.tdone h2{margin:0;font:800 clamp(40px,5vw,72px)/.9 var(--display);font-stretch:75%;text-transform:uppercase;outline:none}
+.tdone p{margin:0;max-width:56ch}.tdone a:not(.btn){color:inherit}
+.tsteps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px}
+.tsteps li{display:flex;gap:14px;align-items:center;padding:16px 18px;border:3px solid var(--tinta);border-radius:20px;background:var(--sol);font-weight:600}
+.tsteps li:nth-child(2){background:var(--coral);transform:rotate(1.5deg)}.tsteps li:nth-child(3){background:var(--violeta);color:var(--papel)}
+.tsteps b{flex:0 0 auto;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--tinta);color:var(--papel);font:800 22px var(--display)}
+@media (max-width:860px){.tpage{grid-template-columns:1fr}.row2{grid-template-columns:1fr}.tsteps li{padding:12px 14px}}

@@ -52,6 +52,20 @@
     dlg.showModal();
   }));
 
+  // Prototipos que comparten código con la web real: site.js llama a LAB_SIM en vez de abrir WhatsApp o el correo,
+  // y los enlaces con data-wa se interceptan aquí.
+  window.LAB_SIM = (titulo, msg) => {
+    dlg.querySelector('.sim__t').textContent = titulo || 'Solicitud por WhatsApp';
+    dlg.querySelector('.sim__msg').textContent = msg;
+    dlg.showModal();
+  };
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[data-wa]');
+    if (!a) return;
+    e.preventDefault();
+    window.LAB_SIM(a.textContent.replace('→', '').trim(), a.dataset.wa);
+  }, true);
+
   // Etiqueta de prototipo
   const tag = document.createElement('span');
   tag.className = 'proto-tag';
