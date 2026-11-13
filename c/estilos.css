@@ -235,3 +235,6 @@ a.invite:hover{background:var(--sol);transform:rotate(-1deg)}
 .tsteps li:nth-child(2){background:var(--coral);transform:rotate(1.5deg)}.tsteps li:nth-child(3){background:var(--violeta);color:var(--papel)}
 .tsteps b{flex:0 0 auto;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--tinta);color:var(--papel);font:800 22px var(--display)}
 @media (max-width:860px){.tpage{grid-template-columns:1fr}.row2{grid-template-columns:1fr}.tsteps li{padding:12px 14px}}
+
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.err a{color:inherit;font-weight:600;text-underline-offset:3px}
