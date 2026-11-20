@@ -15,6 +15,6 @@ for f in index.html sesiones.html testimonio.html; do
       "$S/$f" > "$C/$f"
 done
 sed -e "s|'img/|'../img/|g" "$S/datos.js" > "$C/datos.js"
-cp "$S/estilos.css" "$S/site.js" "$C/"
+cp "$S/estilos.css" "$S/site.js" "$S/medicion.js" "$C/"
 for i in "$S"/img/*.jpg; do [ -f "img/$(basename "$i")" ] || cp "$i" img/; done
 echo "Prototipo C sincronizado con la web real."

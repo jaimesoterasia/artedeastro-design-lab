@@ -124,7 +124,7 @@
       `«${v('#t-texto')}»`, '',
       'Doy permiso para publicarlo en la web y las redes de artedeastro con el nombre indicado.'
     ].filter(x => x !== null).join('\n');
-    const hecho = () => { form.hidden = true; $('#t-ok').hidden = false; $('#t-ok h2').focus(); };
+    const hecho = () => { if (window.adeTrack) window.adeTrack('testimonio_enviado'); form.hidden = true; $('#t-ok').hidden = false; $('#t-ok h2').focus(); };
     const fallo = () => {
       err.innerHTML = 'No hemos podido enviarlo ahora mismo. Inténtalo de nuevo en un momento o mándaselo a Eva por <a href="' + waUrl(mensaje()) + '" target="_blank" rel="noopener">WhatsApp</a>.';
     };
