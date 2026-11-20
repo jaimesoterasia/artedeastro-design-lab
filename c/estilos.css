@@ -90,7 +90,7 @@ a{color:inherit}
 .eva{background:var(--papel);background-image:var(--zebra);background-size:120px 60px;background-position:0 0}
 .eva__box{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,5vw,72px);align-items:center;background:var(--papel);border-radius:28px;padding:clamp(20px,4vw,56px)}
 .eva__img{aspect-ratio:4/5;border-radius:999px 999px 20px 20px;overflow:hidden;box-shadow:10px 10px 0 var(--violeta)}
-.eva__img img{width:100%;height:100%;object-fit:cover;object-position:60% 30%}
+.eva__img img{width:100%;height:100%;object-fit:cover;object-position:50% 22%}
 .eva__txt{display:flex;flex-direction:column;gap:20px;align-items:flex-start}
 .eva__txt h2{margin:0;font:800 clamp(40px,6vw,92px)/.88 var(--display);font-stretch:75%;text-transform:uppercase;letter-spacing:-.02em}
 .eva__txt h2 em{font:italic 400 1.04em var(--serif);text-transform:none;color:var(--violeta)}
@@ -149,16 +149,12 @@ a{color:inherit}
 :focus-visible{outline:3px solid var(--violeta);outline-offset:3px}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}[data-reveal]{opacity:1;transform:none}}
 
-/* Joyería y cierre (añadidos al pasar el prototipo a producción) */
-.joy{background:var(--violeta);color:var(--papel);border-top:3px solid var(--tinta)}
-.joy .sec__head h2 em{color:var(--sol)}
-.joy__p{margin:0 0 28px;max-width:52ch;font-size:19px;font-weight:500}
+/* Cierre (añadido al pasar el prototipo a producción) */
 .foot__cta{display:flex;flex-wrap:wrap;gap:18px 28px;align-items:center;padding-top:clamp(36px,6vw,72px)}
 .foot__cta p{margin:0;font:italic 400 clamp(44px,7vw,96px)/.9 var(--serif)}
 .foot__row a{color:inherit;text-underline-offset:3px}
 .foot__row+.foot__row{margin-top:10px;opacity:.75}
 section[id]{scroll-margin-top:70px}
-.joy .tag{color:var(--tinta)}
 
 /* ---------- Eventos en los que ha participado Eva ---------- */
 .past{margin-top:clamp(56px,8vw,100px)}
