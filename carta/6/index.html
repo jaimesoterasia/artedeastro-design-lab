@@ -70,6 +70,32 @@
         <p class="p-texto" id="r-pregunta"></p>
       </div>
 
+
+      <div class="ia-propia" id="ia-propia">
+        <p class="kicker">Lectura profunda</p>
+        <h3>Tu carta, leída por la IA que ya te conoce.</h3>
+        <p class="ia-intro">Tu ChatGPT, tu Claude o tu Gemini ya saben cosas de tu momento. Aquí preparamos el texto para que lea tu carta con el estilo de artedeastro y la cruce con lo que sabe de ti. Lo que escribas aquí no sale de tu dispositivo.</p>
+        <ol class="pasos" aria-label="Tres pasos">
+          <li><b>1</b><span>Copia el texto</span></li>
+          <li><b>2</b><span>Pégalo en tu IA</span></li>
+          <li><b>3</b><span>Lee tu lectura</span></li>
+        </ol>
+        <label class="campo" for="ia-pregunta">Tu pregunta <span>(opcional)</span></label>
+        <input class="entrada" id="ia-pregunta" type="text" maxlength="200" autocomplete="off" placeholder="Por ejemplo: ¿qué necesito mirar hoy?">
+        <button class="btn btn-primario" id="ia-copiar" type="button">Copiar el texto para mi IA</button>
+        <div class="ia-abrir" id="ia-abrir" hidden>
+          <p>Copiado. Ahora pégalo en tu IA:</p>
+          <div class="ia-enlaces">
+            <a class="btn btn-sec" href="https://chatgpt.com/" target="_blank" rel="noopener">ChatGPT</a>
+            <a class="btn btn-sec" href="https://claude.ai/new" target="_blank" rel="noopener">Claude</a>
+            <a class="btn btn-sec" href="https://gemini.google.com/app" target="_blank" rel="noopener">Gemini</a>
+          </div>
+        </div>
+        <p class="estado" id="ia-estado" role="status" aria-live="polite"></p>
+        <details class="ia-ver" id="ia-ver"><summary>Ver el texto que se copia</summary><pre id="ia-texto"></pre></details>
+        <p class="ia-nota">La lectura la escribe tu IA, no Eva. Es una herramienta de reflexión, no una predicción.</p>
+      </div>
+
       <div class="eva">
         <p class="kicker">Si esta carta te ha movido algo</p>
         <p>Eva es astróloga, tarotista y astrocoach, en Barcelona y online. Lleva 16 años con la astrología y el tarot, y es profesional desde 2020.</p>
@@ -89,6 +115,7 @@
     <div class="como-cols">
       <div><h3>La carta y el cielo</h3><p>Esta web saca tu carta al azar y calcula el cielo de hoy con efemérides astronómicas: el signo y la fase de la Luna, y el signo del Sol. No envía nada tuyo a ningún servidor.</p></div>
       <div><h3>Las frases</h3><p>Los textos de cada carta son de artedeastro y están en revisión por Eva. No predicen: te dejan una pregunta para llevarte.</p></div>
+      <div><h3>Tu propia IA</h3><p>La lectura profunda la escribe la IA que tú elijas (ChatGPT, Claude, Gemini…). Esta web solo prepara el texto que tú copias y pegas: no recibe tu pregunta ni la respuesta, y la lectura no es de Eva.</p></div>
       <div><h3>Eva</h3><p>Eva es una persona real. Si quieres hablar con ella, escríbele por WhatsApp. Las sesiones y su precio se acuerdan con ella.</p></div>
     </div>
     <p class="legal">Es una herramienta de reflexión, no una predicción, y no sustituye el consejo de profesionales de la salud, el derecho ni las finanzas. Para mayores de 18 años. La carta del día se guarda solo en tu navegador, para que mañana puedas sacar otra. Más información en la <a href="https://artedeastro.com/privacidad.html">política de privacidad</a>.</p>
@@ -106,6 +133,7 @@
 <script>window.ADE_ROOT='../';window.ADE_CARTA=6;</script>
 <script>window.ADE_LAB=true;</script>
 <script src="../datos.js"></script>
+<script src="../lectura-datos.js"></script>
 <script src="../cartas.js"></script>
 <script src="../cielo-datos.js"></script>
 <script src="../cielo.js"></script>

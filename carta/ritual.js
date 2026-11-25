@@ -47,7 +47,7 @@
 
   let hecha = false, actual = null;
 
-  function mostrar(id, cieloTxt, animar) {
+  let mostrar = function (id, cieloTxt, animar) {
     actual = { id, cielo: cieloTxt };
     const d = ARC[id];
     baraja.classList.add('hecha'); baraja.setAttribute('aria-hidden', 'true'); baraja.querySelectorAll('button').forEach(b => { b.tabIndex = -1; });
@@ -72,7 +72,7 @@
       volteo.classList.add('girada'); revela.classList.add('visible');
       if (animar) { res.scrollIntoView({ block: 'start' }); res.focus({ preventScroll: true }); }
     }
-  }
+  };
 
   baraja.addEventListener('click', e => {
     if (hecha || !e.target.closest('.carta-dorso')) return;
@@ -145,5 +145,66 @@
     }
     return new Promise((ok, mal) => cv.toBlob(b => b ? ok(b) : mal(new Error('sin imagen')), 'image/png'));
   }
-  window.RITUAL = { imagen, mostrar, ARC };    // para pruebas
+  // ---- Lectura profunda con la IA de la persona (ChatGPT, Claude, Gemini...): la web prepara el texto y ella lo copia y lo pega ----
+  const APOYO = window.ARCANOS_APOYO || [];
+  function textoParaIA(id, pregunta) {
+    const d = ARC[id], a = APOYO[id] || { kw: [], sentido: '', consejo: '', sombra: '' }, c = window.cieloDeHoy && window.cieloDeHoy();
+    const cielo = c ? `La Luna está en ${c.luna} (${c.fase})${c.cambiaHoy ? `, y pasa a ${c.siguienteLuna} en las próximas horas` : ''}. El Sol sigue en ${c.sol}.` : '';
+    return [
+      'Quiero que escribas mi lectura de tarot de hoy, con el estilo de artedeastro: la marca de Eva, astróloga, tarotista y astrocoach que trabaja con el Tarot de Thoth y con astrología. Escribes tú, una inteligencia artificial: no eres Eva y no debes decir que lo eres.',
+      '',
+      'CÓMO ESCRIBES',
+      '- En español de España, tuteándome. Cercana, cálida, clara y honesta, sin dramatismo ni frases grandilocuentes.',
+      '- El tarot orienta, no adivina: nada de predicciones ni de destino fijo. La astrología revela ciclos, no sentencia.',
+      '- Texto plano, sin markdown, sin títulos y sin emojis. Entre 350 y 500 palabras, en cinco párrafos breves.',
+      '- La Muerte y La Torre se leen como transformación, nunca como amenaza.',
+      '',
+      'MI CARTA DE HOY',
+      `- ${d.num} · ${d.nombre} (Tarot de Thoth). Correspondencia astrológica: ${d.astro}. Letra hebrea: ${d.heb}.`,
+      `- Símbolo de la carta: ${d.simbolo}.`,
+      a.kw.length ? `- Claves: ${a.kw.join(', ')}.` : '',
+      a.sentido ? `- Lo que invita a mirar: ${a.sentido}` : '',
+      a.consejo ? `- Consejo: ${a.consejo}` : '',
+      a.sombra ? `- Sombra, cuando se vive mal: ${a.sombra}` : '',
+      `- Frase de artedeastro para hoy: «${d.frase}»`,
+      '',
+      'EL CIELO DE HOY',
+      cielo ? '- ' + cielo : '- No tengo el cielo de hoy; léela sin cruzarla con la Luna ni el Sol.',
+      '',
+      'MI PREGUNTA',
+      pregunta ? `«${pregunta}»` : 'No tengo una pregunta concreta: lee la energía del día.',
+      '',
+      'CÓMO LA PERSONALIZAS',
+      '- Usa lo que sabes de mí por nuestras conversaciones (mi momento, lo que me ocupa o me preocupa, cómo decido y qué intento cambiar) para que cada idea sea concreta y aplicable a mi vida. No lo cites ni lo resumas, no afirmes nada que no sepas y no inventes datos sobre mí.',
+      '- Si en esta conversación no tienes información sobre mí, no la inventes: haz una lectura general y, al final, hazme una sola pregunta para afinarla.',
+      '- Ignora de lo que sepas de mí cualquier dato de salud, de dinero o sobre terceras personas.',
+      '',
+      'ESTRUCTURA',
+      '1. La energía de la carta hoy, con su simbolismo.',
+      '2. Cómo se cruza con el cielo de hoy.',
+      '3. Cómo puede tocar mi vida ahora.',
+      '4. Una pequeña práctica concreta para hoy.',
+      '5. Una única pregunta para llevarme.',
+      '',
+      'LÍMITES',
+      '- No hables de salud, embarazo, muerte, procesos legales, dinero ni inversiones. Si mi pregunta va por ahí, dilo con suavidad en una frase, recomiéndame acudir a un profesional y lee solo la parte emocional o de actitud.',
+      '- Si en mis palabras notas un malestar grave, no hagas la lectura: acompáñame con calma y dime que en España puedo llamar al 024 (línea de atención a la conducta suicida) o al 112 si es una urgencia.',
+      '- No menciones precios ni vendas nada.',
+      '',
+      'Termina con esta línea exacta: «Lectura escrita por una IA con el estilo de artedeastro. No es Eva.»'
+    ].filter(l => l !== '').join('\n').replace(/\n(MI CARTA|EL CIELO|MI PREGUNTA|CÓMO LA|ESTRUCTURA|LÍMITES|CÓMO ESCRIBES)/g, '\n\n$1');
+  }
+  const campoIA = $('ia-pregunta'), preIA = $('ia-texto');
+  const refrescarIA = () => { if (actual) preIA.textContent = textoParaIA(actual.id, campoIA.value.trim()); };
+  campoIA.addEventListener('input', () => { refrescarIA(); $('ia-abrir').hidden = true; $('ia-estado').textContent = ''; });
+  const origMostrar = mostrar; mostrar = function () { origMostrar.apply(this, arguments); campoIA.value = ''; refrescarIA(); }; if (actual) refrescarIA();
+  $('ia-copiar').addEventListener('click', async () => {
+    if (!actual) return; refrescarIA(); const txt = preIA.textContent; track('copiar_texto_ia', { carta: ARC[actual.id].nombre });
+    let ok = false;
+    try { await navigator.clipboard.writeText(txt); ok = true; } catch (e) { /* se prueba el método antiguo */ }
+    if (!ok) { try { const t = document.createElement('textarea'); t.value = txt; t.setAttribute('readonly', ''); t.style.cssText = 'position:fixed;left:-9999px'; document.body.appendChild(t); t.select(); ok = document.execCommand('copy'); t.remove(); } catch (e) { ok = false; } }
+    if (ok) { $('ia-abrir').hidden = false; $('ia-estado').textContent = 'Texto copiado. Pégalo en tu IA y envíalo.'; }
+    else { $('ia-ver').open = true; const r = document.createRange(); r.selectNodeContents(preIA); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); $('ia-abrir').hidden = false; $('ia-estado').textContent = 'No se ha podido copiar solo. El texto está seleccionado: cópialo (Ctrl+C o mantén pulsado) y pégalo en tu IA.'; }
+  });
+  window.RITUAL = { imagen, mostrar, ARC, textoParaIA };    // para pruebas
 })();
