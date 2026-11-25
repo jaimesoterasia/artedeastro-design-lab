@@ -67,19 +67,23 @@
       void volteo.offsetWidth;
       res.scrollIntoView({ behavior: 'smooth', block: 'start' });
       setTimeout(() => volteo.classList.add('girada'), 450);
+      setTimeout(() => { if (window.ADE_VIDA) window.ADE_VIDA.destello(volteo); }, 1000);
       setTimeout(() => { revela.classList.add('visible'); res.focus({ preventScroll: true }); }, 1900);
     } else {
       volteo.classList.add('girada'); revela.classList.add('visible');
       if (animar) { res.scrollIntoView({ block: 'start' }); res.focus({ preventScroll: true }); }
     }
+    if (window.ADE_VIDA) window.ADE_VIDA.pintar(id);
   };
 
   baraja.addEventListener('click', e => {
-    if (hecha || !e.target.closest('.carta-dorso')) return;
+    const elegida = e.target.closest('.carta-dorso');
+    if (hecha || !elegida) return;
     hecha = true;
     const id = rnd(ARC.length), cieloTxt = cieloTexto();
     store.set('adh', { f: hoy(), c: id, cielo: cieloTxt });
-    mostrar(id, cieloTxt, true);
+    if (reduce) mostrar(id, cieloTxt, true);
+    else { elegida.classList.add('elegida'); baraja.classList.add('eligiendo'); setTimeout(() => mostrar(id, cieloTxt, true), 750); }   // un instante de tensión antes de descubrirla
     track('carta_sacada', { carta: ARC[id].nombre, origen: ORIGEN });
   });
 
