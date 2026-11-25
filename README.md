@@ -13,3 +13,6 @@ Todas las páginas llevan `noindex` y `robots.txt` bloquea a los buscadores.
 Desde el 13 de noviembre de 2026, `c/` es una copia de la web publicada (`../sitio`) generada con `sh sync-c.sh`:
 mismos archivos, con `noindex`, WhatsApp y correo simulados (`shared/proto.js`) y enlaces legales a artedeastro.com.
 Para ver la sección de testimonios con contenido de ejemplo, añade `?demo` a la dirección (`c/index.html?demo#testimonios`).
+
+## La carta de hoy (mini web de tarot)
+`carta/` es la prueba pública de «La carta de hoy · artedeastro» (tema Amanecer), en modo laboratorio: `noindex`, sin WhatsApp real hacia Eva y con sus enlaces y vistas previas apuntando aquí. Se genera desde `web/ritual/` con `node herramientas/preparar-lab.mjs`. Dirección: https://jaimesoterasia.github.io/artedeastro-design-lab/carta/

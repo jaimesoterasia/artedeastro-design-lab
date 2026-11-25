@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#2a1a3a">
+<title>Una amiga te ha sacado Arte · La carta de hoy · artedeastro</title>
+<meta name="description" content="Busca el punto justo entre los dos extremos. Saca la tuya: gratis, sin registro y en 10 segundos.">
+<link rel="canonical" href="https://jaimesoterasia.github.io/artedeastro-design-lab/carta/14/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="artedeastro">
+<meta property="og:title" content="Una amiga te ha sacado Arte">
+<meta property="og:description" content="Busca el punto justo entre los dos extremos. Saca la tuya: gratis, sin registro y en 10 segundos.">
+<meta property="og:image" content="https://jaimesoterasia.github.io/artedeastro-design-lab/carta/og/14.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23F4734F'/%3E%3Cstop offset='.5' stop-color='%23E5579E'/%3E%3Cstop offset='1' stop-color='%23A65CF2'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='50' fill='url(%23g)'/%3E%3Cpath d='M50 12C53 40 60 47 88 50 60 53 53 60 50 88 47 60 40 53 12 50 40 47 47 40 50 12Z' fill='%23141014'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=DM+Sans:wght@400;500;600&family=Noto+Serif+Hebrew:wght@400&display=swap">
+<link rel="stylesheet" href="../ritual.css">
+</head>
+<body>
+<div style="position:fixed;left:12px;bottom:12px;z-index:60;padding:6px 12px;border-radius:999px;background:rgba(20,16,20,.82);color:#fff;font:600 11px/1 system-ui;letter-spacing:.08em;text-transform:uppercase;pointer-events:none">Laboratorio · no es la web pública</div>
+<a class="saltar" href="#principal">Saltar al contenido</a>
+
+<header class="cab">
+  <a class="marca" href="https://artedeastro.com" aria-label="artedeastro, ir a la web">
+    <svg viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="lg0" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F4734F"/><stop offset=".5" stop-color="#E5579E"/><stop offset="1" stop-color="#A65CF2"/></linearGradient></defs><circle cx="50" cy="50" r="50" fill="url(#lg0)"/><path d="M50 12C53 40 60 47 88 50 60 53 53 60 50 88 47 60 40 53 12 50 40 47 47 40 50 12Z" fill="#141014"/><circle cx="35" cy="35" r="3.4" fill="#141014"/><circle cx="65" cy="35" r="3.4" fill="#141014"/><circle cx="35" cy="65" r="3.4" fill="#141014"/><circle cx="65" cy="65" r="3.4" fill="#141014"/></svg>
+    <span>artedeastro</span>
+  </a>
+  <a class="enl" href="#como">Cómo funciona</a>
+</header>
+
+<main id="principal">
+
+  <section class="hero" id="inicio" aria-labelledby="titulo">
+    <div class="invitacion" id="invitacion" hidden>
+      <div class="inv-carta" id="inv-carta" aria-hidden="true"></div>
+      <p><strong>Una amiga te ha sacado una carta.</strong><br><span id="inv-nombre"></span> Ahora te toca a ti.</p>
+    </div>
+    <p class="kicker">Tu carta de hoy</p>
+    <h1 id="titulo">Una carta, el cielo de hoy<br><em>y una pregunta para ti.</em></h1>
+    <p class="cielo-hoy" id="cielo-hoy" hidden></p>
+    <p class="instr" id="instr">Desliza el mazo y toca la carta que te llame.</p>
+    <div class="baraja" id="baraja" role="group" aria-label="Mazo de 22 cartas boca abajo"></div>
+    <p class="nota">Gratis y sin registro. Orienta, no adivina. Para mayores de 18 años.</p>
+  </section>
+
+  <section class="resultado" id="resultado" hidden aria-labelledby="r-nombre" tabindex="-1">
+    <p class="kicker">Tu carta de hoy</p>
+    <div class="escena"><div class="volteo" id="volteo">
+      <div class="cara dorso" id="dorso"></div>
+      <div class="cara frente" id="frente"></div>
+    </div></div>
+    <div class="revela" id="revela">
+      <h2 id="r-nombre"></h2>
+      <p class="frase" id="r-frase"></p>
+      <p class="cielo-linea" id="r-cielo"></p>
+
+      <div class="acciones">
+        <button class="btn btn-primario" id="b-enviar" type="button">Enviar a una amiga</button>
+        <button class="btn btn-sec" id="b-guardar" type="button">Guardar para mis Stories</button>
+      </div>
+      <p class="mini"><a href="#" id="b-cuadrado">Guardar en formato cuadrado</a><span class="estado" id="estado" role="status" aria-live="polite"></span></p>
+
+      <div class="pregunta">
+        <p class="kicker">Una pregunta para llevarte hoy</p>
+        <p class="p-texto" id="r-pregunta"></p>
+      </div>
+
+      <div class="eva">
+        <p class="kicker">Si esta carta te ha movido algo</p>
+        <p>Eva es astróloga, tarotista y astrocoach, en Barcelona y online. Lleva 16 años con la astrología y el tarot, y es profesional desde 2020.</p>
+        <a class="btn btn-primario" id="b-eva" href="#" target="_blank" rel="noopener">Hablar con Eva</a>
+      </div>
+      <p class="manana" id="manana">Mañana, otra carta.</p>
+    </div>
+  </section>
+
+  <section class="ia" id="ia" hidden aria-labelledby="ia-t">
+    <h2 id="ia-t">Pídele a Eva IA que la lea</h2>
+  </section>
+
+  <section class="como" id="como" aria-labelledby="como-t">
+    <p class="kicker">Cómo funciona</p>
+    <h2 id="como-t">Claro, desde el principio.</h2>
+    <div class="como-cols">
+      <div><h3>La carta y el cielo</h3><p>Esta web saca tu carta al azar y calcula el cielo de hoy con efemérides astronómicas: el signo y la fase de la Luna, y el signo del Sol. No envía nada tuyo a ningún servidor.</p></div>
+      <div><h3>Las frases</h3><p>Los textos de cada carta son de artedeastro y están en revisión por Eva. No predicen: te dejan una pregunta para llevarte.</p></div>
+      <div><h3>Eva</h3><p>Eva es una persona real. Si quieres hablar con ella, escríbele por WhatsApp. Las sesiones y su precio se acuerdan con ella.</p></div>
+    </div>
+    <p class="legal">Es una herramienta de reflexión, no una predicción, y no sustituye el consejo de profesionales de la salud, el derecho ni las finanzas. Para mayores de 18 años. La carta del día se guarda solo en tu navegador, para que mañana puedas sacar otra. Más información en la <a href="https://artedeastro.com/privacidad.html">política de privacidad</a>.</p>
+  </section>
+</main>
+
+<footer class="pie">
+  <p class="pie-marca">artedeastro</p>
+  <p><a href="https://artedeastro.com">artedeastro.com</a> · <a href="https://www.instagram.com/artedeastro/" rel="noopener">Instagram</a> · <a href="https://artedeastro.com/aviso-legal.html">Aviso legal</a> · <a href="https://artedeastro.com/privacidad.html">Privacidad</a> · <a href="https://artedeastro.com/cookies.html">Cookies</a></p>
+  <p class="pie-c">© 2026 artedeastro</p>
+</footer>
+
+<noscript><p class="sin-js">Esta página necesita JavaScript para sacar tu carta. Puedes ver cómo trabaja Eva en <a href="https://artedeastro.com">artedeastro.com</a>.</p></noscript>
+
+<script>window.ADE_ROOT='../';window.ADE_CARTA=14;</script>
+<script>window.ADE_LAB=true;</script>
+<script src="../datos.js"></script>
+<script src="../cartas.js"></script>
+<script src="../cielo-datos.js"></script>
+<script src="../cielo.js"></script>
+<script src="../ritual.js"></script>
+</body>
+</html>
