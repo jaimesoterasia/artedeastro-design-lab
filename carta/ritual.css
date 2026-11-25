@@ -41,10 +41,10 @@ h1 em{font-style:italic;color:var(--champan)}
 .baraja{width:100vw;margin-left:calc(50% - 50vw);display:flex;align-items:center;gap:0;margin-top:20px;padding:40px calc(50vw - 66px) 60px;overflow-x:auto;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none;transition:opacity .6s,max-height .8s,margin .8s,padding .8s}
 .baraja::-webkit-scrollbar{display:none}
 .carta-dorso{flex:none;width:132px;aspect-ratio:560/940;margin-left:-46px;padding:0;border:0;background:none;cursor:pointer;scroll-snap-align:center;border-radius:16px;
-  transform:translateY(var(--y,0)) rotate(var(--r,0deg));transition:transform .35s cubic-bezier(.2,.8,.2,1),filter .35s;filter:drop-shadow(0 14px 18px rgba(0,0,0,.45));-webkit-tap-highlight-color:transparent}
+  transform:translateY(calc(var(--y,0px) - var(--m,0px))) rotate(var(--r,0deg)) scale(var(--s,1));transition:transform .28s cubic-bezier(.2,.8,.2,1),filter .35s;filter:drop-shadow(0 14px 18px rgba(0,0,0,.45));-webkit-tap-highlight-color:transparent}
 .carta-dorso:first-child{margin-left:0}
 .carta-dorso img{display:block;width:100%;height:100%;pointer-events:none}
-.carta-dorso:hover,.carta-dorso:focus-visible{transform:translateY(-18px) rotate(var(--r,0deg));z-index:2;filter:drop-shadow(0 22px 26px rgba(247,183,145,.35))}
+.carta-dorso:hover,.carta-dorso:focus-visible{transform:translateY(-30px) rotate(var(--r,0deg)) scale(1.14);z-index:2;filter:drop-shadow(0 26px 30px rgba(247,183,145,.55))}
 .baraja.hecha{opacity:0;max-height:0;margin-top:0;padding-top:0;padding-bottom:0;pointer-events:none;overflow:hidden}
 .baraja.bloqueada .carta-dorso{pointer-events:none}
 
@@ -111,13 +111,31 @@ h2{font:italic 500 clamp(34px,6vw,54px)/1.05 var(--serif)}
 .pie-c{margin-top:10px;opacity:.7}
 .sin-js{padding:30px;text-align:center}
 
+/* Más intensidad: luna, brillo en el texto, foil, rayos y botones */
+.luna-hoy{width:68px;height:68px;margin:0 auto 18px;filter:drop-shadow(0 0 18px rgba(247,183,145,.7)) drop-shadow(0 0 46px rgba(229,87,158,.35));animation:sube 1s .0s both,flota 9s ease-in-out 1s infinite}
+.luna-hoy svg{display:block;width:100%;height:100%}
+h1 em,.frase{background:linear-gradient(100deg,#F7E3C8 0%,#F7E3C8 30%,#fff 44%,#F7B791 52%,#F7E3C8 66%,#F7E3C8 100%);background-size:260% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:brillo-texto 8s linear infinite}
+@keyframes brillo-texto{from{background-position:130% 0}to{background-position:-130% 0}}
+.btn-primario{position:relative;overflow:hidden;animation:latido 3.2s ease-in-out infinite}
+.btn-primario::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 36%,rgba(255,255,255,.55) 50%,transparent 64%);transform:translateX(-130%);animation:barrido 4.2s ease-in-out 1s infinite;pointer-events:none}
+@keyframes barrido{0%,55%{transform:translateX(-130%)}100%{transform:translateX(130%)}}
+@keyframes latido{50%{box-shadow:0 12px 40px rgba(229,87,158,.55)}}
+.escena{transform:rotateX(var(--tx,0deg)) rotateY(var(--ty,0deg));transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.escena.inclina{transition:transform .08s linear}
+.frente::after{content:"";position:absolute;inset:0;border-radius:18px;pointer-events:none;opacity:0;transition:opacity 1.4s 1.6s;mix-blend-mode:soft-light;
+  background:radial-gradient(circle at var(--sx,50%) var(--sy,25%),rgba(255,255,255,.75),transparent 46%),linear-gradient(115deg,transparent 28%,rgba(247,183,145,.7) 42%,rgba(166,92,242,.6) 52%,rgba(120,220,255,.35) 58%,transparent 72%);background-size:100% 100%,260% 260%;animation:foil 6.5s ease-in-out infinite}
+.volteo.girada .frente::after{opacity:1}
+@keyframes foil{0%,100%{background-position:0 0,0% 0%}50%{background-position:0 0,100% 100%}}
+.mb-grid .nueva{animation:pop 1.1s cubic-bezier(.2,1.4,.3,1) 2.2s both,late 3.6s ease-in-out 3.4s infinite}
+@keyframes pop{0%{transform:scale(.2);opacity:0;filter:drop-shadow(0 0 0 transparent)}60%{transform:scale(1.28);opacity:1;filter:drop-shadow(0 0 22px rgba(247,183,145,.95))}100%{transform:none}}
+
 /* Vida: cielo, mazo, descubrimiento, baraja propia */
 .estrellas{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
 body::before{content:"";position:fixed;inset:-20%;z-index:0;pointer-events:none;will-change:transform;
-  background:radial-gradient(40% 35% at 24% 30%,rgba(229,87,158,.16),transparent 70%),radial-gradient(38% 32% at 78% 20%,rgba(247,183,145,.17),transparent 70%),radial-gradient(46% 40% at 60% 78%,rgba(166,92,242,.14),transparent 70%);animation:aurora 40s ease-in-out infinite alternate}
+  background:radial-gradient(40% 35% at 24% 30%,rgba(229,87,158,.26),transparent 70%),radial-gradient(38% 32% at 78% 20%,rgba(247,183,145,.26),transparent 70%),radial-gradient(46% 40% at 60% 78%,rgba(166,92,242,.24),transparent 70%),radial-gradient(30% 26% at 12% 82%,rgba(247,183,145,.16),transparent 70%);animation:aurora 26s ease-in-out infinite alternate}
 @keyframes aurora{from{transform:translate3d(-3%,-2%,0) rotate(-2deg) scale(1)}to{transform:translate3d(3%,3%,0) rotate(3deg) scale(1.08)}}
 main,.pie{position:relative;z-index:1}
-.hero>.kicker{animation:sube 1s .05s both}.hero>h1{animation:sube 1.1s .18s both}.hero>.cielo-hoy{animation:sube 1s .38s both}.hero>.instr{animation:sube 1s .55s both}.hero>.nota{animation:sube 1s .9s both}
+.hero>.kicker{animation:sube .8s 0s both}.hero>h1{animation:sube .9s .05s both}.hero>.cielo-hoy{animation:sube .8s .2s both}.hero>.instr{animation:sube .8s .32s both}.hero>.nota{animation:sube .8s .5s both}
 .baraja.entra .carta-dorso{animation:entra 1.1s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:calc(var(--i,0)*45ms + .25s)}
 @keyframes entra{from{opacity:0;transform:translateY(70px) rotate(0deg) scale(.8)}}
 .baraja:not(.entra):not(.eligiendo):not(.hecha) .carta-dorso:nth-child(11):not(:hover){animation:late 3.6s ease-in-out infinite}
@@ -127,8 +145,11 @@ main,.pie{position:relative;z-index:1}
 .baraja.eligiendo .carta-dorso.elegida{transform:translateY(-34px) rotate(0deg) scale(1.16);z-index:3;filter:drop-shadow(0 26px 40px rgba(247,183,145,.7))}
 .destello{position:fixed;inset:0;width:100%;height:100%;z-index:45;pointer-events:none}
 .escena{position:relative}
-.escena::before{content:"";position:absolute;left:50%;top:50%;width:min(120vw,680px);aspect-ratio:1;translate:-50% -50%;pointer-events:none;opacity:0;transition:opacity 1.6s 1s;background:radial-gradient(closest-side,rgba(247,183,145,.42),rgba(229,87,158,.13) 56%,transparent 74%)}
-.escena:has(.girada)::before{opacity:1;animation:respira 6s ease-in-out 2.6s infinite}
+.escena::before{content:"";position:absolute;left:50%;top:50%;width:min(150vw,900px);aspect-ratio:1;translate:-50% -50%;pointer-events:none;opacity:0;transition:opacity 1.6s 1s;
+  background:repeating-conic-gradient(from 0deg,rgba(251,235,221,.2) 0 3deg,transparent 3deg 15deg),radial-gradient(closest-side,rgba(247,183,145,.5),rgba(229,87,158,.15) 52%,transparent 72%);
+  -webkit-mask-image:radial-gradient(closest-side,#000 30%,transparent 72%);mask-image:radial-gradient(closest-side,#000 30%,transparent 72%)}
+.escena:has(.girada)::before{opacity:1;animation:respira 6s ease-in-out 2.6s infinite,giro 90s linear infinite}
+@keyframes giro{to{rotate:360deg}}
 .escena:has(.girada) .volteo{animation:flota 8s ease-in-out 2.6s infinite}
 @keyframes respira{50%{scale:1.1;opacity:.72}}
 @keyframes flota{50%{translate:0 -9px}}

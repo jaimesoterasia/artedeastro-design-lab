@@ -31,6 +31,7 @@
       luna: SIGNOS[D.luna[il][1]],
       sol: SIGNOS[D.sol[is][1]],
       fase: f.nombre,
+      ang: f.ang,
       cambiaHoy: siguienteLuna !== null && (siguienteLuna - min) < 60 * 12,   // la Luna cambia de signo en las próximas 12 h
       siguienteLuna: siguienteLuna !== null ? SIGNOS[D.luna[il + 1][1]] : null
     };

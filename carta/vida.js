@@ -14,6 +14,7 @@
   // ---- Cielo con estrellas (lienzo fijo, bajo el contenido) ----
   const cv = document.createElement('canvas'); cv.className = 'estrellas'; cv.setAttribute('aria-hidden', 'true'); document.body.insertBefore(cv, document.body.firstChild);
   const cx = cv.getContext('2d');
+  const chispas = [];
   let W = 0, H = 0, dpr = 1, estrellas = [], fugaz = null, px = 0, py = 0, tpx = 0, tpy = 0, visible = true, tAnt = 0, proxFugaz = 4;
   const COLORES = ['251,235,221', '247,227,200', '247,183,145', '255,255,255'];
   function medir() {
@@ -30,19 +31,25 @@
       cx.beginPath(); cx.arc(x, y, e.r, 0, 6.2832); cx.fillStyle = `rgba(${e.c},${a.toFixed(3)})`; cx.fill();
       if (e.r > 1.2) { cx.fillStyle = `rgba(${e.c},${(a * .18).toFixed(3)})`; cx.beginPath(); cx.arc(x, y, e.r * 3.2, 0, 6.2832); cx.fill(); }
     }
+    for (let i = chispas.length - 1; i >= 0; i--) { const c = chispas[i]; const q = c.t / c.d; if (q >= 1) { chispas.splice(i, 1); continue; } const a = (1 - q) * .85; cx.fillStyle = `rgba(${c.c},${a.toFixed(3)})`; cx.beginPath(); cx.arc(c.x, c.y, c.r * (1 - q * .6), 0, 6.2832); cx.fill(); cx.fillStyle = `rgba(${c.c},${(a * .2).toFixed(3)})`; cx.beginPath(); cx.arc(c.x, c.y, c.r * 3.4, 0, 6.2832); cx.fill(); }
     if (fugaz) { const f = fugaz; const k = f.t / f.d; cx.save(); cx.lineCap = 'round'; const g = cx.createLinearGradient(f.x, f.y, f.x - f.vx * 90, f.y - f.vy * 90); g.addColorStop(0, `rgba(251,235,221,${(.9 * (1 - k)).toFixed(3)})`); g.addColorStop(1, 'rgba(251,235,221,0)'); cx.strokeStyle = g; cx.lineWidth = 1.6; cx.beginPath(); cx.moveTo(f.x, f.y); cx.lineTo(f.x - f.vx * 90, f.y - f.vy * 90); cx.stroke(); cx.restore(); }
   }
   function bucle(t) {
     if (!visible) { tAnt = 0; return; }
     const dt = tAnt ? Math.min((t - tAnt) / 1000, .1) : .016; tAnt = t;
     px += (tpx - px) * .04; py += (tpy - py) * .04;
+    for (const c of chispas) { c.t += dt; c.x += c.vx * dt * 60; c.y += c.vy * dt * 60; c.vy += .012; }
     if (fugaz) { fugaz.x += fugaz.vx * dt * 60; fugaz.y += fugaz.vy * dt * 60; fugaz.t += dt; if (fugaz.t >= fugaz.d) fugaz = null; }
     else { proxFugaz -= dt; if (proxFugaz <= 0) { proxFugaz = 7 + Math.random() * 9; const dir = Math.random() < .5 ? 1 : -1; fugaz = { x: dir > 0 ? Math.random() * W * .5 : W * .5 + Math.random() * W * .5, y: Math.random() * H * .35, vx: dir * (5 + Math.random() * 3), vy: 2.2 + Math.random() * 1.8, t: 0, d: .9 + Math.random() * .5 }; } }
     pintarCielo(t); requestAnimationFrame(bucle);
   }
   medir(); addEventListener('resize', medir);
   if (!reduce) {
-    addEventListener('pointermove', e => { tpx = (e.clientX / innerWidth - .5) * 2; tpy = (e.clientY / innerHeight - .5) * 2; }, { passive: true });
+    let ultima = 0;
+    addEventListener('pointermove', e => {
+      tpx = (e.clientX / innerWidth - .5) * 2; tpy = (e.clientY / innerHeight - .5) * 2;
+      if (e.pointerType === 'mouse' && e.timeStamp - ultima > 38 && chispas.length < 46) { ultima = e.timeStamp; chispas.push({ x: e.clientX + (Math.random() - .5) * 8, y: e.clientY + (Math.random() - .5) * 8, vx: (Math.random() - .5) * .8, vy: -.2 - Math.random() * .6, r: .8 + Math.random() * 1.8, t: 0, d: .7 + Math.random() * .7, c: COLORES[Math.floor(Math.random() * 3)] }); }
+    }, { passive: true });
     document.addEventListener('visibilitychange', () => { visible = !document.hidden; if (visible) requestAnimationFrame(bucle); });
     requestAnimationFrame(bucle);
   } else addEventListener('scroll', () => pintarCielo(0), { passive: true });
@@ -53,15 +60,18 @@
     const fx = document.createElement('canvas'); fx.className = 'destello'; fx.setAttribute('aria-hidden', 'true'); document.body.appendChild(fx);
     const d = Math.min(devicePixelRatio || 1, 2), w = innerWidth, h = innerHeight; fx.width = w * d; fx.height = h * d; const g = fx.getContext('2d'); g.setTransform(d, 0, 0, d, 0, 0);
     const col = ['247,183,145', '251,235,221', '229,87,158', '247,227,200'];
-    const ps = Array.from({ length: 84 }, () => { const a = Math.random() * 6.2832, v = 1.4 + Math.random() * 5.2; return { a, v, r: .8 + Math.random() * 2.6, c: col[Math.floor(Math.random() * col.length)], d: .9 + Math.random() * .9, o: Math.random() * .8 }; });
+    const ps = Array.from({ length: 190 }, (_, i) => { const a = Math.random() * 6.2832, v = 1.2 + Math.random() * 6.4; return { a, v, r: .8 + Math.random() * 3, c: col[Math.floor(Math.random() * col.length)], d: 1 + Math.random() * 1.1, o: Math.random() * .8, est: i % 6 === 0 }; });
+    const estrella4 = (x, y, r) => { g.beginPath(); g.moveTo(x, y - r * 2.4); g.quadraticCurveTo(x, y, x + r * 2.4, y); g.quadraticCurveTo(x, y, x, y + r * 2.4); g.quadraticCurveTo(x, y, x - r * 2.4, y); g.quadraticCurveTo(x, y, x, y - r * 2.4); g.fill(); };
+    try { if (navigator.vibrate) navigator.vibrate([16, 50, 30]); } catch (e) { /* sin vibración */ }
     const t0 = performance.now();
     (function paso(t) {
       const s = (t - t0) / 1000; const b = el.getBoundingClientRect(), x0 = b.left + b.width / 2, y0 = b.top + b.height / 2;
       g.clearRect(0, 0, w, h);
-      const k = s / 1.5; if (k < 1) { const rr = b.width * (.4 + k * 1.5); const gr = g.createRadialGradient(x0, y0, rr * .55, x0, y0, rr); gr.addColorStop(0, 'rgba(247,183,145,0)'); gr.addColorStop(.8, `rgba(247,227,200,${(.32 * (1 - k)).toFixed(3)})`); gr.addColorStop(1, 'rgba(247,227,200,0)'); g.fillStyle = gr; g.beginPath(); g.arc(x0, y0, rr, 0, 6.2832); g.fill(); }
-      let vivo = false;
-      for (const p of ps) { const q = s / p.d; if (q >= 1) continue; vivo = true; const r = p.v * 60 * (1 - Math.pow(1 - q, 3)) * (b.width / 330) + b.width * .12; const x = x0 + Math.cos(p.a) * r * (1 + p.o * .25), y = y0 + Math.sin(p.a) * r * 1.25 - q * 14; g.fillStyle = `rgba(${p.c},${(.95 * (1 - q)).toFixed(3)})`; g.beginPath(); g.arc(x, y, p.r * (1 - q * .5), 0, 6.2832); g.fill(); }
-      if (vivo || k < 1) requestAnimationFrame(paso); else fx.remove();
+      if (s < .45) { g.fillStyle = `rgba(255,238,222,${(.34 * (1 - s / .45)).toFixed(3)})`; g.fillRect(0, 0, w, h); }       // fogonazo de luz
+      for (let n = 0; n < 2; n++) { const k = (s - n * .22) / 1.7; if (k > 0 && k < 1) { const rr = b.width * (.4 + k * (n ? 2.3 : 1.7)); const gr = g.createRadialGradient(x0, y0, rr * .6, x0, y0, rr); gr.addColorStop(0, 'rgba(247,183,145,0)'); gr.addColorStop(.82, `rgba(${n ? '229,87,158' : '247,227,200'},${(.4 * (1 - k)).toFixed(3)})`); gr.addColorStop(1, 'rgba(247,227,200,0)'); g.fillStyle = gr; g.beginPath(); g.arc(x0, y0, rr, 0, 6.2832); g.fill(); } }
+      let vivo = s < 1.9;
+      for (const p of ps) { const q = s / p.d; if (q >= 1) continue; vivo = true; const r = p.v * 62 * (1 - Math.pow(1 - q, 3)) * (b.width / 330) + b.width * .12; const x = x0 + Math.cos(p.a) * r * (1 + p.o * .25), y = y0 + Math.sin(p.a) * r * 1.25 - q * 14; g.fillStyle = `rgba(${p.c},${(.95 * (1 - q)).toFixed(3)})`; if (p.est) estrella4(x, y, p.r * (1 - q * .4)); else { g.beginPath(); g.arc(x, y, p.r * (1 - q * .5), 0, 6.2832); g.fill(); } }
+      if (vivo) requestAnimationFrame(paso); else fx.remove();
     })(t0);
   }
 
@@ -70,6 +80,36 @@
   if (baraja && !reduce) { baraja.classList.add('entra'); baraja.querySelectorAll('.carta-dorso').forEach((b, i) => b.style.setProperty('--i', i)); setTimeout(() => baraja.classList.remove('entra'), 2600); }
   // los hijos del resultado aparecen por capas
   document.querySelectorAll('#revela > *').forEach((el, i) => el.style.setProperty('--k', Math.min(i, 6)));
+
+  // ---- Mazo magnético: las cartas se elevan al acercarte, como si respondieran ----
+  if (baraja && !reduce) {
+    const cartas = () => baraja.querySelectorAll('.carta-dorso');
+    const mover = x => { cartas().forEach(c => { const r = c.getBoundingClientRect(), d = Math.abs(x - (r.left + r.width / 2)), m = Math.max(0, 1 - d / 190), q = m * m; c.style.setProperty('--m', (q * 46).toFixed(1) + 'px'); c.style.setProperty('--s', (1 + q * .13).toFixed(3)); }); };
+    const quitar = () => cartas().forEach(c => { c.style.removeProperty('--m'); c.style.removeProperty('--s'); });
+    baraja.addEventListener('pointermove', e => { if (!baraja.classList.contains('eligiendo') && !baraja.classList.contains('entra')) mover(e.clientX); }, { passive: true });
+    baraja.addEventListener('pointerleave', quitar);
+    baraja.addEventListener('pointerdown', e => { try { if (e.target.closest('.carta-dorso') && navigator.vibrate) navigator.vibrate(14); } catch (x) { /* sin vibración */ } });
+  }
+
+  // ---- La carta descubierta se inclina con el puntero y brilla como un foil ----
+  const escena = document.querySelector('.escena');
+  if (escena && !reduce) {
+    escena.addEventListener('pointermove', e => {
+      if (e.pointerType === 'touch') return; const r = escena.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      escena.style.setProperty('--ty', (x * 18).toFixed(2) + 'deg'); escena.style.setProperty('--tx', (-y * 14).toFixed(2) + 'deg');
+      escena.style.setProperty('--sx', ((x + .5) * 100).toFixed(1) + '%'); escena.style.setProperty('--sy', ((y + .5) * 100).toFixed(1) + '%'); escena.classList.add('inclina');
+    });
+    escena.addEventListener('pointerleave', () => { escena.classList.remove('inclina'); ['--tx', '--ty', '--sx', '--sy'].forEach(p => escena.style.removeProperty(p)); });
+  }
+
+  // ---- La Luna de hoy, con su fase real ----
+  (function luna() {
+    const c = window.cieloDeHoy && window.cieloDeHoy(), caja = $('luna-hoy'); if (!c || typeof c.ang !== 'number' || !caja) return;
+    const a = c.ang, cre = a < 180, b = cre ? a : 360 - a, rx = Math.abs(Math.cos(b * Math.PI / 180)) * 40, barrido = b < 90 ? 0 : 1;
+    const luz = b < 2 ? '' : `<path d="M50 10A40 40 0 0 1 50 90A${rx.toFixed(2)} 40 0 0 ${barrido} 50 10Z" fill="url(#lunaLuz)"${cre ? '' : ' transform="translate(100 0) scale(-1 1)"'}/>`;
+    caja.innerHTML = `<svg viewBox="0 0 100 100" role="img" aria-label="Fase de la Luna de hoy: ${c.fase}"><defs><radialGradient id="lunaLuz" cx=".45" cy=".4" r=".75"><stop offset="0" stop-color="#FFF6EA"/><stop offset=".6" stop-color="#F7E3C8"/><stop offset="1" stop-color="#F7B791"/></radialGradient></defs><circle cx="50" cy="50" r="40" fill="rgba(20,10,30,.55)" stroke="rgba(247,227,200,.35)" stroke-width="1"/>${luz}</svg>`;
+    caja.hidden = false;
+  })();
 
   // ---- Aparición al hacer scroll ----
   if ('IntersectionObserver' in window && !reduce) {
@@ -90,12 +130,12 @@
   const miniatura = id => urls[id] || (urls[id] = URL.createObjectURL(new Blob([C.caraSinTexto(id).replace('<svg ', '<svg width="560" height="940" ')], { type: 'image/svg+xml' })));
   function pintar(id) {
     const caja = $('mi-baraja'); if (!caja) return;
-    const d = asegurar(id), n = d.col.length;
+    const eraNueva = !datos().col.includes(id), d = asegurar(id), n = d.col.length;
     $('mb-n').textContent = n;
     $('mb-t').lastChild.textContent = n === 1 ? ' carta descubierta de 22' : ' cartas descubiertas de 22';
     $('mb-racha').textContent = d.racha >= 2 ? `${d.racha} días seguidos con tu carta.` : 'Hoy empiezas tu baraja. Vuelve mañana para descubrir otra.';
     $('mb-grid').innerHTML = ARC.map((c, i) => d.col.includes(i)
-      ? `<li class="ok${i === id ? ' hoy' : ''}" title="${c.num} · ${c.nombre}"><img src="${miniatura(i)}" alt="${c.num}, ${c.nombre}${i === id ? ', tu carta de hoy' : ''}" width="56" height="94" draggable="false"></li>`
+      ? `<li class="ok${i === id ? ' hoy' : ''}${i === id && eraNueva ? ' nueva' : ''}" title="${c.num} · ${c.nombre}"><img src="${miniatura(i)}" alt="${c.num}, ${c.nombre}${i === id ? ', tu carta de hoy' : ''}" width="56" height="94" draggable="false"></li>`
       : `<li class="vacia" aria-label="Carta ${c.num}, aún sin descubrir"><span aria-hidden="true">${c.num}</span></li>`).join('');
     caja.hidden = false;
     cuentaAtras(); barra();
