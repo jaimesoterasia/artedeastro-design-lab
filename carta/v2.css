@@ -149,3 +149,11 @@ body.con-carta .eva-tira{display:none}
 @media (prefers-reduced-motion:reduce){
   .burbuja.fin{opacity:1!important}
 }
+
+/* Fase 4: compartir en un toque y baraja para Stories */
+.comp-pill{display:none;margin:16px auto 0;align-items:center;gap:10px;min-height:48px;padding:0 22px;border:1.5px solid rgba(247,227,200,.55);border-radius:999px;background:rgba(251,235,221,.07);color:var(--hueso);font:600 13px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:background .25s,transform .25s}
+.comp-pill svg{width:20px;height:20px;flex:none}
+.comp-pill:hover{background:rgba(251,235,221,.14);transform:translateY(-2px)}
+.res-izq:has(.volteo.girada) .comp-pill{display:flex}
+.mb-hito{margin:0 0 18px;padding:10px 16px;border:1px solid rgba(247,183,145,.6);border-radius:999px;display:inline-block;background:rgba(247,183,145,.12);font:italic 500 20px/1.3 var(--serif);color:var(--champan)}
+.mb-acc{justify-content:center;margin-top:20px}

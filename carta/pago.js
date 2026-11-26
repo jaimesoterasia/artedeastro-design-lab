@@ -180,6 +180,7 @@
     abrir(`${cerrarPaso}
       <p class="kicker">Regalo listo</p><h3 id="pg-t">Envíale este enlace a tu amiga</h3>
       <p class="pg-nota">Cuando lo abra, sacará <b>su</b> carta y recibirá <b>su</b> lectura sin pagar. ${dedicatoria ? 'Tu dedicatoria va dentro del enlace.' : ''}</p>
+      <p class="pg-nota">No te avisaremos de si lo abre ni cuándo: es un regalo, y es suyo decidir si lo usa.</p>
       <input class="entrada" id="rg-url" readonly value="${esc(enlace)}" aria-label="Enlace del regalo">
       <div class="of-acciones"><button class="btn btn-primario" id="rg-copiar" type="button">Copiar el enlace</button><button class="btn btn-sec" id="rg-enviar" type="button">Enviar por WhatsApp</button></div>
       <p class="estado" id="pg-estado" role="status" aria-live="polite"></p>

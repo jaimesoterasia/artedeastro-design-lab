@@ -24,9 +24,11 @@
   const normOrigen = v => { v = String(v || '').toLowerCase(); return !v ? 'directo' : ORIGENES.includes(v) ? v : 'otro'; };
   const ORIGEN = deAmiga !== null ? 'amiga' : normOrigen(params.get('o'));
   const CANAL = ['wa', 'nativo'].includes(params.get('s')) ? params.get('s') : '';
-  const GEN = (() => { const g = Number(params.get('g')); return Number.isInteger(g) && g >= 0 && g <= 9 ? g : 0; })();
+  const GEN = (() => { const g = params.has('g') ? Number(params.get('g')) : NaN; return Number.isInteger(g) && g >= 0 && g <= 9 ? g : (params.has('regalo') ? 1 : 0); })();   // quien abre un regalo es la generación 1
   const previa = store.get('adv');
-  window.ADE_CTX = { origen: ORIGEN, canal: CANAL, gen: GEN, vuelve: !!(previa && previa.last && previa.last !== hoy()) };   // lo lee medicion.js cuando hay consentimiento
+  if (!store.get('ado')) store.set('ado', ORIGEN);                                             // primer origen de esta persona, solo en su navegador: dice si la que recibió un regalo vuelve
+  const PRIMER = store.get('ado') || ORIGEN;
+  window.ADE_CTX = { origen: ORIGEN, canal: CANAL, gen: GEN, vuelve: !!(previa && previa.last && previa.last !== hoy()), primer_origen: PRIMER };   // lo lee medicion.js cuando hay consentimiento
   const urlCompartir = (id, canal) => urlCarta(id) + '?o=amiga&s=' + canal + '&g=' + Math.min(GEN + 1, 9);
   if (params.has('nueva')) store.del('adh');                  // solo para pruebas: permite sacar otra carta
 
@@ -82,7 +84,9 @@
       if (animar) { res.scrollIntoView({ block: 'start' }); res.focus({ preventScroll: true }); }
     }
     if (window.ADE_VIDA) window.ADE_VIDA.pintar(id);
+    setTimeout(() => { if (actual && actual.id === id) precarga = { id, p: imagen(id, 'cuadrado', cieloTxt).catch(() => null) }; }, animar && !reduce ? 2600 : 600);   // imagen lista antes de pulsar «Enviar»
   };
+  let precarga = null;
 
   baraja.addEventListener('click', e => {
     const elegida = e.target.closest('.carta-dorso');
@@ -92,7 +96,7 @@
     store.set('adh', { f: hoy(), c: id, cielo: cieloTxt });
     if (reduce) mostrar(id, cieloTxt, true);
     else { elegida.classList.add('elegida'); baraja.classList.add('eligiendo'); setTimeout(() => mostrar(id, cieloTxt, true), 750); }   // un instante de tensión antes de descubrirla
-    track('carta_sacada', { carta: ARC[id].nombre, origen: ORIGEN, gen: GEN });
+    track('carta_sacada', { carta: ARC[id].nombre, origen: ORIGEN, gen: GEN, primer_origen: PRIMER });
   });
 
   const guardada = store.get('adh');
@@ -104,9 +108,21 @@
     if (!actual) return;
     const lugar = $('b-enviar').dataset.lugar || 'boton'; delete $('b-enviar').dataset.lugar;      // «barra» si viene de la barra fija del móvil
     const evento = method => track('compartir', { carta: ARC[actual.id].nombre, method, lugar, gen: Math.min(GEN + 1, 9) });
-    if (navigator.share) { try { await navigator.share({ title: 'La carta de hoy · artedeastro', text: TEXTO_ENVIO, url: urlCompartir(actual.id, 'nativo') }); evento('nativo'); return; } catch (e) { if (e && e.name === 'AbortError') return; } }
+    // Un solo toque: la imagen de la carta (ya preparada) y el enlace viajan juntos. Si el móvil no admite imágenes, solo el enlace.
+    if (navigator.share) {
+      try {
+        let file = null;
+        if (navigator.canShare) {
+          const pre = precarga && precarga.id === actual.id ? await precarga.p : null, blob = pre || await imagen(actual.id, 'cuadrado', actual.cielo).catch(() => null);
+          if (blob) { const f = new File([blob], 'mi-carta-de-hoy.png', { type: 'image/png' }); if (navigator.canShare({ files: [f] })) file = f; }
+        }
+        await navigator.share(file ? { files: [file], text: TEXTO_ENVIO + ' ' + urlCompartir(actual.id, 'nativo') } : { title: 'La carta de hoy · artedeastro', text: TEXTO_ENVIO, url: urlCompartir(actual.id, 'nativo') });
+        evento(file ? 'nativo-imagen' : 'nativo'); return;
+      } catch (e) { if (e && e.name === 'AbortError') return; }
+    }
     evento('wa'); window.open('https://wa.me/?text=' + encodeURIComponent(TEXTO_ENVIO + ' ' + urlCompartir(actual.id, 'wa')), '_blank', 'noopener'); // abre WhatsApp para elegir a quién enviarla
   });
+  if ($('b-comp')) $('b-comp').addEventListener('click', () => { $('b-enviar').dataset.lugar = 'carta'; $('b-enviar').click(); });
   const descargar = (blob, nombre) => { const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = nombre; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 4000); };
   async function guardar(formato, btn) {
     if (!actual) return; if (btn) btn.disabled = true; estado('Preparando tu carta…'); track('guardar_imagen', { formato });

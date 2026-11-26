@@ -97,14 +97,15 @@
     instagram:          { meta: ['trackCustom', 'ClicInstagram'], ga: 'clic_instagram', cl: 'instagram', ok: [] },
     email:              { meta: ['trackCustom', 'ClicEmail'], ga: 'clic_email', cl: 'email', ok: [] },
     // La carta de hoy
-    visita_carta:       { meta: ['trackCustom', 'VisitaCarta'], ga: 'visita_carta', cl: 'visita_carta', ok: ['origen', 'canal', 'gen', 'vuelve'] },
-    carta_sacada:       { meta: ['trackCustom', 'CartaSacada'], ga: 'carta_sacada', cl: 'carta_sacada', ok: ['carta', 'origen', 'gen'] },
+    visita_carta:       { meta: ['trackCustom', 'VisitaCarta'], ga: 'visita_carta', cl: 'visita_carta', ok: ['origen', 'canal', 'gen', 'vuelve', 'primer_origen'] },
+    carta_sacada:       { meta: ['trackCustom', 'CartaSacada'], ga: 'carta_sacada', cl: 'carta_sacada', ok: ['carta', 'origen', 'gen', 'primer_origen'] },
     compartir:          { meta: ['trackCustom', 'Compartir'], ga: 'share', cl: 'compartir', ok: ['carta', 'method', 'lugar', 'gen'], fijos: { content_type: 'carta' } },
     guardar_imagen:     { meta: ['trackCustom', 'GuardarImagen'], ga: 'guardar_imagen', cl: 'guardar_imagen', ok: ['formato'] },
     ia_texto_copiado:   { meta: ['trackCustom', 'IATextoCopiado'], ga: 'ia_texto_copiado', cl: 'ia_texto_copiado', ok: ['carta', 'con_pregunta'] },
     ia_abrir:           { meta: ['trackCustom', 'IAAbrir'], ga: 'ia_abrir', cl: 'ia_abrir', ok: ['destino'] },
     ejemplo_visto:      { meta: ['trackCustom', 'EjemploVisto'], ga: 'ejemplo_visto', cl: 'ejemplo_visto', ok: [] },
     baraja_vista:       { meta: ['trackCustom', 'BarajaVista'], ga: 'baraja_vista', cl: 'baraja_vista', ok: ['cartas', 'racha'] },
+    hito_baraja:        { meta: ['trackCustom', 'HitoBaraja'], ga: 'hito_baraja', cl: 'hito_baraja', ok: ['cartas'] },
     // Cobro (futuro)
     oferta_vista:       { meta: ['track', 'ViewContent'], ga: 'view_item', cl: 'oferta_vista', ok: ['producto', 'value', 'currency'] },
     pago_iniciado:      { meta: ['track', 'InitiateCheckout'], ga: 'begin_checkout', cl: 'pago_iniciado', ok: ['producto', 'value', 'currency'] },

@@ -156,6 +156,9 @@
     $('mb-grid').innerHTML = ARC.map((c, i) => d.col.includes(i)
       ? `<li class="ok${i === id ? ' hoy' : ''}${i === id && eraNueva ? ' nueva' : ''}" title="${c.num} · ${c.nombre}"><img src="${miniatura(i)}" alt="${c.num}, ${c.nombre}${i === id ? ', tu carta de hoy' : ''}" width="56" height="94" draggable="false"></li>`
       : `<li class="vacia" aria-label="Carta ${c.num}, aún sin descubrir"><span aria-hidden="true">${c.num}</span></li>`).join('');
+    const HITOS = { 7: 'Siete cartas descubiertas: ya tienes un buen puñado.', 14: 'Catorce: más de la mitad de la baraja es tuya.', 22: 'Baraja completa. Las 22 cartas son tuyas.' }, hito = $('mb-hito');
+    if (hito) { if (HITOS[n]) { hito.textContent = HITOS[n]; hito.hidden = false; if (eraNueva) evento('hito_baraja', { cartas: n }); } else hito.hidden = true; }
+    ligarGuardarBaraja();
     caja.hidden = false;
     document.body.classList.add('con-carta');
     if (window.ADE_PAGO) window.ADE_PAGO.carta(id);
@@ -173,6 +176,50 @@
     pr(); if (campo && !campo.dataset.chip) { campo.dataset.chip = '1'; campo.addEventListener('input', pr); }
   }
   $('mb-borrar') && $('mb-borrar').addEventListener('click', () => { store.del(KEY); const id = (store.get('adh') || {}).c; if (Number.isInteger(id)) pintar(id); const e = $('mb-estado'); if (e) e.textContent = 'Tu baraja se ha borrado de este navegador. Hoy empieza de nuevo.'; });
+
+  // ---- Imagen de la baraja para Stories (1080 × 1920), dibujada en el navegador ----
+  const svgImg = svg => new Promise((ok, mal) => { const im = new Image(); im.onload = () => ok(im); im.onerror = mal; im.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg.replace('<svg ', '<svg width="560" height="940" ')); });
+  const rrect = (x, px, py, w, h, r) => { x.beginPath(); x.moveTo(px + r, py); x.arcTo(px + w, py, px + w, py + h, r); x.arcTo(px + w, py + h, px, py + h, r); x.arcTo(px, py + h, px, py, r); x.arcTo(px, py, px + w, py, r); x.closePath(); };
+  function txt(x, s, px, py, size, op, ls, fam, w, st) {
+    x.font = `${st || 'normal'} ${w} ${size}px ${fam}`; x.fillStyle = C.LINEA; x.globalAlpha = op; x.textBaseline = 'alphabetic'; x.textAlign = 'left';
+    const chars = [...s], ws = chars.map(c => x.measureText(c).width), total = ws.reduce((a, b) => a + b, 0) + (ls || 0) * (chars.length - 1);
+    let cx = px - total / 2; chars.forEach((c, i) => { x.fillText(c, cx, py); cx += ws[i] + (ls || 0); }); x.globalAlpha = 1;
+  }
+  async function imagenBaraja(d) {
+    const W = 1080, H = 1920, n = d.col.length;
+    try { await Promise.all([document.fonts.load('italic 500 60px "Cormorant Garamond"'), document.fonts.load('600 20px "DM Sans"')]); } catch (e) { /* sigue con las fuentes disponibles */ }
+    const cv = document.createElement('canvas'); cv.width = W; cv.height = H; const x = cv.getContext('2d');
+    const g = x.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#2a1a3a'); g.addColorStop(.38, '#4b2850'); g.addColorStop(.72, '#7e4560'); g.addColorStop(1, '#c47a76'); x.fillStyle = g; x.fillRect(0, 0, W, H);
+    const rg = x.createRadialGradient(W / 2, 760, 10, W / 2, 760, 700); rg.addColorStop(0, 'rgba(247,183,145,.28)'); rg.addColorStop(1, 'rgba(247,183,145,0)'); x.fillStyle = rg; x.fillRect(0, 0, W, H);
+    rrect(x, 30, 30, W - 60, H - 60, 36); x.strokeStyle = 'rgba(247,227,200,.45)'; x.lineWidth = 1.5; x.stroke();
+    txt(x, 'MI BARAJA', W / 2, 250, 24, .8, 12, C.SANS, 600);
+    txt(x, `${n} de 22`, W / 2, 400, 150, 1, 0, C.SERIF, 500, 'italic');
+    txt(x, n === 1 ? 'carta descubierta' : 'cartas descubiertas', W / 2, 470, 40, .9, 0, C.SERIF, 500, 'italic');
+    if (d.racha >= 2) txt(x, `${d.racha} DÍAS SEGUIDOS`, W / 2, 540, 22, .8, 8, C.SANS, 600);
+    const cols = 6, tw = 140, th = Math.round(140 * 940 / 560), gap = 18, x0 = (W - (cols * tw + (cols - 1) * gap)) / 2, y0 = 640;
+    const imgs = await Promise.all(ARC.map((c, i) => d.col.includes(i) ? svgImg(C.caraSinTexto(i)).catch(() => null) : null));
+    ARC.forEach((c, i) => {
+      const px = x0 + (i % cols) * (tw + gap), py = y0 + Math.floor(i / cols) * (th + gap);
+      if (imgs[i]) { x.save(); x.shadowColor = 'rgba(0,0,0,.45)'; x.shadowBlur = 22; x.shadowOffsetY = 12; x.drawImage(imgs[i], px, py, tw, th); x.restore(); }
+      else { rrect(x, px, py, tw, th, 14); x.setLineDash([8, 8]); x.strokeStyle = 'rgba(247,227,200,.35)'; x.lineWidth = 1.5; x.stroke(); x.setLineDash([]); txt(x, c.num, px + tw / 2, py + th / 2 + 8, 24, .55, 2, C.SERIF, 500); }
+    });
+    txt(x, 'La carta de hoy', W / 2, 1650, 34, .9, 0, C.SERIF, 500, 'italic');
+    txt(x, 'artedeastro', W / 2, 1720, 44, .95, 8, C.SERIF, 500, 'italic');
+    txt(x, 'ARTEDEASTRO.COM/CARTA', W / 2, 1780, 20, .7, 8, C.SANS, 600);
+    return new Promise((ok, mal) => cv.toBlob(b => b ? ok(b) : mal(new Error('sin imagen')), 'image/png'));
+  }
+  function ligarGuardarBaraja() {
+    const b = $('mb-guardar'); if (!b || b.dataset.on) return; b.dataset.on = '1';
+    b.addEventListener('click', async () => {
+      const e = $('mb-img-estado'); b.disabled = true; e.textContent = 'Preparando tu baraja…'; evento('guardar_imagen', { formato: 'baraja' });
+      try {
+        const blob = await imagenBaraja(datos()), nombre = 'mi-baraja-' + hoy() + '.png', file = new File([blob], nombre, { type: 'image/png' });
+        if (navigator.canShare && navigator.canShare({ files: [file] })) { try { await navigator.share({ files: [file], title: 'Mi baraja · La carta de hoy' }); e.textContent = 'Lista para compartir.'; return; } catch (x) { if (x && x.name === 'AbortError') { e.textContent = ''; return; } } }
+        const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = nombre; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 4000); e.textContent = 'Imagen guardada. Ya puedes subirla a tus Stories.';
+      } catch (x) { e.textContent = 'No se ha podido crear la imagen. Haz una captura de pantalla de tu baraja.'; }
+      finally { b.disabled = false; }
+    });
+  }
 
   // ---- Cuenta atrás hasta la próxima carta ----
   let reloj = null;
@@ -201,5 +248,5 @@
     calc();
   }
 
-  window.ADE_VIDA = { pintar, destello };
+  window.ADE_VIDA = { pintar, destello, imagenBaraja, datos };
 })();
