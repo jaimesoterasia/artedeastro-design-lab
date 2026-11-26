@@ -10,6 +10,7 @@
   const ayer = () => { const d = new Date(); d.setDate(d.getDate() - 1); return fecha(d); };
   const ARC = window.ARCANOS, C = window.CARTAS;
   document.documentElement.classList.add('vida');
+  const evento = (n, p) => { try { if (window.adeTrack) window.adeTrack(n, p); } catch (e) { /* sin medición */ } };
 
   // ---- Cielo con estrellas (lienzo fijo, bajo el contenido) ----
   const cv = document.createElement('canvas'); cv.className = 'estrellas'; cv.setAttribute('aria-hidden', 'true'); document.body.insertBefore(cv, document.body.firstChild);
@@ -123,7 +124,7 @@
     const span = ia.querySelector('span'), txt = span.textContent;
     if (reduce || !('IntersectionObserver' in window)) { fin.classList.add('vista'); return; }
     span.textContent = ' '; fin.classList.remove('vista');
-    const io2 = new IntersectionObserver(es => { if (!es[0].isIntersecting) return; io2.disconnect(); let i = 0; ia.classList.add('escribiendo'); const paso = () => { i += 2; span.textContent = txt.slice(0, i); if (i < txt.length) setTimeout(paso, 22); else { ia.classList.remove('escribiendo'); fin.classList.add('vista'); } }; setTimeout(paso, 500); }, { threshold: .6 });
+    const io2 = new IntersectionObserver(es => { if (!es[0].isIntersecting) return; io2.disconnect(); evento('ejemplo_visto'); let i = 0; ia.classList.add('escribiendo'); const paso = () => { i += 2; span.textContent = txt.slice(0, i); if (i < txt.length) setTimeout(paso, 22); else { ia.classList.remove('escribiendo'); fin.classList.add('vista'); } }; setTimeout(paso, 500); }, { threshold: .6 });
     io2.observe($('ej-ia'));
   })();
 
@@ -132,7 +133,7 @@
   const eva2 = $('b-eva2');
   if (eva2) {
     eva2.href = window.ADE_LAB ? '#' : `https://wa.me/${WA_EVA}?text=` + encodeURIComponent('Hola Eva, he visto La carta de hoy y me gustaría hablar contigo.');
-    eva2.addEventListener('click', e => { if (window.ADE_LAB) { e.preventDefault(); $('eva2-estado').textContent = 'Simulación del laboratorio: en la web real se abre WhatsApp con Eva y el mensaje ya escrito.'; } else { try { if (window.adeTrack) window.adeTrack('whatsapp', { lugar: 'sobre_eva' }); } catch (x) { /* sin medición */ } } });
+    eva2.addEventListener('click', e => { if (window.ADE_LAB) { e.preventDefault(); $('eva2-estado').textContent = 'Simulación del laboratorio: en la web real se abre WhatsApp con Eva y el mensaje ya escrito.'; } });   // el evento «whatsapp» lo envía medicion.js
   }
 
   // ---- Racha y baraja propia ----
@@ -157,6 +158,7 @@
       : `<li class="vacia" aria-label="Carta ${c.num}, aún sin descubrir"><span aria-hidden="true">${c.num}</span></li>`).join('');
     caja.hidden = false;
     document.body.classList.add('con-carta');
+    if (!pintar.medido) { pintar.medido = true; evento('baraja_vista', { cartas: n, racha: d.racha >= 7 ? '7+' : d.racha >= 4 ? '4-6' : d.racha >= 2 ? '2-3' : '1' }); }
     chips(id);
     cuentaAtras(); barra();
   }
@@ -194,7 +196,7 @@
       const tapa = tapables.some(el => { if (el.offsetParent === null) return false; const q = el.getBoundingClientRect(); return q.bottom > zona && q.top < innerHeight; });
       b.hidden = !(movil && !res.hidden && r.bottom < 0 && !tapa);
     };
-    if (!barra.on) { barra.on = true; const q = () => { if (!pend) { pend = true; requestAnimationFrame(calc); } }; addEventListener('scroll', q, { passive: true }); addEventListener('resize', q); $('b-enviar2') && $('b-enviar2').addEventListener('click', () => $('b-enviar').click()); }
+    if (!barra.on) { barra.on = true; const q = () => { if (!pend) { pend = true; requestAnimationFrame(calc); } }; addEventListener('scroll', q, { passive: true }); addEventListener('resize', q); $('b-enviar2') && $('b-enviar2').addEventListener('click', () => { $('b-enviar').dataset.lugar = 'barra'; $('b-enviar').click(); }); }
     calc();
   }
 

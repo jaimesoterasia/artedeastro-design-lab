@@ -19,7 +19,15 @@
   // ---- Origen: una amiga que comparte su carta ----
   const params = new URLSearchParams(location.search);
   const deAmiga = (() => { const v = window.ADE_CARTA !== undefined ? window.ADE_CARTA : params.get('c'); const n = Number(v); return v !== null && v !== '' && Number.isInteger(n) && n >= 0 && n < ARC.length ? n : null; })();
-  const ORIGEN = deAmiga !== null ? 'amiga' : (params.get('o') || 'directo');
+  // Atribución sin datos personales: origen (lista cerrada), canal por el que llegó el enlace y generación de la cadena de envíos (0 = no viene de una amiga)
+  const ORIGENES = ['directo', 'amiga', 'ig', 'wa', 'tt', 'qr', 'evento', 'regalo', 'juntas'];
+  const normOrigen = v => { v = String(v || '').toLowerCase(); return !v ? 'directo' : ORIGENES.includes(v) ? v : 'otro'; };
+  const ORIGEN = deAmiga !== null ? 'amiga' : normOrigen(params.get('o'));
+  const CANAL = ['wa', 'nativo'].includes(params.get('s')) ? params.get('s') : '';
+  const GEN = (() => { const g = Number(params.get('g')); return Number.isInteger(g) && g >= 0 && g <= 9 ? g : 0; })();
+  const previa = store.get('adv');
+  window.ADE_CTX = { origen: ORIGEN, canal: CANAL, gen: GEN, vuelve: !!(previa && previa.last && previa.last !== hoy()) };   // lo lee medicion.js cuando hay consentimiento
+  const urlCompartir = (id, canal) => urlCarta(id) + '?o=amiga&s=' + canal + '&g=' + Math.min(GEN + 1, 9);
   if (params.has('nueva')) store.del('adh');                  // solo para pruebas: permite sacar otra carta
 
   if (deAmiga !== null) {
@@ -84,7 +92,7 @@
     store.set('adh', { f: hoy(), c: id, cielo: cieloTxt });
     if (reduce) mostrar(id, cieloTxt, true);
     else { elegida.classList.add('elegida'); baraja.classList.add('eligiendo'); setTimeout(() => mostrar(id, cieloTxt, true), 750); }   // un instante de tensión antes de descubrirla
-    track('carta_sacada', { carta: ARC[id].nombre, origen: ORIGEN });
+    track('carta_sacada', { carta: ARC[id].nombre, origen: ORIGEN, gen: GEN });
   });
 
   const guardada = store.get('adh');
@@ -94,9 +102,10 @@
   const estado = t => { $('estado').textContent = t || ''; };
   $('b-enviar').addEventListener('click', async () => {
     if (!actual) return;
-    const url = urlCarta(actual.id); track('compartir', { carta: ARC[actual.id].nombre });
-    if (navigator.share) { try { await navigator.share({ title: 'La carta de hoy · artedeastro', text: TEXTO_ENVIO, url }); return; } catch (e) { if (e && e.name === 'AbortError') return; } }
-    window.open('https://wa.me/?text=' + encodeURIComponent(TEXTO_ENVIO + ' ' + url), '_blank', 'noopener'); // abre WhatsApp para elegir a quién enviarla
+    const lugar = $('b-enviar').dataset.lugar || 'boton'; delete $('b-enviar').dataset.lugar;      // «barra» si viene de la barra fija del móvil
+    const evento = method => track('compartir', { carta: ARC[actual.id].nombre, method, lugar, gen: Math.min(GEN + 1, 9) });
+    if (navigator.share) { try { await navigator.share({ title: 'La carta de hoy · artedeastro', text: TEXTO_ENVIO, url: urlCompartir(actual.id, 'nativo') }); evento('nativo'); return; } catch (e) { if (e && e.name === 'AbortError') return; } }
+    evento('wa'); window.open('https://wa.me/?text=' + encodeURIComponent(TEXTO_ENVIO + ' ' + urlCompartir(actual.id, 'wa')), '_blank', 'noopener'); // abre WhatsApp para elegir a quién enviarla
   });
   const descargar = (blob, nombre) => { const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = nombre; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 4000); };
   async function guardar(formato, btn) {
@@ -111,7 +120,7 @@
   }
   $('b-guardar').addEventListener('click', () => guardar('historia', $('b-guardar')));
   $('b-cuadrado').addEventListener('click', e => { e.preventDefault(); guardar('cuadrado'); });
-  $('b-eva').addEventListener('click', e => { if (window.ADE_LAB) { e.preventDefault(); estado('Simulación del laboratorio: en la web real se abre WhatsApp con Eva y el mensaje ya escrito.'); return; } track('whatsapp', { lugar: 'resultado' }); });
+  $('b-eva').addEventListener('click', e => { if (window.ADE_LAB) { e.preventDefault(); estado('Simulación del laboratorio: en la web real se abre WhatsApp con Eva y el mensaje ya escrito.'); } });   // el evento «whatsapp» lo envía medicion.js
 
   // ---- Carta compartible en imagen (lienzo) ----
   const svgImg = svg => new Promise((ok, mal) => { const im = new Image(); im.onload = () => ok(im); im.onerror = mal; im.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg.replace('<svg ', '<svg width="560" height="940" ')); });
@@ -206,12 +215,13 @@
   campoIA.addEventListener('input', () => { refrescarIA(); $('ia-abrir').hidden = true; $('ia-estado').textContent = ''; });
   const origMostrar = mostrar; mostrar = function () { origMostrar.apply(this, arguments); campoIA.value = ''; refrescarIA(); }; if (actual) refrescarIA();
   $('ia-copiar').addEventListener('click', async () => {
-    if (!actual) return; refrescarIA(); const txt = preIA.textContent; track('copiar_texto_ia', { carta: ARC[actual.id].nombre });
+    if (!actual) return; refrescarIA(); const txt = preIA.textContent; track('ia_texto_copiado', { carta: ARC[actual.id].nombre, con_pregunta: !!campoIA.value.trim() });
     let ok = false;
     try { await navigator.clipboard.writeText(txt); ok = true; } catch (e) { /* se prueba el método antiguo */ }
     if (!ok) { try { const t = document.createElement('textarea'); t.value = txt; t.setAttribute('readonly', ''); t.style.cssText = 'position:fixed;left:-9999px'; document.body.appendChild(t); t.select(); ok = document.execCommand('copy'); t.remove(); } catch (e) { ok = false; } }
     if (ok) { $('ia-abrir').hidden = false; $('ia-estado').textContent = 'Texto copiado. Pégalo en tu IA y envíalo.'; }
     else { $('ia-ver').open = true; const r = document.createRange(); r.selectNodeContents(preIA); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); $('ia-abrir').hidden = false; $('ia-estado').textContent = 'No se ha podido copiar solo. El texto está seleccionado: cópialo (Ctrl+C o mantén pulsado) y pégalo en tu IA.'; }
   });
+  document.querySelectorAll('.ia-enlaces a').forEach(a => a.addEventListener('click', () => track('ia_abrir', { destino: /claude/.test(a.href) ? 'claude' : /gemini/.test(a.href) ? 'gemini' : 'chatgpt' })));
   window.RITUAL = { imagen, mostrar, ARC, textoParaIA };    // para pruebas
 })();
