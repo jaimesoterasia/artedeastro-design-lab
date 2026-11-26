@@ -114,7 +114,25 @@
   // ---- Aparición al hacer scroll ----
   if ('IntersectionObserver' in window && !reduce) {
     const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px', threshold: .08 });
-    document.querySelectorAll('.como h2, .como-cols > div, .legal').forEach(el => { el.classList.add('rv'); io.observe(el); });
+    document.querySelectorAll('.como h2, .tile, .legal, .ej-texto, .movil, .se-foto, .se-texto').forEach(el => { el.classList.add('rv'); io.observe(el); });
+  }
+
+  // ---- Ejemplo de lectura: la IA «escribe» cuando llega a la vista ----
+  (function demo() {
+    const ia = $('ej-ia'), fin = $('ej-fin'); if (!ia || !fin) return;
+    const span = ia.querySelector('span'), txt = span.textContent;
+    if (reduce || !('IntersectionObserver' in window)) { fin.classList.add('vista'); return; }
+    span.textContent = ' '; fin.classList.remove('vista');
+    const io2 = new IntersectionObserver(es => { if (!es[0].isIntersecting) return; io2.disconnect(); let i = 0; ia.classList.add('escribiendo'); const paso = () => { i += 2; span.textContent = txt.slice(0, i); if (i < txt.length) setTimeout(paso, 22); else { ia.classList.remove('escribiendo'); fin.classList.add('vista'); } }; setTimeout(paso, 500); }, { threshold: .6 });
+    io2.observe($('ej-ia'));
+  })();
+
+  // ---- Enlaces a Eva (el botón del resultado lo completa ritual.js con la carta) ----
+  const WA_EVA = '34686156081';
+  const eva2 = $('b-eva2');
+  if (eva2) {
+    eva2.href = window.ADE_LAB ? '#' : `https://wa.me/${WA_EVA}?text=` + encodeURIComponent('Hola Eva, he visto La carta de hoy y me gustaría hablar contigo.');
+    eva2.addEventListener('click', e => { if (window.ADE_LAB) { e.preventDefault(); $('eva2-estado').textContent = 'Simulación del laboratorio: en la web real se abre WhatsApp con Eva y el mensaje ya escrito.'; } else { try { if (window.adeTrack) window.adeTrack('whatsapp', { lugar: 'sobre_eva' }); } catch (x) { /* sin medición */ } } });
   }
 
   // ---- Racha y baraja propia ----
@@ -138,7 +156,18 @@
       ? `<li class="ok${i === id ? ' hoy' : ''}${i === id && eraNueva ? ' nueva' : ''}" title="${c.num} · ${c.nombre}"><img src="${miniatura(i)}" alt="${c.num}, ${c.nombre}${i === id ? ', tu carta de hoy' : ''}" width="56" height="94" draggable="false"></li>`
       : `<li class="vacia" aria-label="Carta ${c.num}, aún sin descubrir"><span aria-hidden="true">${c.num}</span></li>`).join('');
     caja.hidden = false;
+    document.body.classList.add('con-carta');
+    chips(id);
     cuentaAtras(); barra();
+  }
+  // Lo que viaja hacia tu IA: la carta, el cielo de hoy y tu pregunta (se ve en el panel de la lectura profunda)
+  function chips(id) {
+    const a = $('fc-carta'), b = $('fc-cielo'), p = $('fc-preg'), campo = $('ia-pregunta'); if (!a || !b || !p) return;
+    const c = window.cieloDeHoy && window.cieloDeHoy(), d = ARC[id];
+    a.textContent = `${d.nombre} · ${d.num}`;
+    b.textContent = c ? `Luna en ${c.luna} · Sol en ${c.sol}` : 'Cielo de hoy';
+    const pr = () => { const v = campo ? campo.value.trim() : ''; p.textContent = v ? '«' + v + '»' : 'Tu pregunta (opcional)'; };
+    pr(); if (campo && !campo.dataset.chip) { campo.dataset.chip = '1'; campo.addEventListener('input', pr); }
   }
   $('mb-borrar') && $('mb-borrar').addEventListener('click', () => { store.del(KEY); const id = (store.get('adh') || {}).c; if (Number.isInteger(id)) pintar(id); const e = $('mb-estado'); if (e) e.textContent = 'Tu baraja se ha borrado de este navegador. Hoy empieza de nuevo.'; });
 
