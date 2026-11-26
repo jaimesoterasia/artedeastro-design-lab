@@ -158,6 +158,7 @@
       : `<li class="vacia" aria-label="Carta ${c.num}, aún sin descubrir"><span aria-hidden="true">${c.num}</span></li>`).join('');
     caja.hidden = false;
     document.body.classList.add('con-carta');
+    if (window.ADE_PAGO) window.ADE_PAGO.carta(id);
     if (!pintar.medido) { pintar.medido = true; evento('baraja_vista', { cartas: n, racha: d.racha >= 7 ? '7+' : d.racha >= 4 ? '4-6' : d.racha >= 2 ? '2-3' : '1' }); }
     chips(id);
     cuentaAtras(); barra();
